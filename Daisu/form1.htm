@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<!-- 
+   CPSC 362 Software Engineering 
+   Developers: Arun Sangar, Abraham Ludlam, Josh Marvel, TeviSophea Heng, Tony Dao
+   Project Manager / Developer: Phillip Ly
+   
+   Filename: form1.htm (which is the order form)
+   Supporting files: gpsware.css, gpsware.jpg, order.js, functions.js
+
+-->
+
+   <title>Hike-Ware || Order Form Page</title>
+   <link href="gpsware.css" rel="stylesheet" type="text/css" />
+   
+   <script type = "text/javascript" src = "order.js"></script>
+    
+</head>
+
+<body>
+   <form id="form1" method="post" action="form2.htm">
+
+   <div id="links">
+      <a href="file:///C:/Users/Phillip/Desktop/Daisu/LoginForm.htm" class="newgroup">Home Page</a>
+      <a href="#">Product Catalog</a>
+      <a href="file:///C:/Users/Phillip/Desktop/Daisu/form1.htm">Order Form</a>
+      <a href="#">Maps Online</a>
+      <a href="#">Contact Us</a>
+      <a href="#" class="newgroup">Countries</a>
+      <a href="#">States</a>
+      <a href="#">National Parks</a>
+      <a href="https://www.google.com/search?q=hiking+trails&ie=utf-8&oe=utf-8" target= "Hiking Trails">Hiking Trails</a>
+      <a href="#">Cities</a>
+      <a href="#">Astronomical</a>
+      <a href="#">Natural</a>
+      <a href="#" class="newgroup">GoMap 1.0</a>
+      <a href="#">Drive Planner 2.0</a>
+      <a href="#">Hiker 1.0</a>
+      <a href="#">G-Receiver I</a>
+      <a href="#">G-Receiver II</a>
+      <a href="#">G-Receiver III</a>
+      <a href="#" class="newgroup">Downloads</a>
+      <a href="#">Tech Support</a>
+      <a href="file:///C:/Users/Phillip/Desktop/Daisu/About.html">About Us</a>
+   </div>
+
+   <div id="main">
+      <p id="logo"><img src="gpsware2.jpg" alt="GPS-ware" /></p>
+      <h1>Order Form</h1>
+      <p id="datep">
+         <input class="text" id="date" name="date" size="11" value="mm-dd-yyyy" readonly="readonly" />
+      </p>
+
+     <fieldset>
+        <legend>Select a Product</legend>
+
+        <table>
+           <tr>
+              <td class="labelcell">Product</td>
+              <td class="inputcell">
+              <select name="prod" id="prod">
+                 <option value="0">Products from GPS-ware</option>
+                 <option value="19.95">GoMap 1.0 ($19.95)</option>
+                 <option value="29.95">Drive Planner 2.0 ($29.95)</option>
+                 <option value="29.95">Hiker 1.0 ($29.95)</option>
+                 <option value="149.50">G-Receiver I ($149.50)</option>
+                 <option value="199.50">G-Receiver II ($199.50)</option>
+                 <option value="249.50">G-Receiver III ($249.50)</option>
+              </select>
+     
+              <select name="qty" id="qty">
+                 <option value="0">Quantity</option>
+                 <option value="1">1</option><option value="2">2</option><option value="3">3</option>
+                 <option value="4">4</option><option value="5">5</option><option value="6">6</option>
+                 <option value="7">7</option><option value="8">8</option><option value="9">9</option>
+                 <option value="10">10</option>
+              </select>
+              </td>
+              <td class="outcell">
+                 <input class="num" name="price" id="price" size="7" value="0.00" readonly="readonly" />
+              </td>
+           </tr>
+
+           <tr>
+              <td class="labelcell">Shipping</td>
+              <td>
+              <p><input type="radio" name="shipType" id="ship1" value="4.95" />
+                 <label for="ship1">Standard (4-6 business days): $4.95</label>
+              </p>
+              <p><input type="radio" name="shipType" id="ship2" value="8.95" />
+                 <label for="ship2">Express (2 days): $8.95</label>
+              </p>
+              <p><input type="radio" name="shipType" id="ship3" value="12.95" />
+                 <label for="ship3">Next Day (1 day): $12.95</label>
+              </p>
+              </td>
+
+              <td class="outcell">
+                 <input class="num" name="ship" id="ship" size="7" value="0.00" readonly="readonly" />
+              </td>
+           </tr>
+
+           <tr>
+              <td colspan="2" class="labelcell2">Subtotal</td>
+              <td class="outcell">
+                 <input class="num" name="sub" size="7" value="0.00" readonly="readonly" />
+              </td>
+           </tr>
+
+           <tr>
+              <td colspan="2" class="labelcell2">Tax (5%)</td>
+              <td class="outcell">
+                 <input class="num" name="tax" id="tax" size="7" value="0.00" readonly="readonly" />
+              </td>
+           </tr>
+
+           <tr>
+              <td colspan="2" class="labelcell2">TOTAL</td>
+              <td class="outcell">
+                 <input class="num" name="tot" id="tot" size="7" value="0.00" readonly="readonly" />
+              </td>
+           </tr>
+        </table>
+
+     </fieldset>
+
+     <p id="formbuttons">
+        <input type="reset"  name="cancelb" id="cancelb" value="Cancel" />
+        <input type="submit" name="nextb" id="nextb" value="Next" />
+    </p>
+
+<h2>Order Facts from Hike-Ware:</h2>
+	
+<h3 id="fact1">Display the result here.</h3>
+
+<script>
+var bestOffer = {product1:"G-Receiver III", result1:75};
+document.getElementById("fact1").innerHTML = 
+bestOffer.product1 + " is Hike-Ware's top selling product with " + bestOffer.result1 + "% of total sold to all our customers!";
+</script>
+
+<h3 id="fact2">Display the result here.</h3>
+
+<script>
+var offerHike = {product2:"Hiker 1.0", result2:15};
+document.getElementById("fact2").innerHTML = 
+offerHike.product2 + " is Hike-Ware's second top selling product with " + offerHike.result2 + "% of total sold to all our customers!";
+</script>
+
+<h3 id="fact3">Display the result here.</h3>
+
+<script>
+var custStatistics = {cust:99, satisStat:100};
+document.getElementById("fact3").innerHTML = 
+custStatistics.cust + "% of our customers reported back " + custStatistics.satisStat + "% satisfaction of our products used in their trips!";
+</script>
+   
+	
+		
+        
+     <p>&nbsp;</p>
+        
+   		<p>&copy;Copyright 2016 &bull; All Rights Reserved </p>
+   		<p>	Website Designed by Mighty Titans </p>
+        
+        
+
+   </div>
+
+   </form>
+
+
+</body>
+</html>
