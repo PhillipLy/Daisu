@@ -1,23 +1,67 @@
 body {
 	background-color: #DADADA;
 }
+#menuBar {
+    clear: both;
+}
 
-img {
+.pusher {
 	opacity: 1;
+    display: block;
 }
 
-.column {
-	margin-top: -20em;
-	max-width: 450px;
+#loginForm {
+    padding: 0;
+    bottom: -100em;
 }
-.background-img {
-	position: fixed;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    max-width: 100%;
-    max-height: 100%;
+
+#loginForm .column {	
+	max-width: 450px;    
+}
+
+.ui.masthead.segment {
+    padding: 10em 0 10em 0;
+}
+
+#loginForm {
+    clear: both;
     margin: auto;
-    overflow: auto;
+    top: 0em;
+    min-height: 30em;
+    height: 100%;
+}
+
+.column img {
+    height: 100%;
+    width: 100%;
+}
+.doubling.stackable.grid.container {
+    margin: auto;
+    padding-top: 10em;
+    padding-bottom: 10em;
+}
+
+.doubling.stackable.grid.container > .column {
+    padding: 0em;
+}
+
+i.cart.icon {
+    margin: 0;
+}
+
+.ui.label.itemcount {
+    margin: 0;
+    padding: 0.5em;
+}
+
+.cartimage {
+    padding-left: 0.5em;
+}
+
+.ui.section.divider {
+    margin: 0.75em;
+}
+
+.footer.segment {
+    padding: 5em 0em;
 }
