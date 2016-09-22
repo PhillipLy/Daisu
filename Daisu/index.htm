@@ -1,0 +1,75 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- CPSC 362 Software Engineerin
+    Developers:
+      Arun Sangar,
+      Abraham Ludlam,
+      Josh Marvel,
+      TeviSophea Heng,
+      Tony Dao
+
+    Project Manager / Developer: Phillip Ly -->
+    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
+    <script type="semantic/dist/semantic/min.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/style.css">  
+  </head>
+
+  <body>
+  <!-- login form-->
+  <div class="ui middle aligned center aligned grid" id="login-background">
+    <div class="column">
+      <form class="ui large form">
+        <div class="ui stacked segment">
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="user icon"></i>
+              <input type="text" name="email" placeholder="E-mail address">
+            </div>
+          </div>
+          <div class="field">
+            <div class="ui left icon input">
+              <i class="lock icon"></i>
+              <input type="password" name="password" placeholder="Password">
+            </div>
+          </div>
+          <div class="ui fluid x-large teal submit button">Login</div>
+        </div>
+
+        <!-- Error message-->
+        <div class="ui error message"></div>
+      </form>
+      <div class="ui message">
+        New to us?
+        <a href="#">Sign Up</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- Following menu-->
+  <div class="ui large top fixed menu transition visible">
+    <div class="ui container">
+      <a href="#" class="active item">Home</a>
+      <a href="#" class="item">About Us</a>
+      <a href="#" class="item">Hiking Trail</a>
+      <a href="#" class="item">Support</a>
+      <div class="right menu">
+        <div class="item">
+          <div class="ui primary button">Sign Up</div>
+        </div>
+        <div class="item">
+          <div class="ui button">Login</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- contein-->
+  <div >
+    <img src="image/logo_op_720x450.jpg" class="background-img">
+  </div>
+
+  </body>
+</html>
