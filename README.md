@@ -1,6 +1,6 @@
 # Daisu-CPSC-362-Software-Engineering-Project
 
-Version 0.0.6 released on 9/22/2016:
+Version 0.0.6 released 9/22/2016:
 - Added few more section on the home page  
 - Added more menu items and shopping cart menu
 
