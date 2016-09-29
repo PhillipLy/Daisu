@@ -1,4 +1,6 @@
 var main = function() {
+    'use strict';
+    
     //display login form
     var $formSlideDown = function () {
         $('#login-form').transition('slide down');
