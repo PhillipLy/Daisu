@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <link rel="stylesheet" type="text/css" href="reset.css">
+    <link rel="stylesheet" type="text/css" href="css/reset.css">
     <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
     <script type="semantic/dist/semantic/min.js"></script>
     <link rel="stylesheet" type="text/css" href="css/style.css">  
@@ -47,50 +47,54 @@
           <div class="ui primary button">Sign Up</div>
         </a>
         <div class="item">
-          <div class="ui button">Login</div>
+          <div class="ui button" id="login-button">Login</div>
         </div>
       </div>
     </div>
   </div>
 
   <!-- login and create form-->
-  <div class="ui middle aligned center aligned grid" id="loginForm">
-    <div class="column">
-      <h2 class="ui steal image header">
-        <img src="" class="image">
-        <div class="content">Login or Create an Account</div>
-      </h2>
-      <form class="ui large form">
-        <div class="ui stacked segment">
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="user icon"></i>
-              <input type="text" name="email" placeholder="E-mail address">
+  <div class="ui disabled page dimmer">
+    <div class="content">
+      <div class="ui middle aligned center aligned grid transition hidden" id="login-form">
+        <div class="column">
+          <h2 class="ui steal inverted image header">
+            <img src="" class="image">
+            <div class="ui inverted content">Login or Create an Account</div>
+          </h2>
+          <form class="ui large form">
+            <div class="ui stacked segment">
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="user icon"></i>
+                  <input type="text" name="email" placeholder="E-mail address">
+                </div>
+              </div>
+              <div class="field">
+                <div class="ui left icon input">
+                  <i class="lock icon"></i>
+                  <input type="password" name="password" placeholder="Password">
+                </div>
+              </div>
+              <div class="ui fluid x-large teal submit button">Login</div>
             </div>
-          </div>
-          <div class="field">
-            <div class="ui left icon input">
-              <i class="lock icon"></i>
-              <input type="password" name="password" placeholder="Password">
-            </div>
-          </div>
-          <div class="ui fluid x-large teal submit button">Login</div>
-        </div>
 
-        <!-- Error message-->
-        <div class="ui error message"></div>
-      </form>
-      <div class="ui message">
-        <a href="#">Forget Your Password?</a>
-        <div class="ui section divider"></div>
-        <label>New to us?</label>
-        <a href="#">Sign Up</a>
+            <!-- Error message-->
+            <div class="ui error message"></div>
+          </form>
+          <div class="ui message">
+            <a href="#">Forget Your Password?</a>
+            <div class="ui section divider"></div>
+            <label>New to us?</label>
+            <a href="#">Sign Up</a>
+          </div>
+        </div>
       </div>
     </div>
-  </div>  
+  </div>
 
   <!-- Page Contents-->
-  <div class="pusher">
+  <div class="pusher dimmed">
     <div class="ui inverted vertical masthead center aligned segment">
       <img src="image/logo_op_720x450.jpg">
       <div class="ui text container">
@@ -173,5 +177,10 @@
       </div>
     </div>    
   </footer>
+
+  <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+  <script src="semantic/dist/semantic.min.js"></script> 
+  <script src="javascript/home.js"></script>
+
   </body>
 </html>
