@@ -13,7 +13,7 @@
     <!-- Following menu-->
     <div class="ui large top fixed menu transition visible" id="menuBar">
         <div class="ui container">
-            <a href="index.html" class="active item">Home</a>
+            <a href="index.html" class="item">Home</a>
 
             <div class="ui simple dropdown item">
                 Products<i class="dropdown icon"></i>
@@ -44,7 +44,7 @@
                         <div class="ui red label itemcount">1</div>
                     </div>          
                 </a>
-                <a href="signup.html" class="item">
+                <a href="#" class="item">
                     <div class="ui primary button">Sign Up</div>
                 </a>
                 <div class="item">
@@ -57,7 +57,7 @@
     <!-- login and create form-->
     <div class="ui disabled page dimmer">
         <div class="content">
-            <div class="ui middle aligned grid transition hidden" id="login-form">
+            <div class="ui middle aligned center aligned grid transition hidden" id="login-form">
                 <div class="column">
                     <h2 class="ui steal inverted image header">
                         <img src="#" class="image" alt="logo image">
@@ -87,7 +87,7 @@
                         <a href="#">Forget Your Password?</a>
                         <div class="ui section divider"></div>
                         <label>New to us?</label>
-                        <a href="signup.html">Sign Up</a>
+                        <a href="#">Sign Up</a>
                     </div>
                 </div>
             </div>
@@ -95,48 +95,65 @@
     </div>
 
     <!-- Page Contents-->
-    <div class="pusher dimmed">
-        <div class="ui inverted vertical masthead center aligned segment">
-            <img src="image/logo_op_720x450.jpg" alt="">
-            <div class="ui text container">
-                <h1 class="ui inverted header">Company Logo</h1>
-                <h2>Sell all kind of mountain gear</h2>
-            </div>    
+    <div class="ui middle aligned center aligned grid signup">
+        <div class="column">
+            <form class="ui form">
+                <div class="ui segment clearfix">
+                    <div class="ui grid">
+                        <div class="ten wide column">
+                            <h3>Sign Up Now</h3>
+                            <p>Fill in the form below to get a new account</p>
+                        </div>
+                        <div class="six wide column">
+                            <i class="huge write icon"></i>
+                        </div> 
+                    </div>
+                    <div class="ui divider"></div>
+                    <div class="field">
+                        <label>Name</label>
+                        <div class="two fields">
+                            <div class="field">
+                                <input type="text" name="signup-first-name" placeholder="First Name">
+                            </div>
+                            <div class="field">
+                                <input type="text" name="signup-last-name" placeholder="Last Name">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>UserName</label>
+                        <div class="field">
+                            <input type="text" name="signup-username" placeholder="Username">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>E-mail Address</label>
+                        <div class="field">
+                            <input type="text" name="signup-email" placeholder="E-mail">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Password</label>
+                        <div class="field">
+                            <input type="password" name="signup-password">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <label>Confirm Password</label>
+                        <div class="field">
+                            <input type="password" name="signup-password-confirm">
+                        </div>
+                    </div>
+                    <div class="field">
+                        <div class="ui checkbox">
+                            <input type="checkbox" tabindex="0">
+                            <label>I agree to the <a href="#">Terms and Conditions</a></label>
+                        </div>
+                    </div>
+                    <button class="ui teal right floated button" type="submit">Sign Up</button>              
+                </div>
+            </form>
         </div>
-
-        <div class="ui three column doubling stackable grid container">
-            <div class="column">
-                <a href="#">
-                    <img src="https://lh3.googleusercontent.com/-0dVkgqyPbEQ/VQnlT9U4HhI/AAAAAAAAIWE/XKyf38PHUB4/w728-h486-no/Tonquin-Valleyx.jpg" alt="">
-                </a>       
-            </div>
-            <div class="column">
-                <a href="#">
-                    
-                    <img src="https://lh6.googleusercontent.com/--uI_0050Z3M/VQnogtbFThI/AAAAAAAAIXM/57sEoJ_LxSE/w728-h483-no/8235991458_f19ac6d841_bx.jpg" alt="">
-                </a>
-            </div>
-            <div class="column">
-                <a href="#">
-                    <img src="https://lh5.googleusercontent.com/-8adaEFfecL4/VQnl889stuI/AAAAAAAAIWc/vwdB5gMTNvw/w728-h398-no/6840018617_11c406c20e_ox.jpg" alt="">
-                </a>
-            </div>
-            <div class="column">
-                <a href="#">
-                    <img src="https://lh6.googleusercontent.com/-MJTbQ1IN3jc/VQnrCJLNz5I/AAAAAAAAIX8/l8Upb5j0Hf0/w728-h485-no/12639281375_e336d48d05_ox.jpg" alt="">
-                </a>
-            </div>
-            <div class="column">
-                <a href="#">
-                    <img src="https://lh5.googleusercontent.com/--YWLoP8DzYQ/VQkWS7aI6hI/AAAAAAAAIR8/k2W_Dl9B-sg/w728-h486-no/15287168445_673eff9c6c_ox.jpg" alt="">
-                </a>
-            </div>
-            <div class="column">
-                <a href="#">
-                    <img src="https://lh4.googleusercontent.com/-VG1jSR0JmdQ/VQnsGTh4VhI/AAAAAAAAIYQ/01P3B4C8eZY/w728-h487-no/5588055078_9179a6be5b_ox.jpg" alt="">
-                </a>     
-            </div>
-        </div>   
     </div>
 
     <!-- footer -->
