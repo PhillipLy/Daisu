@@ -48,7 +48,7 @@
                     <div class="ui primary button">Sign Up</div>
                 </a>
                 <div class="item">
-                    <div class="ui button" id="login-button">Login</div>
+                    <div class="ui button" id="menu-login-button">Login</div>
                 </div>
             </div>
         </div>
@@ -68,16 +68,16 @@
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="user icon"></i>
-                                    <input type="text" name="email" placeholder="E-mail address">
+                                    <input type="text" name="username" id="username" placeholder="Username">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="lock icon"></i>
-                                    <input type="password" name="password" placeholder="Password">
+                                    <input type="password" name="password" id="password" placeholder="Password">
                                 </div>
                             </div>
-                            <div class="ui fluid x-large teal submit button">Login</div>
+                            <div class="ui fluid x-large teal submit button" id="login-button">Login</div>
                         </div>
 
                         <!-- Error message-->
@@ -97,7 +97,7 @@
     <!-- Page Contents-->
     <div class="ui middle aligned center aligned grid signup">
         <div class="column">
-            <form class="ui form">
+            <form class="ui form" method="post">
                 <div class="ui segment clearfix">
                     <div class="ui grid">
                         <div class="ten wide column">
@@ -113,29 +113,29 @@
                         <label>Name</label>
                         <div class="two fields">
                             <div class="field">
-                                <input type="text" name="signup-first-name" placeholder="First Name">
+                                <input type="text" name="signup-first-name" id="signup-first-name" placeholder="First Name">
                             </div>
                             <div class="field">
-                                <input type="text" name="signup-last-name" placeholder="Last Name">
+                                <input type="text" name="signup-last-name" id="signup-last-name" placeholder="Last Name">
                             </div>
                         </div>
                     </div>
                     <div class="field">
                         <label>UserName</label>
                         <div class="field">
-                            <input type="text" name="signup-username" placeholder="Username">
+                            <input type="text" name="signup-username" id="signup-username" placeholder="Username">
                         </div>
                     </div>
                     <div class="field">
                         <label>E-mail Address</label>
                         <div class="field">
-                            <input type="text" name="signup-email" placeholder="E-mail">
+                            <input type="text" name="signup-email" id="signup-email" placeholder="E-mail">
                         </div>
                     </div>
                     <div class="field">
                         <label>Password</label>
                         <div class="field">
-                            <input type="password" name="signup-password">
+                            <input type="password" name="signup-password" id="signup-password">
                         </div>
                     </div>
                     <div class="field">
@@ -150,7 +150,7 @@
                             <label>I agree to the <a href="#">Terms and Conditions</a></label>
                         </div>
                     </div>
-                    <button class="ui teal right floated button" type="submit">Sign Up</button>              
+                    <button class="ui teal right floated button" type="submit" id="signup-button">Sign Up</button>              
                 </div>
             </form>
         </div>
@@ -198,7 +198,7 @@
 
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="semantic/dist/semantic.min.js"></script> 
-    <script src="javascript/home.js"></script>
+    <script src="javascript/login.js"></script>
 
     </body>
 </html>
