@@ -1,5 +1,12 @@
 
 <!DOCTYPE html>
+<?php
+    session_start();
+    if(isset($_SESSION["username"])) {
+        header("location:home.php");
+    } 
+?>
+
 <html>
     <head>
         <title>Daisu</title>
@@ -12,7 +19,7 @@
     <body>
     <!-- Following menu-->
     <div class="ui large top fixed menu transition visible" id="menuBar">
-        <div class="ui container">
+        <div class="ui master-menu container">
             <a href="index.html" class="active item">Home</a>
 
             <div class="ui simple dropdown item">
@@ -44,12 +51,12 @@
                         <div class="ui red label itemcount">1</div>
                     </div>          
                 </a>
-                <a href="signup.html" class="item">
+                <a href="signup.html" class="item signin">
                     <div class="ui primary button">Sign Up</div>
                 </a>
-                <div class="item">
-                    <div class="ui button" id="login-button">Login</div>
-                </div>
+                <a href="login.html" class="item signin">
+                    <div class="ui button">Login</div>
+                </a>
             </div>
         </div>
     </div>
@@ -57,27 +64,27 @@
     <!-- login and create form-->
     <div class="ui disabled page dimmer">
         <div class="content">
-            <div class="ui middle aligned grid transition hidden" id="login-form">
+            <div class="ui middle aligned center aligned grid transition hidden" id="login-form">
                 <div class="column">
                     <h2 class="ui steal inverted image header">
                         <img src="#" class="image" alt="logo image">
                         <div class="ui inverted content">Login or Create an Account</div>
                     </h2>
-                    <form class="ui large form">
+                    <form class="ui large form" method="post">
                         <div class="ui stacked segment">
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="user icon"></i>
-                                    <input type="text" name="email" placeholder="E-mail address">
+                                    <input type="text" name="username" id="username" placeholder="Username">
                                 </div>
                             </div>
                             <div class="field">
                                 <div class="ui left icon input">
                                     <i class="lock icon"></i>
-                                    <input type="password" name="password" placeholder="Password">
+                                    <input type="password" name="password" id="password" placeholder="Password">
                                 </div>
                             </div>
-                            <div class="ui fluid x-large teal submit button">Login</div>
+                            <div class="ui fluid x-large teal submit button" id="login-button">Login</div>
                         </div>
 
                         <!-- Error message-->
@@ -181,7 +188,7 @@
 
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="semantic/dist/semantic.min.js"></script> 
-    <script src="javascript/home.js"></script>
+    <script src="javascript/login.js"></script>
 
     </body>
 </html>
