@@ -1,5 +1,10 @@
 # Daisu-CPSC-362-Software-Engineering-Project
 
+Version 0.0.6 released 10/6/2016:
+- Implemented function for login button and php for retrieve data
+- Changed the login form into a new page
+- Enabled login and logout capabilities
+
 Version 0.0.5 released 9/30/2016:
 - Created signup page
 
