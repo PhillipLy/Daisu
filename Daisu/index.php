@@ -1,5 +1,12 @@
 
 <!DOCTYPE html>
+<?php
+    session_start();
+    if(isset($_SESSION["username"])) {
+        header("location:home.php");
+    } 
+?>
+
 <html>
     <head>
         <title>Daisu</title>
@@ -12,7 +19,7 @@
     <body>
     <!-- Following menu-->
     <div class="ui large top fixed menu transition visible" id="menuBar">
-        <div class="ui container">
+        <div class="ui master-menu container">
             <a href="index.html" class="active item">Home</a>
 
             <div class="ui simple dropdown item">
@@ -44,10 +51,10 @@
                         <div class="ui red label itemcount">1</div>
                     </div>          
                 </a>
-                <a href="signup.html" class="item">
+                <a href="signup.html" class="item signin">
                     <div class="ui primary button">Sign Up</div>
                 </a>
-                <a href="login.html" class="item">
+                <a href="login.html" class="item signin">
                     <div class="ui button">Login</div>
                 </a>
             </div>

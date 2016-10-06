@@ -5,7 +5,8 @@ var main = function() {
     $('#login-button').on('click', function() {
         var username = $('#username').val(),
             password = $('#password').val(),
-            $list = $("<ul>");
+            loginData,
+            $list = $("<ul>").addClass("list");
 
         //remove error message
         $('.ui.error.message .list').remove();
@@ -22,7 +23,8 @@ var main = function() {
                 },
                 success:function(data) {
                     if(data) {
-                        $().load()
+                        $('.master-menu .right .signin').remove();
+                        $('.master-menu .right').load("home.php");
                     }
                     else {
                         $('#login-button').val("Login");
@@ -39,6 +41,8 @@ var main = function() {
             return false;
         }
     });
+
+
 
 };
 $(document).ready(main);
