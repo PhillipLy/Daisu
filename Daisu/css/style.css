@@ -24,11 +24,9 @@ body {
 }
 
 #login-form {    
-    margin:auto;
-    margin-top: 4em;
+    margin: 4em auto;
     top: 10em;
-    min-height: 30em;
-    height: 72%;
+    min-height: 72%;
 }
 
 .column img {
@@ -103,4 +101,8 @@ i.cart.icon {
 }
 .ten.wide.column > h3, p{
     text-align: left;
+}
+
+.ui.error.message {
+    max-width: 450px;
 }
