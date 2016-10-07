@@ -29,7 +29,7 @@
     <!-- Following menu-->
     <div class="ui large top fixed menu transition visible" id="menuBar">
         <div class="ui master-menu container">
-            <a href="index.html" class="active item">Home</a>
+            <a href="index.php" class="active item">Home</a>
 
             <div class="ui simple dropdown item">
                 Products<i class="dropdown icon"></i>
