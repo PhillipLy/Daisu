@@ -1,7 +1,10 @@
 # Daisu-CPSC-362-Software-Engineering-Project
 
+Version 0.0.7 released 10/6/2016:
+- Implemented Checkout functionality for my cart
+
 Version 0.0.6 released 10/6/2016:
-- Implemented function for login button and php for retrieve data
+- Implemented function for login button and php codes to retrieve data
 - Changed the login form into a new page
 - Enabled login and logout capabilities
 
