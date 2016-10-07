@@ -1,9 +1,8 @@
 <?php
     session_start();
-    echo "usernameTest = \"" . $_SESSION["username"] . "\"";
-    if(!isset($_SESSION["username"])) {
 
-        //header("location:index.php");
+    if(!isset($_SESSION["username"])) {
+        header("location:index.php");
     }
 
     echo '<h1 align="center">Welcome ' . $_SESSION["username"] . ' to Daisu.</h1>';
