@@ -1,6 +1,9 @@
 # Daisu-CPSC-362-Software-Engineering-Project by Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
-Version 0.0.8 released 10/6/2016
+Version 0.0.9 released 10/7/2016:
+- Implemented error validation for login
+
+Version 0.0.8 released 10/6/2016:
 - Mirror Modification in login.php
 - Modified login functionality 
 
