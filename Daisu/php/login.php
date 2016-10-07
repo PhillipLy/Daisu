@@ -10,14 +10,9 @@
 
         $password = mysqli_real_escape_string($connect, $_POST["password"]);
 
-        $username = "admin";
-
-        $password = "password";
-        echo $username . ' + ' . $password;
-
         //database query request
-        $sql = "SELECT * FROM users WHERE username = '" . $username . "' AND password = '" . $password . "'";
-
+        $sql = "SELECT * FROM user WHERE username = '" . $username . "' AND password = '" . $password . "'";
+        echo $sql;
         $result = mysqli_query($connect, $sql);
 
         $num_row = mysqli_num_rows($result);
