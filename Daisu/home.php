@@ -1,8 +1,14 @@
 <?php
     session_start();
+    echo "usernameTest = \"" . $_SESSION["username"] . "\"";
     if(!isset($_SESSION["username"])) {
-        header("location:index.php");
+
+        //header("location:index.php");
     }
+
+    echo '<h1 align="center">Welcome ' . $_SESSION["username"] . ' to Daisu.</h1>';
+    echo '<p align="center"><a href="logout.php">Logout</a></p>';
+    /*
     echo '<div class="ui simple dropdown item">
                 Hello, '. $_SESSION["username"] . '<i class="dropdown icon"></i>
                 <div class="menu">
@@ -12,4 +18,6 @@
                     <a href="logout.php" class="item">Logout</a>
                 </div>
             </div>';
+            */
+
 ?>
