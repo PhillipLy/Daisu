@@ -1,5 +1,10 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.0 released 10/10/2016
+- Fixed all the issue and connected login and signup to database
+- All error handling messages are working perfectly
+
+
 Version 0.0.9 released 10/7/2016:
 - Implemented error handling for login
 
