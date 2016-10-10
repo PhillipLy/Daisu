@@ -61,46 +61,6 @@
         </div>
     </div>
 
-    <!-- login and create form-->
-    <div class="ui disabled page dimmer">
-        <div class="content">
-            <div class="ui middle aligned center aligned grid transition hidden" id="login-form">
-                <div class="column">
-                    <h2 class="ui steal inverted image header">
-                        <img src="#" class="image" alt="logo image">
-                        <div class="ui inverted content">Login or Create an Account</div>
-                    </h2>
-                    <form class="ui large form" method="post">
-                        <div class="ui stacked segment">
-                            <div class="field">
-                                <div class="ui left icon input">
-                                    <i class="user icon"></i>
-                                    <input type="text" name="username" id="username" placeholder="Username">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="ui left icon input">
-                                    <i class="lock icon"></i>
-                                    <input type="password" name="password" id="password" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="ui fluid x-large teal submit button" id="login-button">Login</div>
-                        </div>
-
-                        <!-- Error message-->
-                        <div class="ui error message"></div>
-                    </form>
-                    <div class="ui message">
-                        <a href="#">Forget Your Password?</a>
-                        <div class="ui section divider"></div>
-                        <label>New to us?</label>
-                        <a href="signup.html">Sign Up</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Page Contents-->
     <div class="pusher dimmed">
         <div class="ui inverted vertical masthead center aligned segment">
