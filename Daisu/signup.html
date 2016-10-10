@@ -10,195 +10,166 @@
     </head>
 
     <body>
-    <!-- Following menu-->
-    <div class="ui large top fixed menu transition visible" id="menuBar">
-        <div class="ui container">
-            <a href="index.php" class="item">Home</a>
-
-            <div class="ui simple dropdown item">
-                Products<i class="dropdown icon"></i>
-                <div class="menu">
-                    <a href="#" class="item">Gear</a>
-                    <a href="#" class="item">Clothing</a>
-                    <a href="#" class="item">Footwear</a>
-                    <a href="#" class="item">Packs</a>
-                </div>
-            </div>
-         
-            <div class="ui simple dropdown item">
-                Trails<i class="dropdown icon"></i>
-                <div class="menu">
-                    <a href="#" class="item">Mountaineering</a>
-                    <a href="#" class="item">Climbing</a>
-                    <a href="#" class="item">Hiking</a>
-                    <a href="#" class="item">Camping</a>
-                </div>
-            </div>
-            <a href="#" class="item">About Us</a>
-            <a href="#" class="item">Support</a>
-            <div class="right menu">
-                <a href="#" title="My Cart" class="item">
-                    <span>My Cart</span>
-                    <div class="cartimage">
-                        <i class="large cart icon"></i>
-                        <div class="ui red label itemcount">1</div>
-                    </div>          
-                </a>
-                <a href="#" class="item">
-                    <div class="ui primary button">Sign Up</div>
-                </a>
-                <a href="login.html" class="item">
-                    <div class="ui button">Login</div>
-                </a>
-            </div>
-        </div>
-    </div>
-
-    <!-- login and create form-->
-    <div class="ui disabled page dimmer">
-        <div class="content">
-            <div class="ui middle aligned center aligned grid transition hidden" id="login-form">
-                <div class="column">
-                    <h2 class="ui steal inverted image header">
-                        <img src="#" class="image" alt="logo image">
-                        <div class="ui inverted content">Login or Create an Account</div>
-                    </h2>
-                    <form class="ui large form">
-                        <div class="ui stacked segment">
-                            <div class="field">
-                                <div class="ui left icon input">
-                                    <i class="user icon"></i>
-                                    <input type="text" name="username" id="username" placeholder="Username">
-                                </div>
-                            </div>
-                            <div class="field">
-                                <div class="ui left icon input">
-                                    <i class="lock icon"></i>
-                                    <input type="password" name="password" id="password" placeholder="Password">
-                                </div>
-                            </div>
-                            <div class="ui fluid x-large teal submit button" id="login-button">Login</div>
-                        </div>
-
-                        <!-- Error message-->
-                        <div class="ui error message"></div>
-                    </form>
-                    <div class="ui message">
-                        <a href="#">Forget Your Password?</a>
-                        <div class="ui section divider"></div>
-                        <label>New to us?</label>
-                        <a href="#">Sign Up</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- Page Contents-->
-    <div class="ui middle aligned center aligned grid signup">
-        <div class="column">
-            <form class="ui form" method="post">
-                <div class="ui segment clearfix">
-                    <div class="ui grid">
-                        <div class="ten wide column">
-                            <h3>Sign Up Now</h3>
-                            <p>Fill in the form below to get a new account</p>
-                        </div>
-                        <div class="six wide column">
-                            <i class="huge write icon"></i>
-                        </div> 
-                    </div>
-                    <div class="ui divider"></div>
-                    <div class="field">
-                        <label>Name</label>
-                        <div class="two fields">
-                            <div class="field">
-                                <input type="text" name="signup-first-name" id="signup-first-name" placeholder="First Name">
-                            </div>
-                            <div class="field">
-                                <input type="text" name="signup-last-name" id="signup-last-name" placeholder="Last Name">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>UserName</label>
-                        <div class="field">
-                            <input type="text" name="signup-username" id="signup-username" placeholder="Username">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>E-mail Address</label>
-                        <div class="field">
-                            <input type="text" name="signup-email" id="signup-email" placeholder="E-mail">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Password</label>
-                        <div class="field">
-                            <input type="password" name="signup-password" id="signup-password">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <label>Confirm Password</label>
-                        <div class="field">
-                            <input type="password" name="signup-password-confirm">
-                        </div>
-                    </div>
-                    <div class="field">
-                        <div class="ui checkbox">
-                            <input type="checkbox" tabindex="0">
-                            <label>I agree to the <a href="#">Terms and Conditions</a></label>
-                        </div>
-                    </div>
-                    <button class="ui teal right floated button" type="submit" id="signup-button">Sign Up</button>              
-                </div>
-            </form>
-        </div>
-    </div>
-
-    <!-- footer -->
-    <footer>
-        <div class="ui inverted vertical footer segment">
+        <!-- Following menu-->
+        <div class="ui large top fixed menu" id="menuBar">
             <div class="ui container">
-                <div class="ui stackable inverted divided equal height stackable grid">
-                    <div class="three wide column">
-                        <h4 class="ui inverted hedaer">Products</h4>
-                        <div class="ui inverted link list">
-                            <a href="#" class="item">Gear</a>
-                            <a href="#" class="item">Clothing</a>
-                            <a href="#" class="item">Footwear</a>
-                            <a href="#" class="item">Packs</a>
-                        </div>
-                    </div>
-                    <div class="three wide column">
-                        <h4 class="ui inverted hedaer">Hiking Trail</h4>
-                        <div class="ui inverted link list">
-                            <a href="#" class="item">Mountaineering</a>
-                            <a href="#" class="item">Climbing</a>
-                            <a href="#" class="item">Hiking</a>
-                            <a href="#" class="item">Camping</a>
-                        </div>
-                    </div>
-                    <div class="three wide column">
-                        <h4 class="ui inverted hedaer">About</h4>
-                        <div class="ui inverted link list">
-                            <a href="#" class="item">About Us</a>
-                            <a href="#" class="item">Contact Us</a>
-                            <a href="#" class="item">FAQ</a>
-                        </div>
-                    </div>
-                    <div class="seven wide column">
-                        <h2>Logo</h2>
-                        <h4>Explore more journey with Daisu hiking gear</h4>
+                <a href="index.php" class="item">Home</a>
+
+                <div class="ui simple dropdown item">
+                    Products<i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item">Gear</a>
+                        <a href="#" class="item">Clothing</a>
+                        <a href="#" class="item">Footwear</a>
+                        <a href="#" class="item">Packs</a>
                     </div>
                 </div>
+             
+                <div class="ui simple dropdown item">
+                    Trails<i class="dropdown icon"></i>
+                    <div class="menu">
+                        <a href="#" class="item">Mountaineering</a>
+                        <a href="#" class="item">Climbing</a>
+                        <a href="#" class="item">Hiking</a>
+                        <a href="#" class="item">Camping</a>
+                    </div>
+                </div>
+                <a href="#" class="item">About Us</a>
+                <a href="#" class="item">Support</a>
+                <div class="right menu">
+                    <a href="#" title="My Cart" class="item">
+                        <span>My Cart</span>
+                        <div class="cartimage">
+                            <i class="large cart icon"></i>
+                            <div class="ui red label itemcount">1</div>
+                        </div>          
+                    </a>
+                    <a href="#" class="item">
+                        <div class="ui primary button">Sign Up</div>
+                    </a>
+                    <a href="login.html" class="item">
+                        <div class="ui button">Login</div>
+                    </a>
+                </div>
             </div>
-        </div>    
-    </footer>
+        </div>
 
-    <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
-    <script src="semantic/dist/semantic.min.js"></script> 
-    <script src="javascript/login.js"></script>
+        <!-- Page Contents-->
+        <div class="ui center aligned grid signup">
+            <div class="column">
+                <div class="ui success message" style="display: none">
+                    <div class="header">Your registration was successful.</div>
+                    <p class="ui center aligned grid">You may now log-in with the username you have chosen</p>
+                </div>
+                <form class="ui form" method="post">
+                    <div class="ui stacked segment">
+                        <div class="ui grid">
+                            <div class="ten wide column">
+                                <h3>Sign Up Now</h3>
+                                <p>Fill in the form below to get a new account</p>
+                            </div>
+                            <div class="six wide column">
+                                <i class="huge write icon"></i>
+                            </div> 
+                        </div>
+                        <div class="ui divider"></div>
+                        <div class="field">
+                            <label>Name</label>
+                            <div class="three fields">
+                                <div class="field">
+                                    <input type="text" name="firstName" id="firstName" placeholder="First Name">
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="middleName" id="middleName" placeholder="Middle Name">
+                                </div>
+                                <div class="field">
+                                    <input type="text" name="lastName" id="lastName" placeholder="Last Name">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>UserName</label>
+                            <div class="field">
+                                <input type="text" name="username" id="username" placeholder="Username">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>E-mail Address</label>
+                            <div class="field">
+                                <input type="text" name="email" id="email" placeholder="E-mail">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Password</label>
+                            <div class="field">
+                                <input type="password" name="password" id="password">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <label>Confirm Password</label>
+                            <div class="field">
+                                <input type="password" name="passwordConfirm" id="confirmPassword">
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="ui checkbox">
+                                <input type="checkbox" name="term">
+                                <label>I agree to the <a href="#">Terms and Conditions</a></label>
+                            </div>
+                        </div>
+                        <div class="ui fluid x-large teal submit button" id="signupButton">Submit</div>
+                    </div>
+
+                    <!-- Error message-->
+                    <div class="ui error message"> </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- footer -->
+        <footer>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                    <div class="ui stackable inverted divided equal height stackable grid">
+                        <div class="three wide column">
+                            <h4 class="ui inverted hedaer">Products</h4>
+                            <div class="ui inverted link list">
+                                <a href="#" class="item">Gear</a>
+                                <a href="#" class="item">Clothing</a>
+                                <a href="#" class="item">Footwear</a>
+                                <a href="#" class="item">Packs</a>
+                            </div>
+                        </div>
+                        <div class="three wide column">
+                            <h4 class="ui inverted hedaer">Hiking Trail</h4>
+                            <div class="ui inverted link list">
+                                <a href="#" class="item">Mountaineering</a>
+                                <a href="#" class="item">Climbing</a>
+                                <a href="#" class="item">Hiking</a>
+                                <a href="#" class="item">Camping</a>
+                            </div>
+                        </div>
+                        <div class="three wide column">
+                            <h4 class="ui inverted hedaer">About</h4>
+                            <div class="ui inverted link list">
+                                <a href="#" class="item">About Us</a>
+                                <a href="#" class="item">Contact Us</a>
+                                <a href="#" class="item">FAQ</a>
+                            </div>
+                        </div>
+                        <div class="seven wide column">
+                            <h2>Logo</h2>
+                            <h4>Explore more journey with Daisu hiking gear</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </footer>
+
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script type="http://code.jquery.com/jquery-2.1.1.js"></script>
+        <script src="semantic/dist/semantic.min.js"></script> 
+        <script src="javascript/signup.js"></script>
 
     </body>
 </html>
