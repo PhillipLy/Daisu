@@ -15,7 +15,7 @@
    Developers: Arun Sangar, Abraham Ludlam, Josh Marvel, TeviSophea Heng, Tony Dao
    Project Manager / Developer: Phillip Ly
    
-   Filename: index.php (which is the order form)
+   Filename: index.php 
 
 -->
         <title>Daisu</title>
@@ -73,7 +73,7 @@
     <!-- Page Contents-->
     <div class="pusher dimmed">
         <div class="ui inverted vertical masthead center aligned segment">
-            <img src="image/logo_op_720x450.jpg" alt="">
+            <img src="image/DAISU_ICON.png" alt="">
             <div class="ui text container">
                 <h1 class="ui inverted header">Company Logo</h1>
                 <h2>Sell all kind of mountain gear</h2>
