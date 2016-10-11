@@ -93,3 +93,30 @@ i.cart.icon {
 .ui.fixed.menu+.ui.grid {
     padding: 0em;
 }
+
+#userImg {
+    padding: 0.5em;
+    width: 3.386080em;
+}
+
+.ui.circular.image {
+    width: 100%;
+    height: 100%;
+}
+.ui.pointing.dropdown .menu {
+    padding: 1em;
+}
+
+.ui.pointing.dropdown>.menu:after {
+    margin: 0 0 0 11.5em;
+}
+
+.ui.pointing.dropdown .menu>.item {
+    padding: 0em;
+    min-width: 25em;
+}
+
+.ui.pointing.dropdown .menu .item img {
+    min-height: 8em;
+    min-width: 8em;
+}

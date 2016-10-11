@@ -39,7 +39,7 @@ var main = function() {
                 cache: false,
                 success:function(data) {
                     if(data) {
-                        $('body').load("home.php").hide().fadeIn(1000);
+                        window.location.href="index.php";
                     }
                     else {
                         $('.ui.form').toggleClass("success error");

@@ -2,9 +2,11 @@
 <!DOCTYPE html>
 <?php
     session_start();
+    $loggedIn = false;
+    //check if user loged in
     if(isset($_SESSION["username"])) {
-        header("location:home.php");
-    } 
+        $loggedIn = True;
+    }
 ?>
 
 <html>
@@ -60,15 +62,54 @@
                         <div class="ui red label itemcount">1</div>
                     </div>          
                 </a>
-                <a href="signup.html" class="item signin">
-                    <div class="ui primary button">Sign Up</div>
-                </a>
-                <a href="login.html" class="item signin">
-                    <div class="ui button">Login</div>
-                </a>
+                <?php
+                    if($loggedIn) {
+                        $username = $_SESSION["username"];
+                        $username[0] = strtoupper($username[0]);
+                        echo '<div class="ui pointing dropdown link item" id="userImg">
+                                <img class="ui circular image" src="image/icon-user.png">
+                                <div class="menu">
+                                    <div class="item">
+                                        <div class="ui grid">
+                                            <div class="six wide column">
+                                                <img class="ui circular image" src="image/icon-user.png">
+                                            </div>
+                                            <div class="ten middle aligned wide column">
+                                                <div class="ui items">
+                                                    <div class="item">
+                                                        <h1"> '. $username . '</h1>
+                                                    </div>
+                                                    <div class="item">
+                                                        <a href="#" class="myAccount">
+                                                            <div class="ui blue button">My Account</div>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="divider"></div>
+                                    <div class="item">
+                                        <a href="php/logout.php" class="logout">
+                                            <div class="ui large right floated button">Logout</div>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>';
+                    } else {
+                        echo '<a href="signup.html" class="item signin">
+                                <div class="ui primary button">Sign Up</div>
+                            </a>
+                            <a href="login.html" class="item signin">
+                                <div class="ui button">Login</div>
+                            </a>';
+                    }
+                ?>
             </div>
         </div>
     </div>
+
+
 
     <!-- Page Contents-->
     <div class="pusher dimmed">
@@ -157,7 +198,13 @@
 
     <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
     <script src="semantic/dist/semantic.min.js"></script> 
-    <script src="javascript/login.js"></script>
+    <script src="javascript/home.js"></script>
+    <script>
+        $('.ui.pointing.dropdown').dropdown({
+            on: 'hover',
+            transition: 'fade down'
+        });
+    </script>
 
     </body>
 </html>
