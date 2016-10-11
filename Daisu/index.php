@@ -11,6 +11,15 @@
 
 <html>
     <head>
+	
+	<!-- 
+   CPSC 362 Software Engineering 
+   Developers: Arun Sangar, Abraham Ludlam, Josh Marvel, TeviSophea Heng, Tony Dao
+   Project Manager / Developer: Phillip Ly
+   
+   Filename: index.php 
+
+-->
         <title>Daisu</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/reset.css">
@@ -46,7 +55,7 @@
             <a href="#" class="item">About Us</a>
             <a href="#" class="item">Support</a>
             <div class="right menu">
-                <a href="#" title="My Cart" class="item">
+                <a href="form1.html" title="My Cart" class="item">
                     <span>My Cart</span>
                     <div class="cartimage">
                         <i class="large cart icon"></i>
@@ -105,7 +114,7 @@
     <!-- Page Contents-->
     <div class="pusher dimmed">
         <div class="ui inverted vertical masthead center aligned segment">
-            <img src="image/logo_op_720x450.jpg" alt="">
+            <img src="image/DAISU_ICON.png" alt="">
             <div class="ui text container">
                 <h1 class="ui inverted header">Company Logo</h1>
                 <h2>Sell all kind of mountain gear</h2>
