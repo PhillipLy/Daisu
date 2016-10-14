@@ -98,14 +98,10 @@ var main = function() {
                 success:function(data) {
                     if(data) {
                         $('.ui.success.message').slideDown(400);
-                        $('.ui.success.message').delay(2000).fadeOut(1600);
-                        $('#firstName').val("");
-                        $('#middleName').val('');
-                        $('#lastName').val('');
-                        $('#username').val('');
-                        $('#email').val('');
-                        $('#password').val('');
-                        $('#confirmPassword').val('');
+                        $('.ui.success.message').delay(2000).fadeOut();
+                        setTimeout(function () {
+                            window.location.href="index.php";
+                        }, 2000);
                     } 
                     else {
                         $('.ui.form').toggleClass("success error");
