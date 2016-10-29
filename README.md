@@ -1,5 +1,8 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.4 released 10/28/2016
+- add files via upload in Aboutus.html
+
 Version 1.0.3 released 10/13/2016
 - Implemented redirection to homepage after signup completion
 
