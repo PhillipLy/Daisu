@@ -202,7 +202,8 @@
     <script>
         $('.ui.pointing.dropdown').dropdown({
             on: 'hover',
-            transition: 'fade down'
+            transition: 'fade down',
+			action: 'nothing'
         });
     </script>
 

@@ -2,7 +2,9 @@ var main = function () {
     'use strict';
     
     $('.ui.pointing.dropdown').dropdown({
-        on: 'hover'
+        on: 'click',
+        transition: 'fade down',
+		action: 'nothing'
     });
 
 /*
