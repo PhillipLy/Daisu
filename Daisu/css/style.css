@@ -23,10 +23,11 @@ body {
     padding: 10em 0 10em 0;
 }
 
-#login-form {    
-    margin: 4em auto;
+#login-form {
+    padding-top: 5em;
+    margin: 0 auto 4em;
     top: 10em;
-    min-height: 72%;
+    min-height: 67%;
 }
 
 .column img {
