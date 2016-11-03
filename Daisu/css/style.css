@@ -94,7 +94,7 @@ i.cart.icon {
     padding: 0em;
 }
 
-#userImg {
+#user-menu {
     padding: 0.5em;
     width: 3.386080em;
 }
@@ -103,24 +103,24 @@ i.cart.icon {
     width: 100%;
     height: 100%;
 }
-.ui.pointing.dropdown .menu {
+.ui.pointing.dropdown.user-menu .menu {
     padding: 1em;
 }
 
-.ui.pointing.dropdown>.menu:after {
+.ui.pointing.dropdown.user-menu >.menu:after {
     margin: 0 0 0 11.5em;
 }
 
-.ui.pointing.dropdown .menu>.item {
+.ui.pointing.dropdown.user-menu .menu>.item {
     padding: 0em;
     min-width: 25em;
 }
 
-.ui.pointing.dropdown .menu .item img {
+.ui.pointing.dropdown.user-menu .menu .item img {
     min-height: 8em;
     min-width: 8em;
 }
 
-.ui.menu .ui.dropdown .menu>.item:hover, .ui.menu .ui.dropdown .menu>.selected.item {
+.ui.menu .ui.dropdown.user-menu .menu>.item:hover, .ui.menu .ui.dropdown .menu>.selected.item {
     background: #fff !important;
 }
