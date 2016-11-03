@@ -1,6 +1,6 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
-Version 1.0.5 released 11/1/2016
+Version 1.0.5 released 11/2/2016
 - Disabled hover and clicks on user dropdown 
 
 Version 1.0.4 released 10/28/2016
