@@ -100,7 +100,7 @@ var main = function() {
                         $('.ui.success.message').slideDown(400);
                         $('.ui.success.message').delay(2000).fadeOut();
                         setTimeout(function () {
-                            window.location.href="index.php";
+                            window.location.href="index.html";
                         }, 2000);
                     } 
                     else {

@@ -39,7 +39,7 @@ var main = function() {
                 cache: false,
                 success:function(data) {
                     if(data) {
-                        window.location.href="index.php";
+                        window.location.href="index.html";
                     }
                     else {
                         $('.ui.form').toggleClass("success error");

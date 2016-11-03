@@ -11,7 +11,7 @@
     if($loggedIn) {
         $username = $_SESSION["username"];
         $username[0] = strtoupper($username[0]);
-        echo '<div class="ui pointing dropdown link item" id="user-menu">
+        echo '<div class="ui pointing dropdown link item user-menu" id="user-menu">
                 <img class="ui circular image" src="image/icon-user.png">
                 <div class="menu">
                     <div class="item">
@@ -20,16 +20,10 @@
                                 <img class="ui circular image" src="image/icon-user.png">
                             </div>
                             <div class="ten middle aligned wide column">
-                                <div class="ui items">
-                                    <div class="item">
-                                        <h1"> '. $username . '</h1>
-                                    </div>
-                                    <div class="item">
-                                        <a href="#" class="myAccount">
-                                            <div class="ui blue button">My Account</div>
-                                        </a>
-                                    </div>
-                                </div>
+                                <h2 class="ui header"> '. $username . '</h2>
+                                <a href="#" class="myAccount">
+                                    <div class="ui blue button">My Account</div>
+                                </a>
                             </div>
                         </div>
                     </div>
