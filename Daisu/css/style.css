@@ -1,8 +1,27 @@
 body {
-	background-color: #DADADA;
 }
 #menuBar {
     clear: both;
+    background-color: white;
+    display: block;
+    box-shadow: 1px 2px 2px 0 rgba(34,36,38,.15);
+    margin: 0;
+    padding: 0.5em;
+    border-bottom: 2px solid rgba(34,36,38,.15);
+}
+
+.ui.search .prompt {
+    border-radius: 0.4rem;
+    min-width: 35em;
+}
+
+.ui.search.item i {
+    background-color: #232f3e;
+    color: white;
+}
+
+.ui.secondary.menu .header.item {
+    border: none;
 }
 
 .pusher {
@@ -124,4 +143,3 @@ i.cart.icon {
 
 .ui.menu .ui.dropdown.user-menu .menu>.item:hover, .ui.menu .ui.dropdown .menu>.selected.item {
     background: #fff !important;
-}
