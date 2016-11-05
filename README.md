@@ -1,5 +1,8 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.7 released 11/4/2016
+- Added new layer for menu and relocated menu into menubar.html
+
 Version 1.0.6 released 11/2/2016
 - Modified index page from php to html and relocate files
 - Modified the style for login page
