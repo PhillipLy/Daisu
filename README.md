@@ -1,5 +1,8 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.8 released 11/5/2016
+- Implemented dropdown menu for product and trail
+
 Version 1.0.7 released 11/4/2016
 - Added new layer for menu and relocated menu into menubar.html
 
