@@ -6,13 +6,22 @@ body {
     display: block;
     box-shadow: 1px 2px 2px 0 rgba(34,36,38,.15);
     margin: 0;
-    padding: 0.5em;
+    padding-top: 0.5em;
     border-bottom: 2px solid rgba(34,36,38,.15);
 }
 
-.ui.search .prompt {
+.ui.search.item input {
     border-radius: 0.4rem;
-    min-width: 35em;
+    min-width: 30em;
+}
+
+.ui.menu .categories .pointing.dropdown .menu {
+    min-width: 50em;
+    padding: 1em;
+}
+
+.ui.menu .categories .pointing.dropdown >.menu:after {
+    margin: 0 0 0 -42%;
 }
 
 .ui.search.item i {
@@ -128,7 +137,7 @@ i.cart.icon {
 }
 
 .ui.pointing.dropdown.user-menu >.menu:after {
-    margin: 0 0 0 11.5em;
+    margin: 0 0 0 44%;
 }
 
 .ui.pointing.dropdown.user-menu .menu>.item {

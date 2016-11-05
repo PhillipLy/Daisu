@@ -24,6 +24,7 @@ var main = function () {
 
     //execute check user login
     checkLogin();
+
 };
 
 $(document).ready(main);
