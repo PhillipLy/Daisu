@@ -1,5 +1,11 @@
 body {
+    background-color: #DADADA;
 }
+
+#master-menu {
+    min-height:  6.4em;
+}
+
 #menuBar {
     clear: both;
     background-color: white;
@@ -152,3 +158,14 @@ i.cart.icon {
 
 .ui.menu .ui.dropdown.user-menu .menu>.item:hover, .ui.menu .ui.dropdown .menu>.selected.item {
     background: #fff !important;
+}
+
+#thumbnail {
+    max-width: 85em;
+    margin: 3em auto;
+}
+
+.ui.segment .thirteen.column .two.column .column .ui.image {
+    height: 100%;
+    z-index: 1;
+}
