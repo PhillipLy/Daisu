@@ -1,9 +1,6 @@
 var main = function () {
     'use strict';
 
-    //load user menu from menubar.html
-    $('#master-menu').load('menubar.html');
-
     //check if user have already logged in
     var checkLogin = function () {
         $.get('php/check-login.php', function(data) {
@@ -22,8 +19,16 @@ var main = function () {
         });
     };
 
-    //execute check user login
-    checkLogin();
+    //load user menu from menubar.html
+    $('#master-menu').load('menubar.html', function( response, status, xhr ) {
+        if ( status == "error" ) {
+            var msg = "Sorry but there was an error: ";
+            $( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
+        } else {
+            //execute check user login
+            checkLogin();
+        }
+    });    
 
 };
 
