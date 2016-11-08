@@ -165,7 +165,25 @@ i.cart.icon {
     margin: 3em auto;
 }
 
+.footer-logo-image {
+    max-width: 8em;
+    max-height: 8em;
+}
+
+.ui.footer.segment .seven.wide.column h4 {
+    margin-top: 0.1em
+}
+
 .ui.segment .thirteen.column .two.column .column .ui.image {
     height: 100%;
     z-index: 1;
+}
+
+#master-menu a.header.item {
+    padding-top: 0em;
+    padding-bottom: 0em;
+}
+
+.ui.secondary.menu a.item:hover {
+    background: #fff !important;
 }
