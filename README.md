@@ -1,5 +1,8 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.10 released 11/8/2016
+- Added thumbnail page and link categories page
+
 Version 1.0.9 released 11/6/2016
 - Implemented asynchronous menu bar with login check
 - Added tab and thumbnail for categories page but tab still need further implementation 
