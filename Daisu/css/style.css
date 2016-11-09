@@ -187,3 +187,6 @@ i.cart.icon {
 .ui.secondary.menu a.item:hover {
     background: #fff !important;
 }
+#master-menu .categories .ui.pointing.dropdown>a {
+    color: black;
+}

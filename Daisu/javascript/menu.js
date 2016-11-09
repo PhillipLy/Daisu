@@ -8,7 +8,7 @@ var main = function () {
                 $('#userMenu').append(data);
                 //enable user-menu dropdown
                 $('.ui.pointing.dropdown').dropdown({
-                    on: 'click',
+                    on: 'hover',
                     transition: 'fade down',
                     action: 'nothing'
                 });
