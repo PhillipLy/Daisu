@@ -24,6 +24,14 @@ var main = function() {
         history : true
     });
 
+    //enable star rating
+    $('#thumbnail .thirteen.column .item #rating').barrating({
+        theme: 'fontawesome-stars-o',
+        showSelectedRating: false,
+        initialRating: 4.2,
+        readonly: true
+    });
+
     /*
     //card frame for product item
     var generateCard = function (url, title, description, star, review) {
