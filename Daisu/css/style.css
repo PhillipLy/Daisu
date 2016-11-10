@@ -190,3 +190,20 @@ i.cart.icon {
 #master-menu .categories .ui.pointing.dropdown>a {
     color: black;
 }
+
+.br-theme-fontawesome-stars-o .br-widget a.br-selected:after {
+    color: #FBBD08;
+}
+
+
+.br-theme-fontawesome-stars-o .br-widget a.br-fractional:after {
+    color: #FBBD08;
+}
+
+.half-star-rating {
+    margin-right: 5px;
+}
+
+.half-star-rating .br-wrapper.br-theme-fontawesome-stars-o, .review {
+    display:inline-block;
+} 
