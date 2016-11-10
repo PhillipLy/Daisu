@@ -207,3 +207,7 @@ i.cart.icon {
 .half-star-rating .br-wrapper.br-theme-fontawesome-stars-o, .review {
     display:inline-block;
 } 
+
+.item .content .sub-description {
+    display:inline-block;
+}
