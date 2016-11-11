@@ -6,11 +6,22 @@ var main = function () {
         $.get('php/check-login.php', function(data) {
             if(data) {
                 $('#userMenu').append(data);
+
                 //enable user-menu dropdown
                 $('.ui.pointing.dropdown').dropdown({
                     on: 'hover',
                     transition: 'fade down',
                     action: 'nothing'
+                });
+
+                //enable popup on menubar
+                $('.menu-popup').popup({
+                    hoverable: true,
+                    position: 'bottom left',
+                    delay: {
+                        show: 200,
+                        hide: 400
+                    }
                 });
             }
             else {

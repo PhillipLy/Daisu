@@ -21,15 +21,6 @@ body {
     min-width: 30em;
 }
 
-.ui.menu .categories .pointing.dropdown .menu {
-    min-width: 50em;
-    padding: 1em;
-}
-
-.ui.menu .categories .pointing.dropdown >.menu:after {
-    margin: 0 0 0 -42%;
-}
-
 .ui.search.item i {
     background-color: #232f3e;
     color: white;
@@ -187,8 +178,14 @@ i.cart.icon {
 .ui.secondary.menu a.item:hover {
     background: #fff !important;
 }
-#master-menu .categories .ui.pointing.dropdown>a {
+
+#master-menu .products .ui.item>a {
     color: black;
+}
+
+#master-menu .products .ui.item .popup {
+    margin-top: 1em;
+    min-width: 700%;
 }
 
 .br-theme-fontawesome-stars-o .br-widget a.br-selected:after {
