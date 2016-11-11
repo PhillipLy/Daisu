@@ -211,3 +211,15 @@ i.cart.icon {
 .item .content .sub-description {
     display:inline-block;
 }
+
+.check-out-form {
+    background-color: #f3f3f3 !important;
+}
+
+.check-out-form a.button {
+    background-color: #f0c14b !important;
+}
+
+.ui.sticky {
+    z-index: 1;
+}
