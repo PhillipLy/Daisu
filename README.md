@@ -1,5 +1,9 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.11 released 11/12/2016
+- Changed product menu list in categories and thumbnail 
+- Modified menubar dropdown to popup method
+
 Version 1.0.10 released 11/10/2016
 - Added star rating from jquery-bar-rating 
 - Minor modification for thumbnail item list
