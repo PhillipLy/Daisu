@@ -24,16 +24,84 @@
         <div class="ui segment" id="thumbnail">
             <div class="ui grid">
                 <div class="three wide column">
-                    <div class="ui vertical fluid tabular menu">
-                        <a class="item" data-tab="fabrics"> Fabrics</a>
-                        <a class="item" data-tab="accessories"> Accessories </a>
-                        <a class="item" data-tab="health-and-safety"> Health & Safety </a>
-                        <a class="item" data-tab="men"> Men </a>
-                        <a class="item" data-tab="women"> Women </a>
+                    <div class="ui vertical fluid accordion menu">
+                        <div class="item fabrics">
+                            <a class="title">
+                                <i class="dropdown icon"></i>
+                                Fabrics
+                            </a>
+                            <div class="content">
+                                <a class="item" data-tab="fabrics/tents">Tents</a>
+                                <a class="item" data-tab="fabrics/sleeping-bags">Sleeping Bags</a>
+                                <a class="item" data-tab="fabrics/hammocks">Hammocks</a>
+                                <a class="item" data-tab="fabrics/pads">Pads</a>
+                                <a class="item" data-tab="fabrics/cook-wares">Cook Wares</a>
+                                <a class="item" data-tab="fabrics/stores">Stores</a>
+                                <a class="item" data-tab="fabrics/coolers">Coolers</a>
+                            </div>
+                        </div>
+                        <div class="item accessories">
+                            <a class="title">
+                                <i class="dropdown icon"></i>
+                                Accessories
+                            </a>
+                            <div class="content">
+                                <div class="grouped fields">
+                                    <a class="item" data-tab="accessories/binoculars">Binoculars</a>
+                                    <a class="item" data-tab="accessories/compasses">Compasses</a>
+                                    <a class="item" data-tab="accessories/solar-and-portable-power">Solar & Portable Power</a>
+                                    <a class="item" data-tab="accessories/GPS">GPS</a>
+                                    <a class="item" data-tab="accessories/gear-storage-and-maintenance">Gear Storage & Maintenance</a>
+                                    <a class="item" data-tab="accessories/lightings">Lightings</a>
+                                    <a class="item" data-tab="accessories/trekking-poles">Trekking Poles</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="item health-and-safety" data-tab="health-and-safety">
+                            <a class="title">
+                                <i class="dropdown icon"></i>
+                                Health & Safety
+                            </a>
+                            <div class="content">
+                                <a class="item" data-tab="health-and-safety/frist-aid">Frist Aid</a>
+                                <a class="item" data-tab="health-and-safety/emergency-and-survival">Emergency & Survival</a>
+                                <a class="item" data-tab="health-and-safety/sun-and-bug-protections">Sun & Bug Protections</a>
+                            </div>
+                        </div>
+                        <div class="item men" data-tab="men">
+                            <a class="title">
+                                <i class="dropdown icon"></i>
+                                Men
+                            </a>
+                            <div class="content">
+                                <a class="item" data-tab="men/footwear">Footwear</a>
+                                <a class="item" data-tab="men/jackets">Jackets</a>
+                                <a class="item" data-tab="men/tops">Tops</a>
+                                <a class="item" data-tab="men/bottoms">Bottoms</a>
+                            </div>
+                        </div>
+                        <div class="item women" data-tab="women">
+                            <a class="title">
+                                <i class="dropdown icon"></i>
+                                Women
+                            </a>
+                            <div class="content">
+                                <a class="item" data-tab="women/footwear">Footwear</a>
+                                <a class="item" data-tab="women/jackets">Jackets</a>
+                                <a class="item" data-tab="women/tops">Tops</a>
+                                <a class="item" data-tab="women/bottoms">Bottoms</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="thirteen wide stretched column">
-                    <div class="ui tab segment" data-tab="fabrics">
+                    <div class="ui tab segment" data-tab="fabrics"> </div>
+                    <div class="ui tab segment" data-tab="accessories"> </div>
+                    <div class="ui tab segment" data-tab="health-and-safety"> </div>
+                    <div class="ui tab segment" data-tab="men"> </div>
+                    <div class="ui tab segment" data-tab="women"> </div>
+
+                    <div class="ui tab segment" data-tab="fabrics/tents">
                         <div class="ui items">
                             <div class="item">
                                 <div class="ui small image">
@@ -96,10 +164,36 @@
                             </div>
                         </div>
                     </div>
-                    <div class="ui tab segment" data-tab="accessories">Accessories</div>
-                    <div class="ui tab segment" data-tab="health-and-safety">health-and-safety</div>
-                    <div class="ui tab segment" data-tab="men">men</div>
-                    <div class="ui tab segment" data-tab="women">women</div>
+                    <div class="ui tab segment" data-tab="fabrics/sleeping-bags">fabrics/sleeping-bags</div>
+                    <div class="ui tab segment" data-tab="fabrics/hammocks">fabrics/hammocks</div>
+                    <div class="ui tab segment" data-tab="fabrics/pads">fabrics/pads</div>
+                    <div class="ui tab segment" data-tab="fabrics/cook-wares">fabrics/cook-wares</div>
+                    <div class="ui tab segment" data-tab="fabrics/pads">fabrics/pads</div>
+                    <div class="ui tab segment" data-tab="fabrics/stores">fabrics/Stores</div>
+                    <div class="ui tab segment" data-tab="fabrics/coolers">fabrics/Coolers</div>
+
+                    <div class="ui tab segment" data-tab="accessories/binoculars">accessories/Binoculars</div>
+                    <div class="ui tab segment" data-tab="accessories/compasses">accessories/Compasses</div>
+                    <div class="ui tab segment" data-tab="accessories/solar-and-portable-power">accessories/Solar & Portable Power</div>
+                    <div class="ui tab segment" data-tab="accessories/GPS">accessories/GPS</div>
+                    <div class="ui tab segment" data-tab="accessories/gear-storage-and-maintenance">accessories/gear-storage-and-maintenance</div>
+                    <div class="ui tab segment" data-tab="accessories/lightings">accessories/Lightings</div>
+                    <div class="ui tab segment" data-tab="accessories/trekking-poles">accessories/Trekking Poles</div>
+
+                    <div class="ui tab segment" data-tab="health-and-safety/frist-aid">health-and-safety/frist-aid</div>
+                    <div class="ui tab segment" data-tab="health-and-safety/emergency-and-survival">health-and-safety/emergency-and-survival</div>
+                    <div class="ui tab segment" data-tab="health-and-safety/sun-and-bug-protections">health-and-safety/sun-and-bug-protections</div>
+
+                    <div class="ui tab segment" data-tab="men/footwear">men/footwear</div>
+                    <div class="ui tab segment" data-tab="men/jackets">men/jackets</div>
+                    <div class="ui tab segment" data-tab="men/tops">men/tops</div>
+                    <div class="ui tab segment" data-tab="men/bottoms">men/bottoms</div>
+
+                    <div class="ui tab segment" data-tab="women/footwear">women/footwear</div>
+                    <div class="ui tab segment" data-tab="women/jackets">women/jackets</div>
+                    <div class="ui tab segment" data-tab="women/tops">women/top</div>
+                    <div class="ui tab segment" data-tab="women/bottoms">women/bottoms</div>
+
                 </div>
             </div>
         </div>

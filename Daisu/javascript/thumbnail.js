@@ -1,25 +1,45 @@
 var main = function() {
 
 
-    //return query variables in the url
+    //return query variables that in the url
     var getUrlVars = function () {
         var variables = [],
             hash,
-            queryIndex = window.location.href.indexOf('?'),
-            hashes = window.location.href.slice(queryIndex + 1).split('&');
+            queryIndex = window.location.href.indexOf('#/'),
+            hashes = window.location.href.slice(queryIndex + 1).split('/');
 
-        //convert query url into object
-        for(var i = 0; i< hashes.length; i++) {
-            hash = hashes[i].split('=');
-            variables.push(hash[0]);
-            variables[hash[0]] = hash[1];
+        if (queryIndex != -1) {
+            for(var i = 0; i< hashes.length; i++) {
+                if(hashes[i] !== ''){
+                    variables.push(hashes[i]);
+                }                
+            }
         }
 
         return variables;
-    }
+    };
 
+    //check active tab from tab pass by url
+    var array = getUrlVars();
+    if (array.length > 0) {
+        var element = ".item." + array[0];
+        console.log(element);
+        $(element + ' .title').toggleClass('active');
+        $(element + ' .content').toggleClass('active');
+    };
+
+    
+    //active accordion
+    $('.accordion.menu').accordion();
+/*
     //enable left side tab
-    $('#thumbnail .three.wide.column .menu .item').tab({
+    $('#thumbnail .three.wide.column .menu>.item').tab({
+        context: $('#thumbnail .thirteen.wide.column'),
+        history : true
+    });
+*/
+    //enable left side tab
+    $('#thumbnail .three.wide.column .menu .content .item').tab({
         context: $('#thumbnail .thirteen.wide.column'),
         history : true
     });
