@@ -1,6 +1,7 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
 Version 1.0.11 released 11/12/2016
+- Modified categories and thumbnail left tab and link all tab
 - Changed product menu list in categories and thumbnail 
 - Modified menubar dropdown to popup method
 
