@@ -1,14 +1,150 @@
 var main = function() {
 
-	//return query variables that in the url
+    //list of all categories
+    var categoryList = {
+        "camping" : [
+            {
+                "title": "Tents",
+                "data-tab": "tents",
+                "url":  "http://semantic-ui.com/images/wireframe/image.png"
+            }, 
+            {
+                "title": "Sleeping Bags",
+                "data-tab": "sleeping-bags",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Hammocks",
+                "data-tab": "hammocks",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Pads",
+                "data-tab": "pads",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Cook Wares",
+                "data-tab": "cook-wares",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Stores",
+                "data-tab": "stores",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Coolers",
+                "data-tab": "coolers",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            }
+        ],
+        "accessories" : [
+            {
+                "title": "Binoculars",
+                "data-tab": "binoculars",
+                "url":  "http://semantic-ui.com/images/wireframe/image.png"
+            }, 
+            {
+                "title": "Compasses",
+                "data-tab": "compasses",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Solar & Portable Power",
+                "data-tab": "solar-and-portable-power",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "GPS",
+                "data-tab": "GPS",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Gear Storage & Maintenance",
+                "data-tab": "gear-storage-and-maintenance",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "lightings",
+                "data-tab": "coolers",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Trekking Poles",
+                "data-tab": "trekking-poles",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            }
+        ],
+        "health-and-safety" : [
+            {
+                "title": "Frist Aid",
+                "data-tab": "first-aid",
+                "url":  "http://semantic-ui.com/images/wireframe/image.png"
+            }, 
+            {
+                "title": "Emergency & Survival",
+                "data-tab": "emergency-and-survival",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Sun & Bug Protections",
+                "data-tab": "sun-and-bug-protections",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            }
+        ],
+        "men" : [
+            {
+                "title": "Footwear",
+                "data-tab": "footwear",
+                "url":  "http://semantic-ui.com/images/wireframe/image.png"
+            }, 
+            {
+                "title": "Jackets",
+                "data-tab": "jackets",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Tops",
+                "data-tab": "tops",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Bottoms",
+                "data-tab": "bottoms",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            }
+        ],
+        "women" : [
+            {
+                "title": "Footwear",
+                "data-tab": "footwear",
+                "url":"http://semantic-ui.com/images/wireframe/image.png"
+            }, 
+            {
+                "title": "Jackets",
+                "data-tab": "jackets",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Tops",
+                "data-tab": "tops",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            },
+            {
+                "title": "Bottoms",
+                "data-tab": "bottoms",
+                "url": "http://semantic-ui.com/images/wireframe/image.png"
+            }
+        ]
+    };
+
+    //return query variables that in the url
     var getUrlVars = function () {
         var variables = [],
             hash,
             queryIndex = window.location.href.indexOf('#/'),
             hashes = window.location.href.slice(queryIndex + 1).split('/');
-
-        console.log("hashes:");
-        console.log(hashes);
 
         if (queryIndex != -1) {
             for(var i = 0; i< hashes.length; i++) {
@@ -17,15 +153,13 @@ var main = function() {
                 }                
             }
         }
-        console.log("variables:");
-        console.log(variables);
         return variables;
     };
 
     var tabSelection = function(targetTab) {
-    	var element = '.accordion.menu .item[data-tab="' + targetTab +'"]';
+        var element = '.accordion.menu .item[data-tab="' + targetTab +'"]';
 
-    	//active tab selected
+        //active tab selected
         $.tab('change tab', targetTab);
 
         //active accordion base on tab selected
@@ -33,32 +167,66 @@ var main = function() {
         $(element + ' .title').toggleClass('active');
         $(element + ' .content').toggleClass('active');
     }
-    
 
-    //check active tab from tab pass by url
+    var loadSubCategory = function (targetTab,category) {
+        //remove exiting template
+        $('.thirteen.column .segment[data-tab="' + targetTab + '"]').empty();
+
+        var template = $('<div class="ui three column stackable grid container">');
+
+        for(var i=0; i<category.length; i++) {
+            var subTemplate = '<div class="column">' +
+                                '<div class="ui large image">' +
+                                    '<div class="ui dimmer">' +
+                                        '<div class="content">' +
+                                            '<a href="thumbnail#/' + targetTab + '/' + category[i]["data-tab"]+ '" class="center">' +
+                                                '<h2 class="ui inverted header">'+ category[i]["title"] +'</h2>' +
+                                            '</a>' +
+                                        '</div>' +
+                                    '</div>' +
+                                    '<img class="ui image" src="' + category[i]["url"] +'">' +
+                                '</div>' +
+                            '</div>';
+            template.append(subTemplate);
+        }
+
+        $('.thirteen.column .segment[data-tab=' + targetTab + ']').append(template);
+        //activate picture dimmer
+        $('.ui.segment .thirteen.column .image').dimmer({
+            on: 'hover'
+        });
+    };    
+
+    //load and active tab pass from URL
     var array = getUrlVars();
     if (array.length > 0) {
-    	tabSelection(array[0]);
-    };
+        tabSelection(array[0]);
+        //display category images
+        loadSubCategory(array[0], categoryList[array[0]]);
+    };    
 
-    //check which tab click
+    //picture link in categories got clicked
     $('.thirteen.column .column .content a').on('click', function() {
-    	//$('.thrteen')
-    	var selectTab = $(this).attr('href').slice(2);
+        //$('.thrteen')
+        var selectTab = $(this).attr('href').slice(2);
         
-        tabSelection(selectTab);
-    });
-	
-	//activate picture dimmer
-	$('.ui.segment .thirteen.column .image').dimmer({
-		on: 'hover'
-	});
+        //active accordion according on picture tab clicked
+        tabSelection(selectTab);        
 
-	//active accordion
+        //display category images
+        loadSubCategory(selectTab, categoryList[selectTab]);
+    });
+    
+    //activate picture dimmer
+    $('.ui.segment .thirteen.column .image').dimmer({
+        on: 'hover'
+    });
+
+    //active accordion
     $('.accordion.menu').accordion();
 
-	//activate left side menu
-	//$('.ui.segment .three.column .vertical.menu .item').tab();
+    //activate left side menu
+    //$('.ui.segment .three.column .vertical.menu .item').tab();
 };
 
 $(document).ready(main);
