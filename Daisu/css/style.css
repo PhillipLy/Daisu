@@ -165,7 +165,7 @@ i.cart.icon {
     margin-top: 0.1em
 }
 
-.ui.segment .thirteen.column .two.column .column .ui.image {
+.ui.segment .thirteen.column .column .ui.image {
     height: 100%;
     z-index: 1;
 }
