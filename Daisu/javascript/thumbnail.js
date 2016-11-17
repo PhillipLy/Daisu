@@ -1,28 +1,19 @@
-var main = function() {
-
-
+var main = function() {    
     //return query variables that in the url
     var getUrlVars = function () {
         var variables = [],
             hash,
             queryIndex = window.location.href.indexOf('#/'),
-            hashes = window.location.href.slice(queryIndex + 1).split('/');
+            hashes = window.location.href.slice(queryIndex + 2);
 
-        if (queryIndex != -1) {
-            for(var i = 0; i< hashes.length; i++) {
-                if(hashes[i] !== ''){
-                    variables.push(hashes[i]);
-                }                
-            }
-        }
-
-        return variables;
+        return hashes;
     };
 
-    //check active tab from tab pass by url
-    var array = getUrlVars();
-    if (array.length > 0) {
-        var element = ".item." + array[0];
+    //active accordion base on tab that passed in url 
+    var categoryTab = getUrlVars();
+    categoryTab = categoryTab.slice(0, categoryTab.indexOf('/'));
+    if (categoryTab) {
+        var element = ".item." + categoryTab;
         console.log(element);
         $(element + ' .title').toggleClass('active');
         $(element + ' .content').toggleClass('active');
@@ -31,13 +22,7 @@ var main = function() {
     
     //active accordion
     $('.accordion.menu').accordion();
-/*
-    //enable left side tab
-    $('#thumbnail .three.wide.column .menu>.item').tab({
-        context: $('#thumbnail .thirteen.wide.column'),
-        history : true
-    });
-*/
+
     //enable left side tab
     $('#thumbnail .three.wide.column .menu .content .item').tab({
         context: $('#thumbnail .thirteen.wide.column'),
@@ -48,61 +33,130 @@ var main = function() {
     $('#thumbnail .thirteen.column .item #rating').barrating({
         theme: 'fontawesome-stars-o',
         showSelectedRating: false,
-        initialRating: 4.2,
+        initialRating: '',
         readonly: true
     });
-
-    /*
-    //card frame for product item
-    var generateCard = function (url, title, description, star, review) {
-        var card = '<div class="ui card" style="display: none;">'+
-                        '<div class="blurring dimmable image">'+
-                            '<div class="ui dimmer">' +
-                                '<div class="content">' +
-                                    '<div class="center">' +
-                                        '<div class="ui inverted button">Get Detail</div>' +
-                            '</div></div></div>' +
-                            '<img src="' + url + '">'+
-                        '</div>'+
+    
+    // return a template of item
+    // para id - item id
+    // para url - image
+    // para title - title
+    // para price - price
+    // para desc - small description of item
+    var itemTemplate = function(id, url, title, price, desc) {
+        var item = '<div class="item">' +
+                        '<a href="product?id=' + id + '" class="ui small image">' +
+                            '<img src="' + url + '">' +
+                        '</a>' +
                         '<div class="content">' +
-                            '<a class="header">' + title + '</a>' +
-                            '<div class="description">' + description + '</div>'+
-                        '</div>'+
-                        '<div class="extra aligned">'+
-                            '<div class="right floated">' + review + ' Review</div>' +
-                            '<div class="ui star rating" data-rating="' + star + '" data-max-rating="5">'+
-                            '</div>'+
-                        '</div>'+
-                    '</div>';
-
-        return card;
+                            '<a href="product?id=' + id + '" class="header">' + title + '</a>' +
+                            '<div class="description">' +
+                                '<div class="sub-description">' +
+                                    '<h3>' +
+                                        '<span class="price">$' + price + '</span>' +
+                                    '</h3>' +
+                                    '<div class="rating">' +
+                                        '<div class="half-star-rating">' +
+                                            '<select id="rating" name="rating" data-current-rating="3.2">' +
+                                                '<option value=""></option>' +
+                                                '<option value="1">1</option>' +
+                                                '<option value="2">2</option>' +
+                                                '<option value="3">3</option>' +
+                                                '<option value="4">4</option>' +
+                                                '<option value="5">5</option>' +
+                                            '</select>' +
+                                            '<p class="review">(2 review)</p>' +
+                                    '</div></div></div>' +
+                                '<div class="ui right floated sub-description">' +
+                                    '<p>' + desc + '</p>' +
+                                '</div>' +
+                            '</div></div></div>';
+        return item;
     };
 
-    //add 
-    var addStackCards = function (data) {
-        var $columnCard = $('<div class="doubling stackable four column ui four cards">');
-        var i = 0;
-        //
-        var card = generateCard(data.url, data.title, data.description, data.star, data.review);
+    var displayProduct = function(jsonArray) {
+        var urlQuery = getUrlVars();
+        var targetElement = $('.ui.tab.segment[data-tab="' + urlQuery + '"');
 
-        for(;i<8;i++) {
-            $columnCard.append(card);
+        //remove exiting item
+        targetElement.empty();
+
+        //empty item list
+        var itemList = $('<div class="ui items">');
+
+        var template;
+
+        //add individual item into item list
+        $.each(jsonArray, function(index, obj) {
+            //use the item template
+            template = itemTemplate(obj.id, obj.url, obj.title, obj.price, obj.description);
+
+            //add item to item list
+            itemList.append(template);
+        });
+
+        //add item list to the active tab
+        targetElement.append(itemList);
+    };
+//this is for testing only
+    var jsonObj = [
+        {
+            id: 1,
+            url: 'http://semantic-ui.com/images/wireframe/image.png',
+            title: 'Title',
+            price: '100.00',
+            description: 'small description'
+        },
+        {
+            id: 12,
+            url: 'http://semantic-ui.com/images/wireframe/image.png',
+            title: 'Title',
+            price: '100.00',
+            description: 'small description'
+        },
+        {
+            id: 123,
+            url: 'http://semantic-ui.com/images/wireframe/image.png',
+            title: 'Title',
+            price: '100.00',
+            description: 'small description'
+        },
+        {
+            id: 1234,
+            url: 'http://semantic-ui.com/images/wireframe/image.png',
+            title: 'Title',
+            price: '100.00',
+            description: 'small description'
         }
-    };
+    ];
 
-    var displayCards = function() {
-        var data = {"url":"http://semantic-ui.com/examples/assets/images/wireframe/image.png",
-                    "title":"Custome",
-                    "price": 1.00,
-                    "description":"Products Gear Description",
-                    "star":4,
-                    "review":2};
-        
-        addStackCards(data);
+    //send request to product.php for items
+    var loadProductData = function() {
+        var urlQuery = getUrlVars();
+        $.ajax({
+            url:'./php/product.php',
+            method:'POST',
+            data:{type: urlQuery},
+            dataType: 'json',
+            contentType: 'application/json',
+            cache: false,
+            success:function(data) {
+                if(data) {
+                    //display items on first load
+                    displayProduct(data);
+                }
+                else {
+                    console.log('cannot load data');
+                }
+            }
+        });        
     };
+    
 
-    displayCards();
-    */
+    //display items when click
+    $('a.item').on('click', function() {
+        loadProductData();
+    });
 };
 
 $(document).ready(main);

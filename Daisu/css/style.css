@@ -233,3 +233,7 @@ i.cart.icon {
 .three.wide.column .segment .selection.dropdown i {
     padding: 5%;
 }
+
+.ui.tab.segment.active {
+    margin: 0;
+}
