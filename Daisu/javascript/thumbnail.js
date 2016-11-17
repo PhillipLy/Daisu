@@ -98,37 +98,6 @@ var main = function() {
         //add item list to the active tab
         targetElement.append(itemList);
     };
-//this is for testing only
-    var jsonObj = [
-        {
-            id: 1,
-            url: 'http://semantic-ui.com/images/wireframe/image.png',
-            title: 'Title',
-            price: '100.00',
-            description: 'small description'
-        },
-        {
-            id: 12,
-            url: 'http://semantic-ui.com/images/wireframe/image.png',
-            title: 'Title',
-            price: '100.00',
-            description: 'small description'
-        },
-        {
-            id: 123,
-            url: 'http://semantic-ui.com/images/wireframe/image.png',
-            title: 'Title',
-            price: '100.00',
-            description: 'small description'
-        },
-        {
-            id: 1234,
-            url: 'http://semantic-ui.com/images/wireframe/image.png',
-            title: 'Title',
-            price: '100.00',
-            description: 'small description'
-        }
-    ];
 
     //send request to product.php for items
     var loadProductData = function() {
@@ -142,7 +111,7 @@ var main = function() {
             cache: false,
             success:function(data) {
                 if(data) {
-                    //display items on first load
+                    //display items
                     displayProduct(data);
                 }
                 else {
@@ -151,7 +120,9 @@ var main = function() {
             }
         });        
     };
-    
+
+    //display the first load
+    loadProductData();    
 
     //display items when click
     $('a.item').on('click', function() {
