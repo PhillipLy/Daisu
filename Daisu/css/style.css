@@ -220,3 +220,16 @@ i.cart.icon {
 .ui.sticky {
     z-index: 1;
 }
+
+#column-product {
+    padding: 1em 4em;
+}
+
+.three.wide.column .segment .selection.dropdown {
+    min-width: 3em;
+    min-height: 1em;
+}
+
+.three.wide.column .segment .selection.dropdown i {
+    padding: 5%;
+}
