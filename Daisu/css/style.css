@@ -230,10 +230,12 @@ i.cart.icon {
     min-height: 1em;
 }
 
-.three.wide.column .segment .selection.dropdown i {
-    padding: 5%;
-}
 
 .ui.tab.segment.active {
     margin: 0;
+}
+
+#addToCartButton {
+    margin-top: 1em;
+    background-color: #f0c14b;
 }

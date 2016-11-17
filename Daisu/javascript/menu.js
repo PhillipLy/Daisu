@@ -41,12 +41,6 @@ var main = function () {
         }
     });  
 
-    //make url query to search.html
-    $('.ui.search').search({
-        apiSettings: {
-            url: 'search?keyword={query}'
-        }
-    });
 
     $('.search.link.icon').on('click', function() {
         console.log("icon click");
