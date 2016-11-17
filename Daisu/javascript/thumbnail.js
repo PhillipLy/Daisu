@@ -43,7 +43,7 @@ var main = function() {
     // para title - title
     // para price - price
     // para desc - small description of item
-    var itemTemplate = function(id, url, title, price, desc) {
+    var itemTemplate = function(id, url, title, price) {
         var item = '<div class="item">' +
                         '<a href="product?id=' + id + '" class="ui small image">' +
                             '<img src="' + url + '">' +
@@ -68,7 +68,7 @@ var main = function() {
                                             '<p class="review">(2 review)</p>' +
                                     '</div></div></div>' +
                                 '<div class="ui right floated sub-description">' +
-                                    '<p>' + desc + '</p>' +
+                                    '<p>' '</p>' +
                                 '</div>' +
                             '</div></div></div>';
         return item;
@@ -89,7 +89,7 @@ var main = function() {
         //add individual item into item list
         $.each(jsonArray, function(index, obj) {
             //use the item template
-            template = itemTemplate(obj.id, obj.url, obj.title, obj.price, obj.description);
+            template = itemTemplate(obj.itemId, obj.url, obj.title, obj.price);
 
             //add item to item list
             itemList.append(template);
@@ -102,14 +102,10 @@ var main = function() {
     //send request to product.php for items
     var loadProductData = function() {
         var urlQuery = getUrlVars();
-        $.ajax({
-            url:'./php/product.php',
-            method:'POST',
-            data:{type: urlQuery},
-            dataType: 'json',
-            contentType: 'application/json',
-            cache: false,
-            success:function(data) {
+        $.get({
+            url: './php/thumbnail.php',
+            data: {category: urlQuery},
+            success: function() {
                 if(data) {
                     //display items
                     displayProduct(data);
@@ -117,8 +113,9 @@ var main = function() {
                 else {
                     console.log('cannot load data');
                 }
-            }
-        });        
+            },
+            dataType: 'json'
+        });
     };
 
     //display the first load
