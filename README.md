@@ -1,5 +1,8 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.13 released 11/16/2016
+- Implemented details products page
+
 Version 1.0.12 released 11/13/2016
 - Dynamically created sub-tab picture 
 - Linked all links in products' dropdown menu
