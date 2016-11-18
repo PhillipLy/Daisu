@@ -39,13 +39,32 @@ var main = function () {
             //execute check user login
             checkLogin();
         }
-    });  
-
-
-    $('.search.link.icon').on('click', function() {
-        console.log("icon click");
     });
 
+    $('.ui.form').form({});
+
+    $('#search-form').form({
+        fields: {
+            search: {
+                identifier  : 'search',
+                rules: [
+                    {
+                        type   : 'empty'
+                    }
+                ]
+            }
+        },
+        onSuccess: function() {
+            $('#searchButton').on('click', function() {
+                console.log('test');
+            });
+            return false;
+        },
+        onFailure: function() {
+            console.log('failure');
+            return false;
+        }
+    });
 };
 
 $(document).ready(main);

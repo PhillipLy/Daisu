@@ -22,8 +22,15 @@ body {
 }
 
 .ui.search.item i {
-    background-color: #232f3e;
     color: white;
+}
+
+#searchButton {
+    background-color: #232f3e;
+}
+
+#searchButton:hover {
+    background-color: #f3a847;
 }
 
 .ui.secondary.menu .header.item {

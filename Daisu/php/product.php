@@ -21,9 +21,9 @@
             while($data = mysqli_fetch_array($result)) {
                $arr = ('detail' => $data["detail"]);
                 
-               array_push(description, json_encode($arr));
+               array_push($description, json_encode($arr));
             }
-            echo description;
+            echo $description;
         }
     }
 ?>
