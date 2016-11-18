@@ -6,7 +6,7 @@ var main = function() {
             {
                 "title": "Tents",
                 "data-tab": "tents",
-                "url":  "http://semantic-ui.com/images/wireframe/image.png"
+                "url":  "https://www.rei.com/media/product/894016?size=230"
             }, 
             {
                 "title": "Sleeping Bags",
@@ -16,27 +16,27 @@ var main = function() {
             {
                 "title": "Hammocks",
                 "data-tab": "hammocks",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/830267?size=230"
             },
             {
                 "title": "Pads",
                 "data-tab": "pads",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/881907?size=230"
             },
             {
                 "title": "Cook Wares",
                 "data-tab": "cook-wares",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/830776?size=230"
             },
             {
                 "title": "Stores",
                 "data-tab": "stores",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/824171?size=230"
             },
             {
                 "title": "Coolers",
                 "data-tab": "coolers",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/874210?size=230"
             }
         ],
         "accessories" : [
