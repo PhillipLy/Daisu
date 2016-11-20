@@ -43,98 +43,98 @@ var main = function() {
             {
                 "title": "Binoculars",
                 "data-tab": "binoculars",
-                "url":  "http://semantic-ui.com/images/wireframe/image.png"
+                "url":  "https://www.rei.com/media/product/871931?size=230"
             }, 
             {
                 "title": "Compasses",
                 "data-tab": "compasses",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/877078?size=230"
             },
             {
                 "title": "Solar & Portable Power",
                 "data-tab": "solar-and-portable-power",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/880057?size=230"
             },
             {
                 "title": "GPS",
                 "data-tab": "GPS",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/103709?size=230"
             },
             {
                 "title": "Gear Storage & Maintenance",
                 "data-tab": "gear-storage-and-maintenance",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/380196?size=230"
             },
             {
                 "title": "lightings",
                 "data-tab": "coolers",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/892056?size=500"
             },
             {
                 "title": "Trekking Poles",
                 "data-tab": "trekking-poles",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/881626?size=230"
             }
         ],
         "health-and-safety" : [
             {
                 "title": "Frist Aid",
                 "data-tab": "first-aid",
-                "url":  "http://semantic-ui.com/images/wireframe/image.png"
+                "url":  "https://www.rei.com/media/product/784609?size=230"
             }, 
             {
                 "title": "Emergency & Survival",
                 "data-tab": "emergency-and-survival",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/867416?size=230"
             },
             {
                 "title": "Sun & Bug Protections",
                 "data-tab": "sun-and-bug-protections",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/828908?size=230"
             }
         ],
         "men" : [
             {
                 "title": "Footwear",
                 "data-tab": "footwear",
-                "url":  "http://semantic-ui.com/images/wireframe/image.png"
+                "url":  "https://www.rei.com/media/product/881784?size=230"
             }, 
             {
                 "title": "Jackets",
                 "data-tab": "jackets",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/104718?size=230"
             },
             {
                 "title": "Tops",
                 "data-tab": "tops",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/834628?size=230"
             },
             {
                 "title": "Bottoms",
                 "data-tab": "bottoms",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/894352?size=230"
             }
         ],
         "women" : [
             {
                 "title": "Footwear",
                 "data-tab": "footwear",
-                "url":"http://semantic-ui.com/images/wireframe/image.png"
+                "url":"https://www.rei.com/media/product/105495?size=230"
             }, 
             {
                 "title": "Jackets",
                 "data-tab": "jackets",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/104965?size=230"
             },
             {
                 "title": "Tops",
                 "data-tab": "tops",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/885393?size=230"
             },
             {
                 "title": "Bottoms",
                 "data-tab": "bottoms",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/874841?size=230"
             }
         ]
     };
