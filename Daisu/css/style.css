@@ -42,12 +42,12 @@ body {
     display: block;
 }
 
-#login-form {
+#login-container {
     padding: 0;
     bottom: -100em;
 }
 
-#login-form .column {	
+#login-container .column {	
 	max-width: 450px;    
 }
 
@@ -55,7 +55,7 @@ body {
     padding: 10em 0 10em 0;
 }
 
-#login-form {
+#login-container {
     padding-top: 5em;
     margin: 0 auto 4em;
     top: 10em;

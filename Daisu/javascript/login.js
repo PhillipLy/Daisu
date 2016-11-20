@@ -2,7 +2,7 @@ var main = function() {
     'use strict';
     
     //login error validation
-    $('.ui.form').form({
+    $('#login-form').form({
         fields: {
             username: {
                 identifier  : 'username',
@@ -62,7 +62,7 @@ var main = function() {
 
     //login button pressed
     $('#loginButton').on('click',function() {
-        $('.ui.form').form('validate form');
+        $('#login-form').form('validate form');
     });
 
 };

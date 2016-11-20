@@ -1,28 +1,52 @@
 var main = function () {
     'use strict';
 
+    //functions for menu after load
+    // to prevent asynchronous
+    var activeMenuFunctions = function() {
+        //enable user-menu dropdown
+        $('.ui.pointing.dropdown').dropdown({
+            on: 'hover',
+            transition: 'fade down',
+            action: 'nothing'
+        });
+
+        //enable popup on menubar
+        $('.menu-popup').popup({
+            hoverable: true,
+            position: 'bottom left',
+            delay: {
+                show: 200,
+                hide: 400
+            }
+        });
+
+        //prevent form to reload page
+        $('#search-form').submit(function(e) {
+            e.preventDefault();
+            var searchInput = $('#search-input').val();
+            if(searchInput === '') {
+                console.log('no input');
+            } else {
+                //convert search into url query
+                var query = searchInput.split(' ').join('+');
+
+                //go to search page with url query
+                window.location = 'search?search=' + query;
+            }
+        });
+
+
+    };
+
     //check if user have already logged in
     var checkLogin = function () {
         $.get('php/check-login.php', function(data) {
             if(data) {
                 $('#userMenu').append(data);
 
-                //enable user-menu dropdown
-                $('.ui.pointing.dropdown').dropdown({
-                    on: 'hover',
-                    transition: 'fade down',
-                    action: 'nothing'
-                });
-
-                //enable popup on menubar
-                $('.menu-popup').popup({
-                    hoverable: true,
-                    position: 'bottom left',
-                    delay: {
-                        show: 200,
-                        hide: 400
-                    }
-                });
+                //active menu functions
+                activeMenuFunctions();                
             }
             else {
                 console.log("cannot load check-login.php");
@@ -40,8 +64,11 @@ var main = function () {
             checkLogin();
         }
     });
+    
 
-    $('.ui.form').form({});
+    
+
+    /*
 
     $('#search-form').form({
         fields: {
@@ -65,6 +92,7 @@ var main = function () {
             return false;
         }
     });
+    */
 };
 
 $(document).ready(main);
