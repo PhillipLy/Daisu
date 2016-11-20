@@ -6,37 +6,37 @@ var main = function() {
             {
                 "title": "Tents",
                 "data-tab": "tents",
-                "url":  "https://www.rei.com/media/product/894016?size=230"
+                "url":  "https://www.rei.com/media/product/862430?size=500"
             }, 
             {
                 "title": "Sleeping Bags",
                 "data-tab": "sleeping-bags",
-                "url": "http://semantic-ui.com/images/wireframe/image.png"
+                "url": "https://www.rei.com/media/product/897547?size=230"
             },
             {
                 "title": "Hammocks",
                 "data-tab": "hammocks",
-                "url": "https://www.rei.com/media/product/830267?size=230"
+                "url": "https://www.rei.com/media/product/895878?size=400"
             },
             {
                 "title": "Pads",
                 "data-tab": "pads",
-                "url": "https://www.rei.com/media/product/881907?size=230"
+                "url": "https://www.rei.com/media/product/881907?size=500"
             },
             {
                 "title": "Cook Wares",
                 "data-tab": "cook-wares",
-                "url": "https://www.rei.com/media/product/830776?size=230"
+                "url": "https://www.rei.com/media/product/830777?size=230"
             },
             {
                 "title": "Stores",
                 "data-tab": "stores",
-                "url": "https://www.rei.com/media/product/824171?size=230"
+                "url": "https://www.rei.com/media/product/868190?size=230"
             },
             {
                 "title": "Coolers",
                 "data-tab": "coolers",
-                "url": "https://www.rei.com/media/product/874210?size=230"
+                "url": "https://www.rei.com/media/product/112628?size=230"
             }
         ],
         "accessories" : [
