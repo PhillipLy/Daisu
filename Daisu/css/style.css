@@ -172,8 +172,13 @@ i.cart.icon {
     margin-top: 0.1em
 }
 
-.ui.segment .thirteen.column .column .ui.image {
-    height: 100%;
+.ui.segment .thirteen.column .two.column .image {
+    height: 18em;
+    z-index: 1;
+}
+
+.ui.segment .thirteen.column .three.column .image {
+    height: 14.3em;
     z-index: 1;
 }
 
@@ -224,10 +229,6 @@ i.cart.icon {
     background-color: #f0c14b !important;
 }
 
-.ui.sticky {
-    z-index: 1;
-}
-
 #column-product {
     padding: 1em 4em;
 }
@@ -236,7 +237,6 @@ i.cart.icon {
     min-width: 3em;
     min-height: 1em;
 }
-
 
 .ui.tab.segment.active {
     margin: 0;
