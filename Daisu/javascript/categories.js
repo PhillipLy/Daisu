@@ -29,8 +29,8 @@ var main = function() {
                 "url": "https://www.rei.com/media/product/830777?size=230"
             },
             {
-                "title": "Stores",
-                "data-tab": "stores",
+                "title": "Stoves",
+                "data-tab": "stoves",
                 "url": "https://www.rei.com/media/product/868190?size=230"
             },
             {

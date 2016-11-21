@@ -5,7 +5,10 @@
     $connect = mysqli_connect("localhost", "root", "", "daisu_db");
     //check if username and password have values
     if(isset($_GET["category"])) {
+
         $category = mysqli_real_escape_string($connect, $_GET["category"]);
+        //$str = "tent";
+        //$category = mysqli_real_escape_string($connect, $str);
 
         //database query request
         $sql = "SELECT * FROM `item` WHERE category = '" . $category . "'";
@@ -18,12 +21,15 @@
 
         if($num_row > 0) {
             while($data = mysqli_fetch_array($result)) {
-               $arr = ('itemId' => $data["itemid"], 'title' => $data["productname"], 'brand' => $data["brand"],
-                 'price' => $data["price"], 'color' => $data["color"], 'url' => $data["picturelink"];
-                
-               array_push(item, json_encode($arr));
+               $arr = array('itemId' => $data["itemid"], 
+                            'title' => $data["productname"], 
+                            'brand' => $data["brand"],
+                            'price' => $data["price"], 
+                            'color' => $data["color"], 
+                            'url' => $data["picturelink"]);                
+               array_push($item, $arr);
             }
-            echo item;
+            echo json_encode($item, true);
         }
     }
 ?>

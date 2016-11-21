@@ -82,7 +82,7 @@ var main = function() {
         targetElement.empty();
 
         //empty item list
-        var itemList = $('<div class="ui items">');
+        var itemList = $('<div class="ui divided items">');
 
         var template;
 
@@ -101,6 +101,7 @@ var main = function() {
 
     //send request to product.php for items
     var loadProductData = function() {
+        /*
         var data = [
             {
                 itemId: "1",
@@ -128,16 +129,17 @@ var main = function() {
             }
         ];
         displayProduct(data);
-
-        /*
+        */
         var urlQuery = getUrlVars();
+        console.log(urlQuery);
         $.get({
             url: './php/thumbnail.php',
             data: {category: urlQuery},
-            success: function() {
+            success: function(data) {
                 if(data) {
                     //display items
                     displayProduct(data);
+                    console.log(data);
                 }
                 else {
                     console.log('cannot load data');
@@ -145,7 +147,7 @@ var main = function() {
             },
             dataType: 'json'
         });
-        */
+        
     };
 
     //display the first load
