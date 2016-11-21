@@ -255,3 +255,9 @@ i.cart.icon {
     margin-top: 1em;
     background-color: #f0c14b;
 }
+
+.thirteen.column .segment .ui.divided.items .item .image img {
+    width: auto;
+    height: 150px;
+    margin: 0 auto;
+}
