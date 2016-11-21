@@ -2,7 +2,7 @@
 
 Version 1.0.15 released 11/21/2016
 - Re-implemented image size in thumbnail page
-- Ddded new databases containg new data of items
+- Added new databases containg new data of items
 
 Version 1.0.14 released 11/20/2016
 - Re-implemented search menu bar and login validation
