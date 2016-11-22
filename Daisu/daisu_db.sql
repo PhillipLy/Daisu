@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 21, 2016 at 10:06 AM
+-- Generation Time: Nov 22, 2016 at 05:42 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -28,15 +28,15 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `detail` (
   `detailid` int(10) UNSIGNED NOT NULL,
-  `productdetail` mediumtext NOT NULL,
-  `itemid1` int(10) UNSIGNED NOT NULL
+  `itemdescription` mediumtext NOT NULL,
+  `itemid` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
 -- Dumping data for table `detail`
 --
 
-INSERT INTO `detail` (`detailid`, `productdetail`, `itemid1`) VALUES
+INSERT INTO `detail` (`detailid`, `itemdescription`, `itemid`) VALUES
 (1, 'Vertical walls and a rectangular floor plan maximize livable space\nStable, freestanding design features 2 hubbed pole assemblies, pole clips and sleeves\n2 large doors with zipper sliders and bug-proof mesh windows\nBug-proof mesh wall panels\nSingle vestibule and rain-blocking awning\nMultiple interior storage options\nCenter divider wall zips into place to create two rooms\nSeam-sealed waterproof polyester fly and cut-in floor\nConnect Tech zipper attachment lets you add more living space or storage with add-on Garage accessory, sold separately\nIncludes a backpack carry bag with pockets for poles and stakes, along with 8 stakes, 6 guylines with tighteners and a pole repair tube\nFootprint sold separately', 1),
 (2, 'Spacious dome design offers great livability\r\nMesh door, ceiling and side panels increase ventilation to help reduce condensation buildup\r\n2 large doors provide easy access; roomy vestibules protect entrances and store your gear out of the rain\r\nFront dual-zipper vestibule door lets you create a covered portico when coupled with trekking poles (sold separately)\r\nCombination pole sleeve and clip system combines advantages of both designs, and allows swift, freestanding setup even in the wind; DAC DA17 poles are strong and reliable\r\nUV-resistant, seam-taped polyester rainfly provides full coverage and doesn\'t stretch or expand when wet, ensuring a consistently taut pitch\r\nHeavyweight oxford nylon canopy floor is fully taped for complete protection\r\nEntryway doormat helps keep tent interior clean\r\nThe Marmot Limestone 6P Tent comes with stuff sacks, stakes and guylines/tighteners', 2),
 (3, 'mtnGLO™ Tent Lighting Technology features LED lights integrated into the tent body, so you can experience ambient light in your shelter with the click of a button\r\nLED light strand is durable and flexible enough to withstand repeated tent pitching and stuffing\r\nLEDs illuminate the interior of your tent with 90+ hrs. of hands-free light to sort gear, read, eat and play cards without blinding your friend with a headlamp\r\nSimple push-button controller has 3 settings: on, off and 50% brightness; requires 3 AAA batteries (sold separately)\r\n2 doors and 2 vestibules; stormflaps on vestibule zippers\r\nDAC Featherlite NSL and NFL poles with lightweight hubs; steep walls and crossover pole increase interior living space\r\n2 media pockets located above sleeping area enable clean earbud cord routing from phones or other devices; 4 interior mesh pockets keep small items organized\r\nGear loft loops are compatible with Big Agnes Entertainment Center and PowerCase mtnGLO gear lofts (sold separately)\r\nAll seams taped with waterproof, solvent-free polyurethane tape (no PVC or VOCs)\r\nReflective guylines and webbing on tent corners\r\nComes with 8 Superlight aluminum J stakes\r\nSave weight and create a minimalist shelter by using just the rainfly, poles and footprint (sold separately)', 3),
@@ -92,7 +92,7 @@ CREATE TABLE `item` (
   `itemid` int(10) UNSIGNED NOT NULL,
   `productname` varchar(100) NOT NULL,
   `brand` varchar(30) DEFAULT NULL,
-  `price` float NOT NULL,
+  `price` decimal(10,2) NOT NULL,
   `category` varchar(30) NOT NULL,
   `color` varchar(50) DEFAULT NULL,
   `picturelink` varchar(100) NOT NULL
@@ -103,50 +103,50 @@ CREATE TABLE `item` (
 --
 
 INSERT INTO `item` (`itemid`, `productname`, `brand`, `price`, `category`, `color`, `picturelink`) VALUES
-(1, 'REI Kingdom 6 Tent', NULL, 439, 'camping/tents', 'Willow/Alpaca', 'https://www.rei.com/media/product/894016?size=230'),
-(2, 'Marmot Limestone 6P Tent', NULL, 449, 'camping/tents', 'Malaia Gold', 'https://www.rei.com/media/product/863989?size=230'),
-(3, 'Big Agnes Copper Spur UL 2 mtnGLO Tent', NULL, 449.95, 'camping/tents', 'Silver/Gray', 'https://www.rei.com/media/product/880753?size=230'),
-(4, 'Marmot Limelight 3P Tent with Footprint', NULL, 299, 'camping/tents', 'Cinder/Rusted Orange', 'https://www.rei.com/media/product/895812?size=230'),
-(5, 'REI half Dome 2 Tent', NULL, 199, 'camping/tents', 'Lion', 'https://www.rei.com/media/product/878519?size=230'),
-(6, 'The North Face Dolomite Double 20 Sleeping Bag', NULL, 159, 'camping/sleeping-bags', 'Blue/Grey', 'https://www.rei.com/media/product/895337?size=230'),
-(7, 'REI Carina 32 Sleeping Bag', NULL, 139, 'camping/sleeping-bags', 'Sapphire Purple', 'https://www.rei.com/media/product/894950?size=500'),
-(8, 'REI Radiant Sleeping Bag', NULL, 148.99, 'camping/sleeping-bags', 'Galaxy Blue/Squash', 'https://www.rei.com/media/product/862474?size=230'),
-(9, 'The North Face Inferno -20 Sleeping Bag', NULL, 599, 'camping/sleeping-bags', 'Grey/Orange', 'https://www.rei.com/media/product/879823?size=230'),
-(10, 'The North Face Dolomite 20 Sleeping Bag', NULL, 99, 'camping/sleeping-bags', 'Blue/Grey', 'https://www.rei.com/media/product/895333?size=230'),
-(11, 'ENO DoubleNest Hammock', NULL, 69.95, 'camping/hammocks', 'Orange/Grey', 'https://www.rei.com/media/product/754773?size=230'),
-(12, 'ENO OneLink Hammock Shelter System with DoubleNest Hammock', NULL, 219.95, 'camping/hammocks', 'Navy Blue', 'https://www.rei.com/media/product/830267?size=230'),
-(13, 'ENO Guardian Bug Net', NULL, 59.95, 'camping/hammocks', 'Black', 'https://www.rei.com/media/product/754781?size=230'),
-(14, 'Kammok Koala Hammock Underquilt', NULL, 329, 'camping/hammocks', 'Red/Grey', 'https://www.rei.com/media/product/101575?size=230'),
-(15, 'ENO CamoLink Hammock Shelter System with Camo Hammock Tent', NULL, 254.95, 'camping/hammocks', 'Forest Camo', 'https://www.rei.com/media/product/895882?size=230'),
-(16, 'REI Camp Bed 3.5 Self-Inflating Sleeping Pad', NULL, 119, 'camping/pads', 'Eclipse Blue', 'https://www.rei.com/media/product/870757?size=230'),
-(17, 'Exped SIM MegaMat Duo Sleeping Pad', NULL, 349, 'camping/pads', 'Ruby Red', 'https://www.rei.com/media/product/881907?size=230'),
-(18, 'Therm-a-Rest NeoAir XLite Sleeping Pad', NULL, 129.95, 'camping/pads', 'Marigold', 'https://www.rei.com/media/product/881574?size=230'),
-(19, 'Klymit Insulated Static V Sleeping Pad', NULL, 84.95, 'camping/pads', 'Orange/Grey', 'https://www.rei.com/media/product/866835?size=230'),
-(20, 'ALPS Mountaineering Lightweight Air Pad', NULL, 89.95, 'camping/pads', 'Blue', 'https://www.rei.com/media/product/897538?size=230'),
-(21, 'GSI Outdoors Pinnacle Camper Cookset', NULL, 139.95, 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/830776?size=230'),
-(22, 'GSI Outdoors Pinnacle Dualist Ultralight Cookset', NULL, 64.95, 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/830774?size=230'),
-(23, 'GSI Outdoors Bugaboo Camper Cookset', NULL, 109.95, 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/830828?size=230'),
-(24, 'Camp Chef Reversible Cast Iron Grill/ Griddle', NULL, 54.95, 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/897174?size=230'),
-(25, 'MSR Alpine 4 Pot Set', NULL, 79.95, 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/401120?size=230'),
-(26, 'Camp Chef Everest 2- Burner Camp Stove', NULL, 109.95, 'camping/stoves', 'Red', 'https://www.rei.com/media/product/824171?size=230'),
-(27, 'MSR PocketRocket Stove Kit', NULL, 99.95, 'camping/stoves', 'Black', 'https://www.rei.com/media/product/106902?size=230'),
-(28, 'MSR PocketRocket Backpacking Stove', NULL, 29.99, 'camping/stoves', 'Black', 'https://www.rei.com/media/product/660163?size=230'),
-(29, 'BioLite Wood Burning CampStove Bundle', NULL, 199.95, 'camping/stoves', 'Black', 'https://www.rei.com/media/product/897128?size=230'),
-(30, 'Coleman Signature Grill Stove', NULL, 119.95, 'camping/stoves', 'Black', 'https://www.rei.com/media/product/883482?size=230'),
-(31, 'YETI Tundra 45 Cooler', NULL, 350, 'camping/coolers', 'Tan', 'https://www.rei.com/media/product/874210?size=230'),
-(32, 'YETI Tundra 125 Cooler', NULL, 550, 'camping/coolers', 'White', 'https://www.rei.com/media/product/899053?size=230'),
-(33, 'Igloo Trailmate Journey Cooler - 70 Qt.', NULL, 269.95, 'camping/coolers', 'Yellow/Gray', 'https://www.rei.com/media/product/112628?size=230'),
-(34, 'Coleman National Parks Edition Steel-Belted Cooler - 54 Quarts', NULL, 199.95, 'camping/coolers', 'Grey/Chrome', 'https://www.rei.com/media/product/101578?size=230'),
-(35, 'Coleman Xtreme 5 Cooler - 120 Qt.', NULL, 99.95, 'camping/coolers', 'Grey/Orange', 'https://www.rei.com/media/product/100317?size=230'),
-(36, 'Nikon Monarch 5 10 x 42 Waterproof Binoculars', NULL, 365, 'accessories/binoculars', 'Black', 'https://www.rei.com/media/product/853971?size=230'),
-(37, 'Nikon Prostaff 3S 10 x 42 Binoculars', NULL, 139, 'accessories/binoculars', 'Black', 'https://www.rei.com/media/product/107212?size=230'),
-(38, 'Nikon Prostaff 7S 8 x 30 Waterproof Binoculars', NULL, 200, 'accessories/binoculars', 'Black', 'https://www.rei.com/media/product/890909?size=230'),
-(39, 'REI Base Camp 6 Tent', NULL, 429, 'camping/tents', 'Sage/Mesa Orange', 'https://www.rei.com/media/product/862430?size=230'),
-(40, 'REI Joule Sleeping Bag - Women\'s', NULL, 238.93, 'camping/sleeping-bags', 'Grey Mist', 'https://www.rei.com/media/product/862533?size=230'),
-(41, 'ENO Blaze Hammock Underquilt', NULL, 299.95, 'camping/hammocks', 'Black', 'https://www.rei.com/media/product/848836?size=230'),
-(42, 'Big Agnes Stillwater Sleeping Pad - Long Wide', NULL, 94.73, 'camping/pads', 'Gold/Gray', 'https://www.rei.com/media/product/899023?size=230'),
-(43, 'GSI Outdoors Glacier Stainless-Steel Tea Kettle', NULL, 24.95, 'camping/cook-wares', NULL, 'https://www.rei.com/media/product/815536?size=230'),
-(44, 'GoSun Sport Solar Camp Stove', NULL, 279, 'camping/stoves', NULL, 'https://www.rei.com/media/product/100561?size=230');
+(1, 'REI Kingdom 6 Tent', NULL, '439.00', 'camping/tents', 'Willow/Alpaca', 'https://www.rei.com/media/product/894016?size=230'),
+(2, 'Marmot Limestone 6P Tent', NULL, '449.00', 'camping/tents', 'Malaia Gold', 'https://www.rei.com/media/product/863989?size=230'),
+(3, 'Big Agnes Copper Spur UL 2 mtnGLO Tent', NULL, '449.95', 'camping/tents', 'Silver/Gray', 'https://www.rei.com/media/product/880753?size=230'),
+(4, 'Marmot Limelight 3P Tent with Footprint', NULL, '299.00', 'camping/tents', 'Cinder/Rusted Orange', 'https://www.rei.com/media/product/895812?size=230'),
+(5, 'REI half Dome 2 Tent', NULL, '199.00', 'camping/tents', 'Lion', 'https://www.rei.com/media/product/878519?size=230'),
+(6, 'The North Face Dolomite Double 20 Sleeping Bag', NULL, '159.00', 'camping/sleeping-bags', 'Blue/Grey', 'https://www.rei.com/media/product/895337?size=230'),
+(7, 'REI Carina 32 Sleeping Bag', NULL, '139.00', 'camping/sleeping-bags', 'Sapphire Purple', 'https://www.rei.com/media/product/894950?size=500'),
+(8, 'REI Radiant Sleeping Bag', NULL, '148.99', 'camping/sleeping-bags', 'Galaxy Blue/Squash', 'https://www.rei.com/media/product/862474?size=230'),
+(9, 'The North Face Inferno -20 Sleeping Bag', NULL, '599.00', 'camping/sleeping-bags', 'Grey/Orange', 'https://www.rei.com/media/product/879823?size=230'),
+(10, 'The North Face Dolomite 20 Sleeping Bag', NULL, '99.00', 'camping/sleeping-bags', 'Blue/Grey', 'https://www.rei.com/media/product/895333?size=230'),
+(11, 'ENO DoubleNest Hammock', NULL, '69.95', 'camping/hammocks', 'Orange/Grey', 'https://www.rei.com/media/product/754773?size=230'),
+(12, 'ENO OneLink Hammock Shelter System with DoubleNest Hammock', NULL, '219.95', 'camping/hammocks', 'Navy Blue', 'https://www.rei.com/media/product/830267?size=230'),
+(13, 'ENO Guardian Bug Net', NULL, '59.95', 'camping/hammocks', 'Black', 'https://www.rei.com/media/product/754781?size=230'),
+(14, 'Kammok Koala Hammock Underquilt', NULL, '329.00', 'camping/hammocks', 'Red/Grey', 'https://www.rei.com/media/product/101575?size=230'),
+(15, 'ENO CamoLink Hammock Shelter System with Camo Hammock Tent', NULL, '254.95', 'camping/hammocks', 'Forest Camo', 'https://www.rei.com/media/product/895882?size=230'),
+(16, 'REI Camp Bed 3.5 Self-Inflating Sleeping Pad', NULL, '119.00', 'camping/pads', 'Eclipse Blue', 'https://www.rei.com/media/product/870757?size=230'),
+(17, 'Exped SIM MegaMat Duo Sleeping Pad', NULL, '349.00', 'camping/pads', 'Ruby Red', 'https://www.rei.com/media/product/881907?size=230'),
+(18, 'Therm-a-Rest NeoAir XLite Sleeping Pad', NULL, '129.95', 'camping/pads', 'Marigold', 'https://www.rei.com/media/product/881574?size=230'),
+(19, 'Klymit Insulated Static V Sleeping Pad', NULL, '84.95', 'camping/pads', 'Orange/Grey', 'https://www.rei.com/media/product/866835?size=230'),
+(20, 'ALPS Mountaineering Lightweight Air Pad', NULL, '89.95', 'camping/pads', 'Blue', 'https://www.rei.com/media/product/897538?size=230'),
+(21, 'GSI Outdoors Pinnacle Camper Cookset', NULL, '139.95', 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/830776?size=230'),
+(22, 'GSI Outdoors Pinnacle Dualist Ultralight Cookset', NULL, '64.95', 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/830774?size=230'),
+(23, 'GSI Outdoors Bugaboo Camper Cookset', NULL, '109.95', 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/830828?size=230'),
+(24, 'Camp Chef Reversible Cast Iron Grill/ Griddle', NULL, '54.95', 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/897174?size=230'),
+(25, 'MSR Alpine 4 Pot Set', NULL, '79.95', 'camping/cook-wares', 'Black', 'https://www.rei.com/media/product/401120?size=230'),
+(26, 'Camp Chef Everest 2- Burner Camp Stove', NULL, '109.95', 'camping/stoves', 'Red', 'https://www.rei.com/media/product/824171?size=230'),
+(27, 'MSR PocketRocket Stove Kit', NULL, '99.95', 'camping/stoves', 'Black', 'https://www.rei.com/media/product/106902?size=230'),
+(28, 'MSR PocketRocket Backpacking Stove', NULL, '29.99', 'camping/stoves', 'Black', 'https://www.rei.com/media/product/660163?size=230'),
+(29, 'BioLite Wood Burning CampStove Bundle', NULL, '199.95', 'camping/stoves', 'Black', 'https://www.rei.com/media/product/897128?size=230'),
+(30, 'Coleman Signature Grill Stove', NULL, '119.95', 'camping/stoves', 'Black', 'https://www.rei.com/media/product/883482?size=230'),
+(31, 'YETI Tundra 45 Cooler', NULL, '350.00', 'camping/coolers', 'Tan', 'https://www.rei.com/media/product/874210?size=230'),
+(32, 'YETI Tundra 125 Cooler', NULL, '550.00', 'camping/coolers', 'White', 'https://www.rei.com/media/product/899053?size=230'),
+(33, 'Igloo Trailmate Journey Cooler - 70 Qt.', NULL, '269.95', 'camping/coolers', 'Yellow/Gray', 'https://www.rei.com/media/product/112628?size=230'),
+(34, 'Coleman National Parks Edition Steel-Belted Cooler - 54 Quarts', NULL, '199.95', 'camping/coolers', 'Grey/Chrome', 'https://www.rei.com/media/product/101578?size=230'),
+(35, 'Coleman Xtreme 5 Cooler - 120 Qt.', NULL, '99.95', 'camping/coolers', 'Grey/Orange', 'https://www.rei.com/media/product/100317?size=230'),
+(36, 'Nikon Monarch 5 10 x 42 Waterproof Binoculars', NULL, '365.00', 'accessories/binoculars', 'Black', 'https://www.rei.com/media/product/853971?size=230'),
+(37, 'Nikon Prostaff 3S 10 x 42 Binoculars', NULL, '139.00', 'accessories/binoculars', 'Black', 'https://www.rei.com/media/product/107212?size=230'),
+(38, 'Nikon Prostaff 7S 8 x 30 Waterproof Binoculars', NULL, '200.00', 'accessories/binoculars', 'Black', 'https://www.rei.com/media/product/890909?size=230'),
+(39, 'REI Base Camp 6 Tent', NULL, '429.00', 'camping/tents', 'Sage/Mesa Orange', 'https://www.rei.com/media/product/862430?size=230'),
+(40, 'REI Joule Sleeping Bag - Women\'s', NULL, '238.93', 'camping/sleeping-bags', 'Grey Mist', 'https://www.rei.com/media/product/862533?size=230'),
+(41, 'ENO Blaze Hammock Underquilt', NULL, '299.95', 'camping/hammocks', 'Black', 'https://www.rei.com/media/product/848836?size=230'),
+(42, 'Big Agnes Stillwater Sleeping Pad - Long Wide', NULL, '94.73', 'camping/pads', 'Gold/Gray', 'https://www.rei.com/media/product/899023?size=230'),
+(43, 'GSI Outdoors Glacier Stainless-Steel Tea Kettle', NULL, '24.95', 'camping/cook-wares', NULL, 'https://www.rei.com/media/product/815536?size=230'),
+(44, 'GoSun Sport Solar Camp Stove', NULL, '279.00', 'camping/stoves', NULL, 'https://www.rei.com/media/product/100561?size=230');
 
 -- --------------------------------------------------------
 
@@ -225,7 +225,7 @@ INSERT INTO `user` (`userid`, `username`, `password`, `email`, `firstName`, `mid
 --
 ALTER TABLE `detail`
   ADD PRIMARY KEY (`detailid`),
-  ADD KEY `itemid1` (`itemid1`);
+  ADD KEY `itemid1` (`itemid`);
 
 --
 -- Indexes for table `item`
@@ -289,7 +289,7 @@ ALTER TABLE `user`
 -- Constraints for table `detail`
 --
 ALTER TABLE `detail`
-  ADD CONSTRAINT `detail_ibfk_1` FOREIGN KEY (`itemid1`) REFERENCES `item` (`itemid`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `detail_ibfk_1` FOREIGN KEY (`itemid`) REFERENCES `item` (`itemid`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `shoppingcart`
