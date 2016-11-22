@@ -1,5 +1,9 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.16 released 11/22/2016
+- Succesfully implemented search functionality to search data in database  
+- Displays search results accordingly
+
 Version 1.0.15 released 11/21/2016
 - Product page successfuly retrieved data from corresponding database
 - Updated database to work for the new changes
