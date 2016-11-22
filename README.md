@@ -18,7 +18,7 @@ Version 1.0.14 released 11/20/2016
 - Successfully retrieved items from database
 
 Version 1.0.13 released 11/17/2016
-- Created searclyh page  
+- Created search page  
 - Implemented functions to dynamically load and display items 
 - Added function for product page
 - Implemented details products page
