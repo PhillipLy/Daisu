@@ -10,7 +10,9 @@
         <title>Daisu</title>
         <meta charset="UTF-8">
         <link rel="stylesheet" type="text/css" href="css/reset.css">
-        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">    
+        <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css">
+        <link rel="stylesheet" href="jquery-bar-rating/dist/themes/fontawesome-stars-o.css">
+        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">
         <link rel="stylesheet" type="text/css" href="css/style.css">  
     </head>
 
@@ -97,63 +99,65 @@
                         <h1 class="ui header">Search Result</h1>
                         <p>There are <span id="result-number">10</span> products that match your search for '<span id="search-input">testing</span>'.</p>
                         <div class="ui divider"></div>
-                        <div class="ui items">
-                            <div class="item">
-                                <div class="ui small image">
-                                    <img src="http://semantic-ui.com/images/wireframe/image.png">
+                        <div id="search-items">
+                            <div class="ui items">
+                                <div class="item">
+                                    <div class="ui small image">
+                                        <img src="http://semantic-ui.com/images/wireframe/image.png">
+                                    </div>
+                                    <div class="content">
+                                        <div class="header">Title</div>
+                                        <div class="description">
+                                            <div class="sub-description">
+                                                <h3>
+                                                    <span class="price">$100</span>
+                                                </h3>
+                                                <div class="rating">
+                                                    <div class="half-star-rating">
+                                                        <select id="rating" name="rating" data-current-rating="3.2">
+                                                            <option value="1">1</option>
+                                                            <option value="2">2</option>
+                                                            <option value="3">3</option>
+                                                            <option value="4">4</option>
+                                                            <option value="5">5</option>
+                                                        </select>
+                                                        <p class="review">(2 review)</p>
+                                                    </div>                                                
+                                                </div>                                            
+                                            </div>
+                                            <div class="ui right floated sub-description">
+                                                <p>Small Description Paragraph</p>
+                                            </div>
+                                        </div>  
+
+                                    </div>
                                 </div>
-                                <div class="content">
-                                    <div class="header">Title</div>
-                                    <div class="description">
-                                        <div class="sub-description">
-                                            <h3>
-                                                <span class="price">$100</span>
-                                            </h3>
-                                            <div class="rating">
-                                                <div class="half-star-rating">
-                                                    <select id="rating" name="rating" data-current-rating="3.2">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                        <option value="5">5</option>
-                                                    </select>
-                                                    <p class="review">(2 review)</p>
-                                                </div>                                                
-                                            </div>                                            
+                                <div class="item">
+                                    <div class="ui small image">
+                                        <img src="http://semantic-ui.com/images/wireframe/image.png">
+                                    </div>
+                                    <div class="content">
+                                        <div class="header">Title</div>
+                                        <div class="meta">
+                                            <span class="price">$100</span>
                                         </div>
-                                        <div class="ui right floated sub-description">
+                                        <div class="description">
                                             <p>Small Description Paragraph</p>
                                         </div>
-                                    </div>  
-
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ui small image">
-                                    <img src="http://semantic-ui.com/images/wireframe/image.png">
-                                </div>
-                                <div class="content">
-                                    <div class="header">Title</div>
-                                    <div class="meta">
-                                        <span class="price">$100</span>
-                                    </div>
-                                    <div class="description">
-                                        <p>Small Description Paragraph</p>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="item">
-                                <div class="ui small image">
-                                    <img src="http://semantic-ui.com/images/wireframe/image.png">
-                                </div>
-                                <div class="content">
-                                    <div class="header">Title</div>
-                                    <div class="meta">
-                                        <span class="price">$100</span>
+                                <div class="item">
+                                    <div class="ui small image">
+                                        <img src="http://semantic-ui.com/images/wireframe/image.png">
                                     </div>
-                                    <div class="description">
-                                        <p>Small Description Paragraph</p>
+                                    <div class="content">
+                                        <div class="header">Title</div>
+                                        <div class="meta">
+                                            <span class="price">$100</span>
+                                        </div>
+                                        <div class="description">
+                                            <p>Small Description Paragraph</p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -205,7 +209,9 @@
         </footer>
 
         <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="semantic/dist/semantic.min.js"></script>
+        <script src="jquery-bar-rating/dist/jquery.barrating.min.js"></script>
         <script src="javascript/address.js"></script>
         <script src="javascript/menu.js"></script>
         <script src="javascript/search.js"></script>

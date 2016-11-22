@@ -117,7 +117,7 @@ var main = function() {
                 }
             },
             dataType: 'json'
-        });        
+        });
     };
 
     //display the first load

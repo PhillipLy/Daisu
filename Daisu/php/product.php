@@ -31,9 +31,7 @@
         //database query request for item description
         $sqlDesc = "SELECT * FROM detail WHERE itemid = '" . $itemid . "'";
         $desc_result = mysqli_query($connect, $sqlDesc);        
-        $desc_num_row = mysqli_num_rows($desc_result);        
-        
-        $description = ['description' => ''];
+        $desc_num_row = mysqli_num_rows($desc_result);
 
         if($desc_num_row > 0) {
             $data = mysqli_fetch_array($desc_result);
