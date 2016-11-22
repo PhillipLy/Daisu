@@ -1,6 +1,7 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
 Version 1.0.15 released 11/21/2016
+- Product page successfuly retrieved data from corresponding database
 - Re-implemented image size in thumbnail page
 - Added new databases containg new data of items
 - Modified AboutUs page and correct redirection path
