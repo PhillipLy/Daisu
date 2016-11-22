@@ -261,3 +261,7 @@ i.cart.icon {
     height: 150px;
     margin: 0 auto;
 }
+
+#column-product #price {
+    color: #b12704;
+}

@@ -101,35 +101,6 @@ var main = function() {
 
     //send request to product.php for items
     var loadProductData = function() {
-        /*
-        var data = [
-            {
-                itemId: "1",
-                url :"http://semantic-ui.com/images/wireframe/image.png",
-                title: "Title",
-                price: "100.00"
-            },
-            {
-                itemId: "2",
-                url :"http://semantic-ui.com/images/wireframe/image.png",
-                title: "Title",
-                price: "100.00"
-            },
-            {
-                itemId: "3",
-                url :"http://semantic-ui.com/images/wireframe/image.png",
-                title: "Title",
-                price: "100.00"
-            },
-            {
-                itemId: "4",
-                url :"http://semantic-ui.com/images/wireframe/image.png",
-                title: "Title",
-                price: "100.00"
-            }
-        ];
-        displayProduct(data);
-        */
         var urlQuery = getUrlVars();
         console.log(urlQuery);
         $.get({
@@ -146,8 +117,7 @@ var main = function() {
                 }
             },
             dataType: 'json'
-        });
-        
+        });        
     };
 
     //display the first load
