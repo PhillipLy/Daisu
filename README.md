@@ -3,7 +3,7 @@
 Version 1.0.15 released 11/21/2016
 - Product page successfuly retrieved data from corresponding database
 - Updated database to work for the new changes
-- Implemented user comments and avatars in product.html 
+- Implemented user comments and avatars 
 - Re-implemented image size in thumbnail page
 - Added new databases containg new data of items
 - Modified AboutUs page and correct redirection path
