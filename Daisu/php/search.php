@@ -9,11 +9,11 @@
         $findChar = ' ';
         while($pos = strpos($searchInput,$findChar)) {
             $searchInput[$pos] = '%';
-        }
+        }        
 
         //database query request
         $sql = "SELECT * FROM `item` WHERE productname LIKE '%" . $searchInput . "%'";
-
+        
         //add extra search query for individual words
         $searchArray = explode('%', $searchInput);
         foreach ($searchArray as $value) {
@@ -22,7 +22,7 @@
        
         $result = mysqli_query($connect, $sql);
 
-        $num_row = mysqli_num_rows($result); 
+        $num_row = mysqli_num_rows($result);
 
         $items = [];
 
@@ -38,12 +38,12 @@
                 $arr = array_map('utf8_encode', $arr);
 
                 array_push($items, $arr);
-            }
+            }            
+        } 
+        
+        $searchResult = array('search_number' => $num_row, 'items' => $items);
 
-            $searchResult = array('search_number' => $num_row, 'items' => $items);
-
-            //return search result
-            echo json_encode($searchResult);
-        }
+        //return search result
+        echo json_encode($searchResult);
     }
 ?>

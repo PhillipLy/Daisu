@@ -97,6 +97,8 @@ var main = function () {
                 if(data) {
                 	//display number for result get from searching
                 	$('#result-number').html(data.search_number);
+                	console.log(data.search_number);
+                	console.log("data: " + data);
 
                     //display items
                     displayProduct(data.items);
@@ -117,6 +119,8 @@ var main = function () {
     //display search input
 	$('#search-input').html(urlQuery.search);
 
+	//active left accordion
+    $('.vertical.accordion.menu').accordion();
    
 };
 

@@ -28,8 +28,8 @@
                             'color' => $data["color"], 
                             'url' => $data["picturelink"]);                
                array_push($item, $arr);
-            }
-            echo json_encode($item, true);
+            }            
         }
+        echo json_encode($item, true);
     }
 ?>

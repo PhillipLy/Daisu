@@ -224,9 +224,6 @@ var main = function() {
 
     //active accordion
     $('.accordion.menu').accordion();
-
-    //activate left side menu
-    //$('.ui.segment .three.column .vertical.menu .item').tab();
 };
 
 $(document).ready(main);

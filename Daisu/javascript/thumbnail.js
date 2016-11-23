@@ -81,6 +81,13 @@ var main = function() {
         //remove exiting item
         targetElement.empty();
 
+        //check if no data for the selected tab
+        if(jsonArray.length <= 0) {
+            var text = '<h3 class="ui header">There is no data avaliable for ' + urlQuery.slice(urlQuery.indexOf('/')+1) + '</h3>';
+            targetElement.append(text);
+            return;
+        }
+
         //empty item list
         var itemList = $('<div class="ui divided items">');
 
@@ -102,7 +109,6 @@ var main = function() {
     //send request to product.php for items
     var loadProductData = function() {
         var urlQuery = getUrlVars();
-        console.log(urlQuery);
         $.get({
             url: './php/thumbnail.php',
             data: {category: urlQuery},
@@ -110,7 +116,6 @@ var main = function() {
                 if(data) {
                     //display items
                     displayProduct(data);
-                    console.log(data);
                 }
                 else {
                     console.log('cannot load data');
