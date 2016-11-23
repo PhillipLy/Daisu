@@ -32,104 +32,54 @@
                                 <div class="content">
                                     <div class="ui grid">
                                         <div class="ten wide column">
-                                            <div class="header">Title</div>
-                                            <div class="ui button">Delete</div>
+                                            <h3 class="header">Title</h3>
+                                            <button class="ui inverted red button">Delete</button>
+                                            <button class="ui inverted blue button">Save for later</button>
                                         </div>
                                         <div class="three wide column">
                                             <h3>
-                                                <span class="price">$100</span>
+                                                <span is="price">$100</span>
                                             </h3>
                                         </div>
                                         <div class="three wide column">
                                             Quantity
+                                            <div class="ui fluid selection dropdown">
+                                                <i class="dropdown icon"></i>
+                                                <div class="text">1</div>
+                                                <div class="menu">
+                                                    <div class="item active selected" data-value="1">1</div>
+                                                    <div class="item" data-value="2">2</div>
+                                                    <div class="item" data-value="3">3</div>
+                                                </div>
+                                            </div>
                                         </div>
                                     </div>     
 
                                 </div>
                             </div>
+                        </div>
+                    </div>
+
+                    <h2 class="ui header">
+                        Saved for later (<span id="saved-later-number">0 item</span>)
+                    </h2>
+                    <div class="ui segment" id="savedLaterList">
+                        <div class="ui divided items">
                             <div class="item">
                                 <div class="ui small image">
                                     <img src="http://semantic-ui.com/images/wireframe/image.png">
                                 </div>
                                 <div class="content">
                                     <div class="ui grid">
-                                        <div class="ten wide column">
-                                            <div class="header">Title</div>
-                                            <div class="ui button">Delete</div>
+                                        <div class="thirteen wide column">
+                                            <h3 class="ui header">Title</h3>
+                                            <button class="ui inverted red button">Delete</button>
+                                            <button class="ui inverted blue button">Move to Cart</button>
                                         </div>
                                         <div class="three wide column">
                                             <h3>
                                                 <span class="price">$100</span>
                                             </h3>
-                                        </div>
-                                        <div class="three wide column">
-                                            Quantity
-                                        </div>
-                                    </div>     
-
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ui small image">
-                                    <img src="http://semantic-ui.com/images/wireframe/image.png">
-                                </div>
-                                <div class="content">
-                                    <div class="ui grid">
-                                        <div class="ten wide column">
-                                            <div class="header">Title</div>
-                                            <div class="ui button">Delete</div>
-                                        </div>
-                                        <div class="three wide column">
-                                            <h3>
-                                                <span class="price">$100</span>
-                                            </h3>
-                                        </div>
-                                        <div class="three wide column">
-                                            Quantity
-                                        </div>
-                                    </div>     
-
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ui small image">
-                                    <img src="http://semantic-ui.com/images/wireframe/image.png">
-                                </div>
-                                <div class="content">
-                                    <div class="ui grid">
-                                        <div class="ten wide column">
-                                            <div class="header">Title</div>
-                                            <div class="ui button">Delete</div>
-                                        </div>
-                                        <div class="three wide column">
-                                            <h3>
-                                                <span class="price">$100</span>
-                                            </h3>
-                                        </div>
-                                        <div class="three wide column">
-                                            Quantity
-                                        </div>
-                                    </div>     
-
-                                </div>
-                            </div>
-                            <div class="item">
-                                <div class="ui small image">
-                                    <img src="http://semantic-ui.com/images/wireframe/image.png">
-                                </div>
-                                <div class="content">
-                                    <div class="ui grid">
-                                        <div class="ten wide column">
-                                            <div class="header">Title</div>
-                                            <div class="ui button">Delete</div>
-                                        </div>
-                                        <div class="three wide column">
-                                            <h3>
-                                                <span class="price">$100</span>
-                                            </h3>
-                                        </div>
-                                        <div class="three wide column">
-                                            Quantity
                                         </div>
                                     </div>     
 
@@ -201,6 +151,7 @@
         </footer>
 
         <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
         <script src="semantic/dist/semantic.min.js"></script> 
         <script src="javascript/menu.js"></script>
         <script src="javascript/shoppingCart.js"></script>

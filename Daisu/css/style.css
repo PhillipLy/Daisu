@@ -265,3 +265,7 @@ i.cart.icon {
 #column-product #price {
     color: #b12704;
 }
+
+.three.wide.column #price {
+    color: #b12704;
+}

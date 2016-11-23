@@ -21,6 +21,7 @@
         if($num_row > 0) {
             $data = mysqli_fetch_array($result);
             $_SESSION["username"] = $data["username"];
+            $_SESSION["userId"] = $data["userid"];
             echo $data["username"];
         }
     }

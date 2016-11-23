@@ -1,18 +1,5 @@
 var main = function() {
-    session_start();
-
-    $loggedIn = false;
-
-    //check if user loged in
-    if(isset($_SESSION["username"])) {
-        $loggedIn = True;
-    }
-
-    $('.ui.sticky').sticky({
-        content: '.ui.divided.items',
-        offset: 120
-    });
-
+     
     // return a template of item
     // para id - item id
     // para url - image
@@ -66,12 +53,12 @@ var main = function() {
     };
 
     //send request to product.php for items
-    var loadCartData = function() {
-        var userid = $_SESSION["userId"];
+    var loadCartData = function(userInfo) {
+        
         $.ajax({
             url:'./php/shoppingCart.php',
             method:'POST',
-            data:{userid: userid},
+            data:{userId: userInfo.userId},
             dataType: 'json',
             contentType: 'application/json',
             cache: false,
@@ -97,7 +84,23 @@ var main = function() {
         });
     };
 
-    loadCartData();
+    //get username and userId
+    $.get({
+        url: './php/getUserLogin.php',
+        success: function(data) {
+            if(data) {
+                //display items
+                loadCartData(data);
+            }
+            else {
+                console.log('cannot load data');
+            }
+        },
+        dataType: 'json'
+    });
+
+    //dropdown for quantity
+    $('.ui.dropdown').dropdown();
 };
 
 $(document).ready(main);
