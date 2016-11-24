@@ -1,5 +1,9 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.17 released 11/23/2016
+- Re-implemented method of using cookie to store username and id 
+- Modified layout of shopping cart and changed function to retrieve corresponding data 
+
 Version 1.0.16 released 11/22/2016
 - Succesfully implemented search functionality to search data from database  
 - Displays search results accordingly
