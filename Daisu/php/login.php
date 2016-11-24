@@ -18,11 +18,14 @@
 
         $num_row = mysqli_num_rows($result);
 
+        $user = array('username' => '', 'userId' => '');
+
         if($num_row > 0) {
             $data = mysqli_fetch_array($result);
-            $_SESSION["username"] = $data["username"];
-            $_SESSION["userId"] = $data["userid"];
-            echo $data["username"];
+            $user['username'] = $data["username"];
+            $user['userId'] = $data["userid"];
         }
+        //return result of user
+        echo json_encode($user, true);
     }
 ?>

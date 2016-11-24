@@ -36,22 +36,56 @@ var main = function () {
             }
         });
 
+        //logout button clicked
+        $('#logout-button').on('click', function() {
+            $.removeCookie('username', { path: '/' });
+            $.removeCookie('userId', { path: '/' });
 
+            //go back to home page
+            window.location.href="index.html";
+        });
     };
 
     //check if user have already logged in
     var checkLogin = function () {
-        $.get('php/check-login.php', function(data) {
-            if(data) {
-                $('#userMenu').append(data);
+        //get username from cookie
+        var username = $.cookie('username'),
+            data;
 
-                //active menu functions
-                activeMenuFunctions();                
-            }
-            else {
-                console.log("cannot load check-login.php");
-            }
-        });
+        //check if user logged in
+        if(username) {
+            data = '<div class="ui pointing dropdown link item user-menu" id="user-menu">' +
+                '<img class="ui circular image" src="image/icon-user.png">' +
+                '<div class="menu">' +
+                    '<div class="item">' +
+                        '<div class="ui grid">' +
+                            '<div class="six wide column">' +
+                                '<img class="ui circular image" src="image/icon-user.png">' +
+                            '</div>' +
+                            '<div class="ten middle aligned wide column">' +
+                                '<h2 class="ui header"> '+ username +'</h2>' +
+                                '<a href="#" class="myAccount">' +
+                                    '<div class="ui blue button">My Account</div>' +
+                                '</a>' +
+                    '</div></div></div>' +
+                    '<div class="divider"></div>' +
+                    '<div class="item">' +
+                        '<div class="ui large right floated button" id="logout-button">Logout</div>' +
+                    '</div></div></div>';
+        } else {
+            data = '<a href="signup.html" class="item signin">' +
+                        '<div class="ui primary button">Sign Up</div>' +
+                    '</a>' +
+                    '<a href="login.html" class="item signin">' +
+                        '<div class="ui button">Login</div>' +
+                    '</a>';
+        }
+
+        //display buttons when user login or not login
+        $('#userMenu').append(data);
+
+        //active menu functions
+        activeMenuFunctions();
     };
 
     //load user menu from menubar.html
@@ -60,39 +94,16 @@ var main = function () {
             var msg = "Sorry but there was an error: ";
             $( "#error" ).html( msg + xhr.status + " " + xhr.statusText );
         } else {
-            //execute check user login
-            checkLogin();
-        }
-    });
-    
 
-    
+            //load jquery cookie before check login
+            $.getScript("javascript/jquery.cookie.js", function(){
 
-    /*
-
-    $('#search-form').form({
-        fields: {
-            search: {
-                identifier  : 'search',
-                rules: [
-                    {
-                        type   : 'empty'
-                    }
-                ]
-            }
-        },
-        onSuccess: function() {
-            $('#searchButton').on('click', function() {
-                console.log('test');
+                //execute check user login
+                checkLogin();
             });
-            return false;
-        },
-        onFailure: function() {
-            console.log('failure');
-            return false;
+            
         }
-    });
-    */
+    });    
 };
 
 $(document).ready(main);

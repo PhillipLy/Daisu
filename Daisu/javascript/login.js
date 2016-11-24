@@ -37,9 +37,23 @@ var main = function() {
                 method:'POST',
                 data:{username:username, password:password},
                 cache: false,
+                dataType: 'json',
                 success:function(data) {
-                    if(data) {
-                        window.location.href="index.html";
+                    if(data.username !== '') {
+                        console.log("got data from server");
+                        
+                        //load jquery cookie before check login
+                        $.getScript("javascript/jquery.cookie.js", function(){
+
+                            //set cookie for each json data respond
+                            $.each(data, function(key, value) {
+                                //set cookie for each key and value retreive from server
+                                $.cookie(key, value, {expires: 7, path: '/'});
+                            });
+
+                            //go back to home page
+                            window.location.href="index.html";
+                        });
                     }
                     else {
                         $('.ui.form').toggleClass("success error");

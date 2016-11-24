@@ -114,6 +114,7 @@ var main = function() {
             data: {category: urlQuery},
             success: function(data) {
                 if(data) {
+                    console.log(data);
                     //display items
                     displayProduct(data);
                 }

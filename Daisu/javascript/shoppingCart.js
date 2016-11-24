@@ -52,53 +52,44 @@ var main = function() {
         targetElement.append(itemList);
     };
 
-    //send request to product.php for items
-    var loadCartData = function(userInfo) {
-        
-        $.ajax({
-            url:'./php/shoppingCart.php',
-            method:'POST',
-            data:{userId: userInfo.userId},
-            dataType: 'json',
-            contentType: 'application/json',
-            cache: false,
-            success:function(data) {
-                if(data) {
-                    if(data === "empty") {
-                        var targetElement = $('#shoppingCartList');
+    //send post request to server to retreive shopping cart and save later items list
+    var loadCartData = function() {
+        //load jquery cookie before check login
+        $.getScript("javascript/jquery.cookie.js", function(){
+            //get userId from cookie
+            var userId = $.cookie('userId');
 
-                        //remove exiting item
-                        targetElement.empty();
+            //user ajax to send POST request
+            $.ajax({
+                url:'./php/shoppingCart.php',
+                method:'POST',
+                data:{userId: userId},
+                dataType: 'json',
+                contentType: 'application/json',
+                cache: false,
+                success:function(data) {
+                    if(data) {
+                        if(data === "empty") {
+                            var targetElement = $('#shoppingCartList');
 
-                        //display the cart is empty
-                        targetElement.append('<h2 class="ui header">Your Shopping Cart is empty.</h2>');
-                    } else {
-                        //display items
-                        displayItems(data);
+                            //remove exiting item
+                            targetElement.empty();
+
+                            //display the cart is empty
+                            targetElement.append('<h2 class="ui header">Your Shopping Cart is empty.</h2>');
+                        } else {
+                            //display items
+                            displayItems(data);
+                        }
+                    }
+                    else {
+                        console.log('cannot load data');
                     }
                 }
-                else {
-                    console.log('cannot load data');
-                }
-            }
+            });
         });
     };
-
-    //get username and userId
-    $.get({
-        url: './php/getUserLogin.php',
-        success: function(data) {
-            if(data) {
-                //display items
-                loadCartData(data);
-            }
-            else {
-                console.log('cannot load data');
-            }
-        },
-        dataType: 'json'
-    });
-
+    
     //dropdown for quantity
     $('.ui.dropdown').dropdown();
 };
