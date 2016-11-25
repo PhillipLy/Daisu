@@ -97,6 +97,14 @@ var main = function () {
 
             //load jquery cookie before check login
             $.getScript("javascript/jquery.cookie.js", function(){
+                //display cart item count
+                var cartCount = $.cookie('cartCount');
+                if(cartCount) {
+                    $('#itemcount').html(cartCount);
+                } else {
+                    $('#itemcount').html('0');
+                }
+                
 
                 //execute check user login
                 checkLogin();

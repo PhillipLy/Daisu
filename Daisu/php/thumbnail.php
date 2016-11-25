@@ -1,6 +1,4 @@
 <?php
-    //session_start();
-
     //datavase connection
     $connect = mysqli_connect("localhost", "root", "", "daisu_db");
     //check if username and password have values

@@ -1,6 +1,4 @@
-<?php
-    //session_start();
-    
+<?php    
     //datavase connection
     $connect = mysqli_connect("localhost", "root", "", "daisu_db");
     

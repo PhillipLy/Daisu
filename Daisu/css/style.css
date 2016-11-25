@@ -266,6 +266,14 @@ i.cart.icon {
     color: #b12704;
 }
 
-.three.wide.column #price {
+.twelve.wide.column .price {
     color: #b12704;
+}
+
+#shoppingCartList .selection.dropdown {
+    width: 2em;
+}
+
+#cart-segment {
+    min-height: 56%;
 }

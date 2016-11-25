@@ -156,7 +156,7 @@
                         $itemResult['result'] = 'success';
                     }
 
-                    array_push($itemResult, $itemResult);
+                    array_push($result, $itemResult);
                 }
 
                 //send back list of insert or update items
