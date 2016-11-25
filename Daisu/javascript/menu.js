@@ -40,6 +40,7 @@ var main = function () {
         $('#logout-button').on('click', function() {
             $.removeCookie('username', { path: '/' });
             $.removeCookie('userId', { path: '/' });
+            $.removeCookie('cartCount', { path: '/' });
 
             //go back to home page
             window.location.href="index.html";
