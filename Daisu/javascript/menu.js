@@ -56,12 +56,12 @@ var main = function () {
         //check if user logged in
         if(username) {
             data = '<div class="ui pointing dropdown link item user-menu" id="user-menu">' +
-                '<img class="ui circular image" src="image/icon-user.png">' +
+                '<img class="ui circular image" src="image/jenny.jpg">' +
                 '<div class="menu">' +
                     '<div class="item">' +
                         '<div class="ui grid">' +
                             '<div class="six wide column">' +
-                                '<img class="ui circular image" src="image/icon-user.png">' +
+                                '<img class="ui circular image" src="image/jenny.jpg">' +
                             '</div>' +
                             '<div class="ten middle aligned wide column">' +
                                 '<h2 class="ui header"> '+ username +'</h2>' +
