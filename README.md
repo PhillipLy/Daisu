@@ -1,8 +1,9 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
 Version 1.0.18 released 11/25/2016
-- Added user avatar when logged in
 - Implemented My Account page
+- Added user avatar when logged in
+- Added informational pages for popular trails on homepage
 - Shopping cart successfuly load and displays user cart items
 - Modified shopping cart sql requests
 - Added additional content on My Account page
