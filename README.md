@@ -1,5 +1,10 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.18 released 11/25/2016
+- Implemented My Account page
+- Shopping cart successfuly load and displays user cart items
+- Modified shopping cart sql requests
+
 Version 1.0.17 released 11/23/2016
 - Re-implemented method of using cookie to store username and id 
 - Modified layout of shopping cart and changed function to retrieve corresponding data 
