@@ -65,7 +65,7 @@ var main = function () {
                             '</div>' +
                             '<div class="ten middle aligned wide column">' +
                                 '<h2 class="ui header"> '+ username +'</h2>' +
-                                '<a href="#" class="myAccount">' +
+                                '<a href="myAccount.html" class="myAccount">' +
                                     '<div class="ui blue button">My Account</div>' +
                                 '</a>' +
                     '</div></div></div>' +
