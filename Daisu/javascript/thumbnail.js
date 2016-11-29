@@ -1,4 +1,14 @@
-var main = function() {    
+var main = function() {
+    var vm = {
+        items: ko.observableArray(),      
+        linkQuery: ko.pureComputed(function() {
+            console.log(this);
+            return '#';
+        })
+    };
+
+    ko.applyBindings(vm);
+
     //return query variables that in the url
     var getUrlVars = function () {
         var variables = [],
@@ -116,7 +126,10 @@ var main = function() {
                 if(data) {
                     console.log(data);
                     //display items
-                    displayProduct(data);
+                    //displayProduct(data);
+                    console.log(data);
+
+                    vm.items(data);
                 }
                 else {
                     console.log('cannot load data');
