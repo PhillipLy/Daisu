@@ -6,6 +6,8 @@
 
     //check if user already have item
     function check($userId, $itemId) {
+        global $connect;
+
         $sql = "SELECT * 
                 FROM `shoppingcart` 
                 WHERE userid3 = '" . $userId . "' AND itemid3 = '" . $itemId ."'";
@@ -69,6 +71,8 @@
 
     //delete one already exit item
     function delete($userId, $itemId) {
+        global $connect;
+
         $sql = "DELETE FROM `shoppingcart` 
                 WHERE userid3 = '" . $userId . "' AND itemid3 = '" . $itemId ."'";
 
@@ -90,6 +94,8 @@
 
     // add item to user cart
     function insert($userId, $itemId, $quantity) {
+        global $connect;
+
         $sql = "INSERT INTO `shoppingcart`(userid3, itemid3, quantity) 
                 VALUES ('" . $userId . "', '" . $itemId ."', '" . $quantity ."')";
 
@@ -107,6 +113,8 @@
 
     //edit single item quantity
     function update($userId, $itemId, $quantity) {
+        global $connect;
+        
         $sql = "UPDATE `shoppingcart` 
                 SET quantity='" . $quantity . "' WHERE userid3 = '" . $userId . "' AND itemid3 = '" . $itemId ."'";
 
@@ -126,7 +134,7 @@
     if(isset($_POST["userId"])) {
         $userId = mysqli_real_escape_string($connect, $_POST["userId"]);
         $method = mysqli_real_escape_string($connect, $_POST["method"]);
-        $jsonItems = mysqli_real_escape_string($connect, $_POST["items"]);
+        $items = $_POST["items"];
         //check switch method to use
         switch ($method) {
             case 'get':
@@ -136,7 +144,11 @@
 
             case 'delete':
                 // delete user item in cart
-                delete($userId, $items['itemid']);
+                for ($i = 0; $i< count($items); $i++) {
+                    $item = $items[$i];
+
+                    delete($userId, $item['itemId']);
+                }
                 break;
 
             case 'insert':
@@ -145,9 +157,9 @@
                 //loop all the items array
                 for ($i = 0; $i< count($items); $i++) {
 
-                    $item = $item[$i];
+                    $item = $items[$i];
 
-                    $itemResult = array('itemId' => $item['itemid'], 
+                    $itemResult = array('itemId' => $item['itemId'], 
                                         'result' => 'fail');
 
                     $resultSuccess = false;
@@ -155,13 +167,13 @@
                     //check if user already have item
                     if(check($userId, $item['itemid'])) {
                         //edit exiting item quantity
-                        $resultSuccess = update($userId, $item['itemid'], $item['quantity']);
+                        $resultSuccess = update($userId, $item['itemId'], $item['quantity']);
                     } 
 
                     //user doesn't have item in cart
                     else {
                         //add item to user cart
-                        $resultSuccess = insert($userId, $item['itemid'], $item['quantity']);
+                        $resultSuccess = insert($userId, $item['itemId'], $item['quantity']);
                     }
 
                     //return success result for every items
@@ -178,7 +190,9 @@
 
             case 'update':
                 //edit exiting item quantity
-                $updateSucc = update($userId, $item['itemid'], $item['quantity']);
+                $item = $items[0];
+
+                $updateSucc = update($userId, $item['itemId'], $item['quantity']);
 
                 $result = array('result' => 'fail');
 
