@@ -1,10 +1,10 @@
 var main = function() {
     var vm = {
-        items: ko.observableArray(),      
-        linkQuery: ko.pureComputed(function() {
-            console.log(this);
-            return '#';
-        })
+        items: ko.observableArray(),
+        linkQuery: function(itemId) {
+            var link = 'product?id=' + itemId;
+            return link;
+        }
     };
 
     ko.applyBindings(vm);
@@ -47,75 +47,6 @@ var main = function() {
         readonly: true
     });
     
-    // return a template of item
-    // para id - item id
-    // para url - image
-    // para title - title
-    // para price - price
-    // para desc - small description of item
-    var itemTemplate = function(id, url, title, price) {
-        var item = '<div class="item">' +
-                        '<a href="product?id=' + id + '" class="ui small image">' +
-                            '<img src="' + url + '">' +
-                        '</a>' +
-                        '<div class="content">' +
-                            '<a href="product?id=' + id + '" class="header">' + title + '</a>' +
-                            '<div class="description">' +
-                                '<div class="sub-description">' +
-                                    '<h3>' +
-                                        '<span class="price">$' + price + '</span>' +
-                                    '</h3>' +
-                                    '<div class="rating">' +
-                                        '<div class="half-star-rating">' +
-                                            '<select id="rating" name="rating" data-current-rating="3.2">' +
-                                                '<option value=""></option>' +
-                                                '<option value="1">1</option>' +
-                                                '<option value="2">2</option>' +
-                                                '<option value="3">3</option>' +
-                                                '<option value="4">4</option>' +
-                                                '<option value="5">5</option>' +
-                                            '</select>' +
-                                            '<p class="review">(2 review)</p>' +
-                                    '</div></div></div>' +
-                                '<div class="ui right floated sub-description">' +
-                                    '<p></p>' +
-                                '</div>' +
-                            '</div></div></div>';
-        return item;
-    };
-
-    var displayProduct = function(jsonArray) {
-        var urlQuery = getUrlVars();
-        var targetElement = $('.ui.tab.segment[data-tab="' + urlQuery + '"');
-
-        //remove exiting item
-        targetElement.empty();
-
-        //check if no data for the selected tab
-        if(jsonArray.length <= 0) {
-            var text = '<h3 class="ui header">There is no data avaliable for ' + urlQuery.slice(urlQuery.indexOf('/')+1) + '</h3>';
-            targetElement.append(text);
-            return;
-        }
-
-        //empty item list
-        var itemList = $('<div class="ui divided items">');
-
-        var template;
-
-        //add individual item into item list
-        $.each(jsonArray, function(index, obj) {
-            //use the item template
-            template = itemTemplate(obj.itemId, obj.url, obj.title, obj.price);
-
-            //add item to item list
-            itemList.append(template);
-        });
-
-        //add item list to the active tab
-        targetElement.append(itemList);
-    };
-
     //send request to product.php for items
     var loadProductData = function() {
         var urlQuery = getUrlVars();
@@ -124,11 +55,8 @@ var main = function() {
             data: {category: urlQuery},
             success: function(data) {
                 if(data) {
-                    console.log(data);
+                    
                     //display items
-                    //displayProduct(data);
-                    console.log(data);
-
                     vm.items(data);
                 }
                 else {
