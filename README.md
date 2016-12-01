@@ -1,5 +1,9 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.19 released 11/30/2016
+- Implemented Knockout JS to autochange display (for modifying quantity of items in cart)
+- Modified beginner gears page
+
 Version 1.0.18 released 11/25/2016
 - Implemented My Account page
 - Added user avatar when logged in
