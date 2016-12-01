@@ -1,14 +1,19 @@
 var main = function () {
-	//return id of item
+
+
+    //return id of item
     var getUrlId = function () {
         var queryIndex = window.location.href.indexOf('?'),
             id = window.location.href.slice(queryIndex + 1);
+
+            //remove "id="
+            id = id.slice(id.indexOf('=')+1);
 
         return id;
     };
 
     var quantity = 0,
-    	itemId = getUrlId();
+        itemId = getUrlId();
 
     var displayProduct = function(data) {
         $('#title').html(data.title);
@@ -27,10 +32,7 @@ var main = function () {
     };
 
     //send request to product.php for item detail
-    var loadItemDetail = function() {
-        var itemId = getUrlId();
-        itemId = itemId.slice(itemId.indexOf('=')+1);
-        console.log('"' + itemId + '"');
+    var loadItemDetail = function() {       
 
         $.get({
             url: './php/product.php',
@@ -39,7 +41,6 @@ var main = function () {
                 if(data) {
                     //display items
                     displayProduct(data);
-                    console.log(data);
                 }
                 else {
                     console.log('cannot load data');
@@ -53,32 +54,45 @@ var main = function () {
     //dropdown for quantity
     $('.ui.dropdown').dropdown();
 
+
     //add to cart button clicked
     $('#addToCartButton').on('click', function() {
-    	console.log("button clicked");
-        /*
+
+        //get userId from cookie
+        var userId = $.cookie('userId');
+        var quantity = $('#quantity-dropdown .text').text();
+
+        var items = [];
+        //push item array
+        items.push({itemId: itemId, quantity: quantity});
+
+        console.log(items);
+
+
+        
         $.ajax({
-            url:'./php/addToCart.php',
+            url:'./php/shoppingcart.php',
             method:'POST',
-            data:{itemId: itemId},
+            data:{userId: userId, method: 'insert', items: items},
             dataType: 'json',
-            contentType: 'application/json',
             cache: false,
             success:function(data) {
                 if(data) {
                     //display the item had add to cart
-                    console.log("item added to shopping cart");
+                    console.log(data);
                 }
                 else {
                     console.log('cannot load data');
                 }
             }
         });
-        */
+        
     });
-
-    
-
 };
 
-$(document).ready(main);
+$(document).ready(function() {
+    //load jquery cookie before check login
+    $.getScript("javascript/jquery.cookie.js", function(){
+        main();
+    });
+});

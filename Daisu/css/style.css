@@ -261,13 +261,10 @@ i.cart.icon {
     margin: 0 auto;
 }
 
-#column-product #price {
+.price {
     color: #b12704;
 }
 
-.twelve.wide.column .price {
-    color: #b12704;
-}
 
 #quantity-dropdown {
     width: 2em;

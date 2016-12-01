@@ -21,7 +21,7 @@ var main = function() {
                     if(data.numberOfItems > 0) {
                         
                         //display items
-                        vm.cartItems(data.items);                           
+                        vm.cartItems(data.items);                       
 
                         cartItemFunctions();
                     } else {
@@ -133,13 +133,16 @@ var main = function() {
                 totalItems += parseInt(item.quantity);
             });
 
+            //update total number of item to viewMobel
             vm.cartItemNumber(totalItems);
+            //update cart item number in menu bar
             $('#itemcount').html(totalItems);
 
             //change number of item in cookie
             $.cookie('cartCount', totalItems, { path: '/' });
 
-            return '$' + subTotal;
+            //return the total price to display
+            return '$' + subTotal.toFixed(2);
         })
     };
 

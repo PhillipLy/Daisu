@@ -165,7 +165,7 @@
                     $resultSuccess = false;
 
                     //check if user already have item
-                    if(check($userId, $item['itemid'])) {
+                    if(check($userId, $item['itemId'])) {
                         //edit exiting item quantity
                         $resultSuccess = update($userId, $item['itemId'], $item['quantity']);
                     } 
