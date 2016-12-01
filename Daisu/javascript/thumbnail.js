@@ -6,6 +6,38 @@ var main = function() {
         linkQuery: function(itemId) {
             var link = 'product?id=' + itemId;
             return link;
+        }, 
+        addToCartButton: function(item, event) {
+            console.log(this);
+            //get quantity element to extract quantity value
+            var quantityElement = $(event.target).prev(),
+                quantity = $(quantityElement).find('.text').text();
+
+            //get userId from cookie and itemId from item
+            var userId = $.cookie('userId'),
+                itemId = item.itemId;
+
+            var items = [];
+            //push item array
+            items.push({itemId: itemId, quantity: quantity});
+
+            //send request to add item to shopping cart
+            $.ajax({
+                url:'./php/shoppingcart.php',
+                method:'POST',
+                data:{userId: userId, method: 'insert', items: items},
+                dataType: 'json',
+                cache: false,
+                success:function(data) {
+                    if(data) {
+                        //display the item had add to cart
+                        console.log(data);
+                    }
+                    else {
+                        console.log('cannot load data');
+                    }
+                }
+            });
         }
     };
 
@@ -27,6 +59,11 @@ var main = function() {
             initialRating: 1,
             readonly: true
         });
+/*
+        $('.item #addToCartButton').on('click', function(event){
+            console.log('button click');
+            console.log($(this).parent());
+        });*/
     };
 
     //return query variables that in the url

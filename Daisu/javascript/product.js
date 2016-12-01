@@ -67,8 +67,6 @@ var main = function () {
         items.push({itemId: itemId, quantity: quantity});
 
         console.log(items);
-
-
         
         $.ajax({
             url:'./php/shoppingcart.php',
