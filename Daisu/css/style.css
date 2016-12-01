@@ -243,8 +243,7 @@ i.cart.icon {
 }
 
 .three.wide.column .segment .selection.dropdown {
-    min-width: 3em;
-    min-height: 1em;
+    
 }
 
 .ui.tab.segment.active {
@@ -270,8 +269,10 @@ i.cart.icon {
     color: #b12704;
 }
 
-#shoppingCartList .selection.dropdown {
+#quantity-dropdown {
     width: 2em;
+    min-width: 3em;
+    min-height: 1em;
 }
 
 #cart-segment {
@@ -282,4 +283,13 @@ i.cart.icon {
     height: 124px;
     width: auto;
     margin: 0 auto;
+}
+
+#quantity-label {
+    display:inline;
+    margin: auto 0.5em;
+}
+
+.three.column .segment .quantity-container {
+    margin: 0.5em 1em 0;
 }

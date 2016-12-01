@@ -199,16 +199,24 @@
                                             <option value="4">4</option>
                                             <option value="5">5</option>
                                         </select>
-                                        <p class="review">(2 review)</p>
+                                        <p class="review" >(<span data-bind="text: $root.review"></span> review<span data-bind="visible: $root.review() > 1"></span>)</p>
                                     </div>
                                 </div>
                             </div>
                             <div class="ui right floated sub-description">
                                 <div class="quantity">
-                                    <p>QTY</p>
-                                    <input type="text" name="quantity" value="1">
+                                    <p id="quantity-label">Qty</p>
+                                    <div class="ui selection dropdown" id="quantity-dropdown">
+                                        <i class="dropdown icon"></i>
+                                        <div class="text">1</div>
+                                        <div class="menu">
+                                            <div class="item active selected" data-value="1">1</div>
+                                            <div class="item" data-value="2">2</div>
+                                            <div class="item" data-value="3">3</div>
+                                        </div>
+                                    </div>
                                 </div>
-                                <button>Add to Cart</button>
+                                <button id="addToCartButton" class="ui button">Add to Cart</button>
 
                             </div>
                         </div>

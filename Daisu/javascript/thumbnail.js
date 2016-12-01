@@ -1,6 +1,8 @@
 var main = function() {
     var vm = {
         items: ko.observableArray(),
+        //detele later after items have review obj
+        review: ko.observable('0'),
         linkQuery: function(itemId) {
             var link = 'product?id=' + itemId;
             return link;
@@ -8,6 +10,24 @@ var main = function() {
     };
 
     ko.applyBindings(vm);
+
+    var enableFunctions = function() {
+        //display items when click
+        $('a.item').on('click', function() {
+            loadProductData();
+        });
+
+        //dropdown for quantity
+        $('.ui.dropdown').dropdown();    
+
+        //enable star rating
+        $('#thumbnail .thirteen.column .item #rating').barrating({
+            theme: 'fontawesome-stars-o',
+            showSelectedRating: false,
+            initialRating: 1,
+            readonly: true
+        });
+    };
 
     //return query variables that in the url
     var getUrlVars = function () {
@@ -28,24 +48,6 @@ var main = function() {
         $(element + ' .title').toggleClass('active');
         $(element + ' .content').toggleClass('active');
     };
-
-    
-    //active accordion
-    $('.accordion.menu').accordion();
-
-    //enable left side tab
-    $('#thumbnail .three.wide.column .menu .content .item').tab({
-        context: $('#thumbnail .thirteen.wide.column'),
-        history : true
-    });
-
-    //enable star rating
-    $('#thumbnail .thirteen.column .item #rating').barrating({
-        theme: 'fontawesome-stars-o',
-        showSelectedRating: false,
-        initialRating: '',
-        readonly: true
-    });
     
     //send request to product.php for items
     var loadProductData = function() {
@@ -58,6 +60,10 @@ var main = function() {
                     
                     //display items
                     vm.items(data);
+                    vm.review('0');
+
+                    //enable function after load products
+                    enableFunctions();
                 }
                 else {
                     console.log('cannot load data');
@@ -70,10 +76,15 @@ var main = function() {
     //display the first load
     loadProductData();    
 
-    //display items when click
-    $('a.item').on('click', function() {
-        loadProductData();
+    //active accordion
+    $('.accordion.menu').accordion();
+
+    //enable left side tab
+    $('#thumbnail .three.wide.column .menu .content .item').tab({
+        context: $('#thumbnail .thirteen.wide.column'),
+        history : true
     });
+    
 };
 
 $(document).ready(main);
