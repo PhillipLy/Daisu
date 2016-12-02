@@ -30,6 +30,10 @@
     function get($userId) {
         global $connect;
 
+        /***************************************************
+        * get cart items
+        ***************************************************/
+
         $sql = "SELECT * 
                 FROM `shoppingcart` cart 
                 LEFT JOIN `item` item 
@@ -40,9 +44,11 @@
 
         $num_row = mysqli_num_rows($result);
 
-        $cartItems = array( 'userId' => $userId,
+        $shoppingCartItems = array( 'userId' => $userId,
                             'numberOfItems' => $num_row, 
-                            'items' => '');
+                            'items' => '',
+                            'numberOfSaveItems' => '',
+                            'saveItems' => '');
 
         $items = [];
 
@@ -61,12 +67,49 @@
 
                 array_push($items, $arr);
             }
-        } 
+        }
+
+        //add items to cart items
+        $shoppingCartItems['items'] = $items;
+
+        /***************************************************
+        * get save later list
+        ***************************************************/
+        $sqlSaveLater = "SELECT * 
+                FROM `saveforlater` save 
+                LEFT JOIN `item` item 
+                ON save.itemid=item.itemid 
+                WHERE userid = '" . $userId . "'";
+
+        $resultSaveLater = mysqli_query($connect, $sqlSaveLater);
+
+        $numRowSaveLater = mysqli_num_rows($resultSaveLater);
+
+        $shoppingCartItems['numberOfSaveItems'] = $numRowSaveLater;
+
+        $saveItems = [];
+
+        if($numRowSaveLater > 0) {
+            //loop for each item in user cart 
+            while($data = mysqli_fetch_array($resultSaveLater)) {
+
+                $arr = array( 'itemId' => $data["itemid"],
+                            'title' => $data["productname"],
+                            'brand' => $data["brand"],
+                            'price' => $data["price"],
+                            'color' => $data["color"],
+                            'url' => $data["picturelink"]);
+                $arr = array_map('utf8_encode', $arr);
+
+                array_push($saveItems, $arr);
+            }
+        }
         
-        $cartItems['items'] = $items;
+        //add items to cart items
+        $shoppingCartItems['saveItems'] = $saveItems;
 
         //return search result
-        echo json_encode($cartItems);
+        echo json_encode($shoppingCartItems);
     }
 
     //delete one already exit item
@@ -79,17 +122,13 @@
         //execute sql query
         mysqli_query($connect, $sql);
 
-        //check number of row has deleting
-        $num = mysqli_affected_rows($connect);
+        $result = false;
 
-        $resultMsg = array('result' => 'false');
-
-        if($num) {
-            $resultMsg['result'] = 'true';
+        if(mysqli_affected_rows($connect) > 0) {
+            $result = true;
         }
 
-        //return delete result
-        echo json_encode($resultMsg);
+        return $result;
     }
 
     // add item to user cart
@@ -131,6 +170,43 @@
         return $result;
     }
 
+    function deleteSaveLater($userId, $itemId) {
+        global $connect;
+
+        $sql = "DELETE FROM `saveforlater` 
+                WHERE userid = '" . $userId . "' AND itemid = '" . $itemId ."'";
+
+        //execute sql query
+        mysqli_query($connect, $sql);
+
+        $result = false;
+
+        //check number of row has affected
+        if(mysqli_affected_rows($connect) > 0) {
+            $result = true;
+        }
+
+        return $result;
+    }
+
+    function insertSaveLater($userId, $itemId) {
+        global $connect;
+
+        $sql = "INSERT INTO `saveforlater`(userid, itemid) 
+                VALUES ('" . $userId . "', '" . $itemId ."')";
+
+        //execute sql query
+        mysqli_query($connect, $sql);
+
+        $result = false;
+
+        if(mysqli_affected_rows($connect) > 0) {
+            $result = true;
+        }
+
+        return $result;
+    }
+
     if(isset($_POST["userId"])) {
         $userId = mysqli_real_escape_string($connect, $_POST["userId"]);
         $method = mysqli_real_escape_string($connect, $_POST["method"]);
@@ -142,13 +218,83 @@
                 get($userId);
                 break;
 
-            case 'delete':
-                // delete user item in cart
-                for ($i = 0; $i< count($items); $i++) {
-                    $item = $items[$i];
+            case 'deleteSaveLater':
+                $item = $items[0];
 
-                    delete($userId, $item['itemId']);
+                $requestResult = deleteSaveLater($userId, $item['itemId']);
+
+                $result = array('result' => 'fail');
+
+                if($requestResult) {
+                    $result['result'] = 'success';
                 }
+                
+                //send back list of insert or update items
+                echo json_encode($result);
+                break;
+
+            case 'moveToCart':
+                    $item = $items[0];
+
+                    //delete item on save later
+                    $saveLaterResult = deleteSaveLater($userId, $item['itemId']);
+
+                    //add item to shopping cart
+                    $cartResult = insert($userId, $item['itemId'], '1');
+
+                    $result = array('saveItem' => 'fail', 'cartItem' => 'fail');
+
+                    if($saveLaterResult) {
+                        $result['saveItem'] = 'success';
+                    }
+
+                    if($cartResult) {
+                        $result['cartItem'] = 'success';
+                    }
+                    
+                    //send back of move to cart
+                    echo json_encode($result);
+
+                break;
+
+            case 'saveForLater':
+                $item = $items[0];
+
+                //delete item in shopping cart
+                $cartResult = delete($userId, $item['itemId']);
+
+                //add item to save later
+                $saveLaterResult = insertSaveLater($userId, $item['itemId']);
+
+                $result = array('saveItem' => 'fail', 'cartItem' => 'fail');
+
+                if($saveLaterResult) {
+                    $result['saveItem'] = 'success';
+                }
+
+                if($cartResult) {
+                    $result['cartItem'] = 'success';
+                }
+
+                //send back result of save item later
+                echo json_encode($result);
+                
+                break;
+
+            case 'delete':
+                $item = $items[0];
+
+                $deleteResult = delete($userId, $item['itemId']);
+
+                $result = array('result' => 'fail');
+
+                if($deleteResult) {
+                    $result['result'] = 'success';
+                }
+                
+                //send back list of insert or update items
+                echo json_encode($result);
+                
                 break;
 
             case 'insert':

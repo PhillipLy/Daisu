@@ -120,7 +120,12 @@ i.cart.icon {
 }
 
 .ten.wide.column > h3, p{
+    color: black;
     text-align: left;
+}
+
+#shoppingCartList a {
+    color: black;
 }
 
 .ui.fixed.menu+.ui.grid {
@@ -276,7 +281,7 @@ i.cart.icon {
     min-height: 56%;
 }
 
-#shoppingCartList .item img {
+#cart-segment .item img {
     height: 124px;
     width: auto;
     margin: 0 auto;

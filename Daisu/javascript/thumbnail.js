@@ -46,7 +46,7 @@ var main = function() {
     var enableFunctions = function() {
         //display items when click
         $('a.item').on('click', function() {
-            loadProductData();
+            location.reload();
         });
 
         //dropdown for quantity
@@ -59,11 +59,6 @@ var main = function() {
             initialRating: 1,
             readonly: true
         });
-/*
-        $('.item #addToCartButton').on('click', function(event){
-            console.log('button click');
-            console.log($(this).parent());
-        });*/
     };
 
     //return query variables that in the url
@@ -78,17 +73,20 @@ var main = function() {
 
     //active accordion base on tab that passed in url 
     var categoryTab = getUrlVars();
-    categoryTab = categoryTab.slice(0, categoryTab.indexOf('/'));
-    if (categoryTab) {
-        var element = ".item." + categoryTab;
-        console.log(element);
+    if (categoryTab) {        
+
+        var element = ".item." + categoryTab.slice(0, categoryTab.indexOf('/'));
+        //active the category tab
         $(element + ' .title').toggleClass('active');
         $(element + ' .content').toggleClass('active');
+
+        //active the sub category tab
+        $(element).find('a.item[data-tab="' + categoryTab +'"]').toggleClass('active');
     };
     
     //send request to product.php for items
     var loadProductData = function() {
-        var urlQuery = getUrlVars();
+        var urlQuery = categoryTab;
         $.get({
             url: './php/thumbnail.php',
             data: {category: urlQuery},
@@ -98,6 +96,7 @@ var main = function() {
                     //display items
                     vm.items(data);
                     vm.review('0');
+                    console.log(data);
 
                     //enable function after load products
                     enableFunctions();
@@ -115,12 +114,6 @@ var main = function() {
 
     //active accordion
     $('.accordion.menu').accordion();
-
-    //enable left side tab
-    $('#thumbnail .three.wide.column .menu .content .item').tab({
-        context: $('#thumbnail .thirteen.wide.column'),
-        history : true
-    });
     
 };
 

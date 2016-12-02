@@ -14,20 +14,15 @@ var main = function() {
             dataType: 'json',
             cache: false,
             success:function(data) {
-                if(data) {
-                    var targetElement = $('#shoppingCartList');
+                if(data) {                        
+                    //display items
+                    vm.cartItems(data.items);
+                    console.log(data);
 
-                    //check user have item in cart
-                    if(data.numberOfItems > 0) {
-                        
-                        //display items
-                        vm.cartItems(data.items);                       
+                    vm.saveItemNumber(data.numberOfSaveItems);
+                    vm.saveItems(data.saveItems);
 
-                        cartItemFunctions();
-                    } else {
-                        //display the cart is empty
-                        targetElement.append('<h2 class="ui header">Your Shopping Cart is empty.</h2>');
-                    }
+                    cartItemFunctions();
                 }
                 else {
                     console.log('cannot load data');
@@ -39,41 +34,19 @@ var main = function() {
     //load cart items after get in shopping cart page
     loadCartData();
 
-    //update item
-    var updateItem = function(itemId, quantity) {
+
+    //requests to server
+    var shoppingCartRequest = function(data) {
         var items = [];
-        //push item array
-        items.push({itemId: itemId, quantity: quantity});
+        items.push({itemId: data.itemId, quantity: data.quantity});
+
+        var method = data.method;
 
         //user ajax to send POST request
         $.ajax({
             url:'./php/shoppingCart.php',
             method:'POST',
-            data:{userId: userId, method: 'update', items: items},
-            dataType: 'json',
-            cache: false,
-            success:function(data) {
-                if(data) {
-                    console.log(data);
-                    loadCartData();
-                }
-                else {
-                    console.log('cannot load data');
-                }
-            }
-        });
-    };
-
-    //detele item
-    var deleteItem = function(itemId) {
-        var items = [];
-        items.push({itemId: itemId});
-
-        //user ajax to send POST request
-        $.ajax({
-            url:'./php/shoppingCart.php',
-            method:'POST',
-            data:{userId: userId, method: 'delete', items: items},
+            data:{userId: userId, method: method, items: items},
             dataType: 'json',
             cache: false,
             success:function(data) {
@@ -94,32 +67,45 @@ var main = function() {
     };
 
     var vm = {
-        changeQty: ko.observable(),
         cartItems: ko.observableArray(),
+        saveItems: ko.observableArray([]),
         ItemQty: ko.observable(10),
         subTotal: ko.observable(0),
         cartItemNumber: ko.observable(0),
-        removeItem: function() {
+        saveItemNumber: ko.observable(0),
+        deleteCartItem: function() {
+            var data = {itemId: this['itemId'], quantity: '', method: 'delete'};
+            
             // send request to delete the item
-            deleteItem(this['itemId']);
-
-            //remove the item want to delete
-            vm.cartItems.remove(this);
+            shoppingCartRequest(data);
         },
-        saveLater: function() {
-            // send request to save the item
-
-            //remove the item want to saved
-            vm.cartItems.remove(this);
+        saveForLater: function() {
+            var data = {itemId: this['itemId'], quantity: '', method: 'saveForLater'};
+            
+            // send request to delete the item
+            shoppingCartRequest(data);
+        },
+        deleteSaveLater: function() {
+            var data = {itemId: this['itemId'], quantity: '', method: 'deleteSaveLater'};
+            
+            // send request to delete the item
+            shoppingCartRequest(data);
+        },
+        moveToCart: function() {
+            var data = {itemId: this['itemId'], quantity: '1', method: 'moveToCart'};
+            
+            // send request to delete the item
+            shoppingCartRequest(data);
         },
         changeQty: function() {
             var targetItem = this;
-            //var index = jQuery.inArray(targetItem, vm.cartItems());
 
              $('.ui.dropdown').dropdown({
                 onChange: function(value, text, $selectedItem) {
+                    var data = {itemId: targetItem['itemId'], quantity: text, method: 'update'};
+                    
                     //send request to change selected item quantity
-                    updateItem(targetItem['itemId'], text);
+                    shoppingCartRequest(data);
                 }
             });            
         },
@@ -143,7 +129,11 @@ var main = function() {
 
             //return the total price to display
             return '$' + subTotal.toFixed(2);
-        })
+        }),
+        linkQuery: function(itemId) {
+            var link = 'product?id=' + itemId;
+            return link;
+        }
     };
 
     ko.applyBindings(vm);
