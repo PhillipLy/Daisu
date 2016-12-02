@@ -20,57 +20,168 @@
 
 
    <!-- Page Contents-->
-    <div class="pusher dimmed">
-    <div class="ui vertical center aligned segment">
-        <h1 class="ui header">Checkout - Address</h1>
-    </div>
-        <div class="ui vertical center aligned segment">
-            <div class="ui horizontal segments">
-                <div class="ui segments">
-                    <div class="ui segment">
-                        <h2>Confirm Shipping Address</h2>
-                    </div>
-                        <div class="ui segments">
-                            <div class="ui segment">
-                                <b>Your personal details</b>
-                            </div>
-                            <div class="ui segment">
-                                <b>Username for product reviews</b>
-                            </div>
-                            <div class="ui segment">
-                                <b>Manage your payment methods</b>
-                            </div>
-                            <div class="ui segment">
-                                <b>Communication preferences</b>
-                            </div>
-                            <div class="ui segment">
-                                <b>Change password</b>
-                            </div>
-                            <div class="ui segment">
-                                <b>Manage your payment methods</b>
-                            </div>
-                        </div>
-                </div>
-                <div class="ui segments">
-                    <div class="ui segment">
-                        <h2>Order Summary</h2>
-                    </div>
-                        <div class="ui segments">
-                            <div class="ui segment">
-                                <b>View Your purchase history</b>
-                            </div>
-                            <div class="ui segment">
-                                <b>Return or replace items</b>
-                            </div>
-                            <div class="ui segment">
-                                <b>Look up your Annual Dividend</b>
-                            </div>
-                        </div>
-                </div>  
- 
-            </div> 
+<div class="ui segment" id="thumbnail">
+    <div class="ui three top attached steps">
+      <div class="step">
+        <i class="truck icon"></i>
+        <div class="content">
+          <div class="title">Shipping</div>
+          <div class="description">Choose your shipping options</div>
         </div>
+      </div>
+      <div class="active step">
+        <i class="payment icon"></i>
+        <div class="content">
+          <div class="title">Billing</div>
+          <div class="description">Enter billing information</div>
+        </div>
+      </div>
+      <div class="disabled step">
+        <i class="info icon"></i>
+        <div class="content">
+          <div class="title">Confirm Order</div>
+          <div class="description">Verify order details</div>
+        </div>
+      </div>
     </div>
+    <div class="ui attached segment">
+
+            <div class="ui segment container">
+        <h2 class="ui header" align="center">Confirm Shipping Address</h2>
+        <div class="ui grid">
+            <div class="ten wide column">
+                <div class="ui segment">
+
+                    <form class="ui form">
+                          <h3 class="ui dividing header" align="center">Shipping Information</h3>
+                          <div class="field">
+                            <label>Name</label>
+                            <div class="two fields">
+                              <div class="field">
+                                <input name="shipping[first-name]" placeholder="First Name" type="text">
+                              </div>
+                              <div class="field">
+                                <input name="shipping[last-name]" placeholder="Last Name" type="text">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="field">
+                            <label>Billing Address</label>
+                            <div class="one field">
+                              <div class="field">
+                                <input name="shipping[address]" placeholder="Street Address" type="text">
+                              </div>
+                            </div>
+                          </div>
+                          <div class="two fields">
+                            <div class="field">
+                              <label>State</label>
+                              <select class="ui fluid dropdown">
+                                <option value="">State</option>
+                                <option value="AL">Alabama</option>
+                                <option value="AK">Alaska</option>
+                                <option value="AZ">Arizona</option>
+                                <option value="AR">Arkansas</option>
+                                <option value="CA">California</option>
+                                <option value="CO">Colorado</option>
+                                <option value="CT">Connecticut</option>
+                                <option value="DE">Delaware</option>
+                                <option value="DC">District Of Columbia</option>
+                                <option value="FL">Florida</option>
+                                <option value="GA">Georgia</option>
+                                <option value="HI">Hawaii</option>
+                                <option value="ID">Idaho</option>
+                                <option value="IL">Illinois</option>
+                                <option value="IN">Indiana</option>
+                                <option value="IA">Iowa</option>
+                                <option value="KS">Kansas</option>
+                                <option value="KY">Kentucky</option>
+                                <option value="LA">Louisiana</option>
+                                <option value="ME">Maine</option>
+                                <option value="MD">Maryland</option>
+                                <option value="MA">Massachusetts</option>
+                                <option value="MI">Michigan</option>
+                                <option value="MN">Minnesota</option>
+                                <option value="MS">Mississippi</option>
+                                <option value="MO">Missouri</option>
+                                <option value="MT">Montana</option>
+                                <option value="NE">Nebraska</option>
+                                <option value="NV">Nevada</option>
+                                <option value="NH">New Hampshire</option>
+                                <option value="NJ">New Jersey</option>
+                                <option value="NM">New Mexico</option>
+                                <option value="NY">New York</option>
+                                <option value="NC">North Carolina</option>
+                                <option value="ND">North Dakota</option>
+                                <option value="OH">Ohio</option>
+                                <option value="OK">Oklahoma</option>
+                                <option value="OR">Oregon</option>
+                                <option value="PA">Pennsylvania</option>
+                                <option value="RI">Rhode Island</option>
+                                <option value="SC">South Carolina</option>
+                                <option value="SD">South Dakota</option>
+                                <option value="TN">Tennessee</option>
+                                <option value="TX">Texas</option>
+                                <option value="UT">Utah</option>
+                                <option value="VT">Vermont</option>
+                                <option value="VA">Virginia</option>
+                                <option value="WA">Washington</option>
+                                <option value="WV">West Virginia</option>
+                                <option value="WI">Wisconsin</option>
+                                <option value="WY">Wyoming</option>
+                                  </select>
+                                </div>
+
+                                <div class="field">
+                                    <label>Zip/Postal Code</label>
+                                    <input name="shipping[zip-code]" placeholder="Zip/Postal Code" type="text">
+                                </div>
+
+                            <div class="field">
+                                <label>Phone</label>
+                            <div class="one field">
+                              <div class="field">
+                                <input name="shipping[phone]" placeholder="Phone" type="text">
+                              </div>
+                            </div>
+                            </div>
+
+                        </div>
+
+                    </form>               
+                </div>
+            </div>
+
+            <div class="six wide column">     
+                    <div class="ui segment">
+                         <form class="ui form">
+                              <h3 class="ui dividing header" align="center">Order Summary</h3>
+                                    <div class="field">
+
+                                    </div>
+                                    <div class="field">
+                                        <label>Subtotal:</label>
+                                    </div>
+                                    <div class="field">
+                                        <label>Tax:</label>
+                                    </div>
+                                    <div class="field">
+                                        <label>Shipping:</label>
+                                    </div>
+                                    <div class="field">
+                                        <label>Total:</label>
+                                    </div>
+
+                          </form>
+                    
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>   
+</div>
 
 
         <!-- footer -->
