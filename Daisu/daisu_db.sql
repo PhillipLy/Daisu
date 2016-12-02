@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Nov 22, 2016 at 05:42 AM
+-- Generation Time: Dec 02, 2016 at 09:03 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -151,6 +151,28 @@ INSERT INTO `item` (`itemid`, `productname`, `brand`, `price`, `category`, `colo
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `saveforlater`
+--
+
+CREATE TABLE `saveforlater` (
+  `userid` int(10) UNSIGNED NOT NULL,
+  `itemid` int(10) UNSIGNED NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `saveforlater`
+--
+
+INSERT INTO `saveforlater` (`userid`, `itemid`) VALUES
+(2, 1),
+(2, 2),
+(2, 3),
+(2, 4),
+(2, 5);
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `shoppingcart`
 --
 
@@ -234,6 +256,14 @@ ALTER TABLE `item`
   ADD PRIMARY KEY (`itemid`);
 
 --
+-- Indexes for table `saveforlater`
+--
+ALTER TABLE `saveforlater`
+  ADD PRIMARY KEY (`userid`,`itemid`),
+  ADD KEY `userid` (`userid`),
+  ADD KEY `itemid` (`itemid`);
+
+--
 -- Indexes for table `shoppingcart`
 --
 ALTER TABLE `shoppingcart`
@@ -290,6 +320,13 @@ ALTER TABLE `user`
 --
 ALTER TABLE `detail`
   ADD CONSTRAINT `detail_ibfk_1` FOREIGN KEY (`itemid`) REFERENCES `item` (`itemid`) ON DELETE CASCADE ON UPDATE CASCADE;
+
+--
+-- Constraints for table `saveforlater`
+--
+ALTER TABLE `saveforlater`
+  ADD CONSTRAINT `saveforlater_ibfk_1` FOREIGN KEY (`userid`) REFERENCES `user` (`userid`),
+  ADD CONSTRAINT `saveforlater_ibfk_2` FOREIGN KEY (`itemid`) REFERENCES `item` (`itemid`);
 
 --
 -- Constraints for table `shoppingcart`
