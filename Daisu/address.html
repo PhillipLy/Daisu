@@ -22,14 +22,14 @@
    <!-- Page Contents-->
 <div class="ui segment" id="thumbnail">
     <div class="ui three top attached steps">
-      <div class="step">
+      <div class="active step">
         <i class="truck icon"></i>
         <div class="content">
           <div class="title">Shipping</div>
           <div class="description">Choose your shipping options</div>
         </div>
       </div>
-      <div class="active step">
+      <div class="disabled step">
         <i class="payment icon"></i>
         <div class="content">
           <div class="title">Billing</div>
@@ -159,17 +159,28 @@
                                     <div class="field">
 
                                     </div>
-                                    <div class="field">
-                                        <label>Subtotal:</label>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header subtotal">Subtotal(
+                                                <span id="subtotal-items" data-bind="text: cartItemNumber">0</span>item<span data-bind="visible: cartItemNumber() > 1">s</span>):
+                                                <span id="subtotal-price" class="price" data-bind="text: computeTotal"></span>
+                                            </h4>
+                                        </div>
                                     </div>
-                                    <div class="field">
-                                        <label>Tax:</label>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header">Tax:</h4>
+                                        </div>
                                     </div>
-                                    <div class="field">
-                                        <label>Shipping:</label>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header">Shipping:</h4>
+                                        </div>
                                     </div>
-                                    <div class="field">
-                                        <label>Total:</label>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header">Total:</h4>
+                                        </div>
                                     </div>
 
                           </form>
@@ -177,11 +188,70 @@
                     </div>
                 </div>
 
+
+                    <div class="ten wide column">
+                        <div class="ui segment">
+
+                            <form class="ui form">
+                                  <h3 class="ui dividing header" align="center">Shipping Method</h3>
+
+                                  <div class="ui form">
+        
+                                      <div class="grouped fields">
+                                        <label for="shippingMethod">Select a shipping method. Please allow for 1-2 days for processing, pending product availability
+                                        and verification. 
+                                        </label>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" checked="" tabindex="0" class="hidden" type="radio">
+                                            <label>Free Shipping (5-9 business days) $0.00</label>
+                                          </div>
+                                        </div>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" tabindex="0" class="hidden" type="radio">
+                                            <label>Standard Shipping (3 business days) $6.99</label>
+                                          </div>
+                                        </div>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" tabindex="0" class="hidden" type="radio">
+                                            <label>Express shipping (2 business days) $8.99</label>
+                                          </div>
+                                        </div>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" tabindex="0" class="hidden" type="radio">
+                                            <label>Next day Delivery $19.99</label>
+                                          </div>
+                                        </div>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" tabindex="0" class="hidden" type="radio">
+                                            <label>Saturday Delivery $29.99</label>
+                                          </div>
+                                        </div>
+
+                                      </div>
+
+                                    </div>
+                        </div>
+                    </div>
+
+                    </div>
+
+                 </form>               
+                </div>
+            </div>    
+
+
             </div>
         </div>
 
     </div>   
 </div>
+
+
 
 
         <!-- footer -->
