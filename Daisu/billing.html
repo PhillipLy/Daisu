@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    
+    <!--
+    CPSC 362 Software Engineering
+    Developers: Arun Sangar, Abraham Ludlam, Josh Marvel, TeviSophea Heng, Tony Dao
+    Project Manager / Developer: Phillip Ly
+    -->
+        <title>Daisu</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="semantic/dist/semantic.min.css">    
+        <link rel="stylesheet" type="text/css" href="css/style.css">  
+    </head>
+
+    <body>
+        <!-- Following menu-->
+        <div class="ui segment" id="master-menu"></div>
+
+
+   <!-- Page Contents-->
+<div class="ui segment" id="thumbnail">
+    <div class="ui three top attached steps">
+      <div class="disabled step">
+        <i class="truck icon"></i>
+        <div class="content">
+          <div class="title">Shipping</div>
+          <div class="description">Choose your shipping options</div>
+        </div>
+      </div>
+      <div class="active step">
+        <i class="payment icon"></i>
+        <div class="content">
+          <div class="title">Billing</div>
+          <div class="description">Enter billing information</div>
+        </div>
+      </div>
+      <div class="disabled step">
+        <i class="info icon"></i>
+        <div class="content">
+          <div class="title">Confirm Order</div>
+          <div class="description">Verify order details</div>
+        </div>
+      </div>
+    </div>
+    <div class="ui attached segment">
+
+            <div class="ui segment container">
+        <h2 class="ui header" align="center">Confirm Billing</h2>
+        <div class="ui grid">
+            <div class="ten wide column">
+                <div class="ui segment">
+
+                    <form class="ui form">
+                          <h3 class="ui dividing header" align="center">Payment Details</h3>
+
+                          <div class="field">
+                            <label>Card Type</label>
+                            <div class="ui selection dropdown">
+                              <input name="card[type]" type="hidden">
+                              <div class="default text">Type</div>
+                              <i class="dropdown icon"></i>
+                              <div class="menu">
+                                <div class="item" data-value="visa">
+                                  <i class="visa icon"></i>
+                                  Visa
+                                </div>
+                                <div class="item" data-value="amex">
+                                  <i class="amex icon"></i>
+                                  American Express
+                                </div>
+                                <div class="item" data-value="discover">
+                                  <i class="discover icon"></i>
+                                  Discover
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="fields">
+                            <div class="seven wide field">
+                              <label>Card Number</label>
+                              <input name="card[number]" maxlength="16" placeholder="Card #" type="text">
+                            </div>
+                            <div class="three wide field">
+                              <label>CVC</label>
+                              <input name="card[cvc]" maxlength="3" placeholder="CVC" type="text">
+                            </div>
+                            <div class="six wide field">
+                              <label>Expiration</label>
+                              <div class="two fields">
+                                <div class="field">
+                                  <select class="ui fluid search dropdown" name="card[expire-month]">
+                                    <option value="">Month</option>
+                                    <option value="1">January</option>
+                                    <option value="2">February</option>
+                                    <option value="3">March</option>
+                                    <option value="4">April</option>
+                                    <option value="5">May</option>
+                                    <option value="6">June</option>
+                                    <option value="7">July</option>
+                                    <option value="8">August</option>
+                                    <option value="9">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                  </select>
+                                </div>
+                                <div class="field">
+                                  <input name="card[expire-year]" maxlength="4" placeholder="Year" type="text">
+                                </div>
+                              </div>
+                            </div>
+                          </div>                         
+
+                    </form>
+
+                </div>
+            </div>
+
+            <div class="six wide column">     
+                    <div class="ui segment">
+                         <form class="ui form">
+                              <h3 class="ui dividing header" align="center">Order Summary</h3>
+                                    <div class="field">
+
+                                    </div>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header subtotal">Subtotal(
+                                                <span id="subtotal-items" data-bind="text: cartItemNumber">0</span>item<span data-bind="visible: cartItemNumber() > 1">s</span>):
+                                                <span id="subtotal-price" class="price" data-bind="text: computeTotal"></span>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header">Tax:</h4>
+                                        </div>
+                                    </div>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header">Shipping:</h4>
+                                        </div>
+                                    </div>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header">Total:</h4>
+                                        </div>
+                                    </div>
+
+
+                                      <div class="three wide column">
+                                            <button class="ui fluid labeled icon button" id="continueButton">
+                                                <i class="shop icon"></i>
+                                                Continue
+                                            </button>       
+                                     </div>
+
+                          </form>
+                    
+                    </div>
+                </div>
+
+                    </div>
+
+                 </form>               
+                </div>
+            </div>    
+
+
+            </div>
+        </div>
+
+    </div>   
+</div>
+
+
+
+        <!-- footer -->
+        <footer>
+            <div class="ui inverted vertical footer segment">
+                <div class="ui container">
+                    <div class="ui stackable inverted divided equal height stackable grid">
+                        <div class="three wide column">
+                            <h4 class="ui inverted hedaer">Products</h4>
+                            <div class="ui inverted link list">
+                                <a href="#" class="item">Gear</a>
+                                <a href="#" class="item">Clothing</a>
+                                <a href="#" class="item">Footwear</a>
+                                <a href="#" class="item">Packs</a>
+                            </div>
+                        </div>
+                        <div class="three wide column">
+                            <h4 class="ui inverted hedaer">Hiking Trail</h4>
+                            <div class="ui inverted link list">
+                                <a href="#" class="item">Mountaineering</a>
+                                <a href="#" class="item">Climbing</a>
+                                <a href="#" class="item">Hiking</a>
+                                <a href="#" class="item">Camping</a>
+                            </div>
+                        </div>
+                        <div class="three wide column">
+                            <h4 class="ui inverted hedaer">About</h4>
+                            <div class="ui inverted link list">
+                                <a href="#" class="item">About Us</a>
+                                <a href="#" class="item">Contact Us</a>
+                                <a href="#" class="item">FAQ</a>
+                            </div>
+                        </div>
+                        <div class="seven wide column">
+                            <img src="image/DAISU_ICON.png" class="footer-logo-image" alt="logo image">
+                            <h4>Explore more journey with Daisu hiking gear</h4>
+                        </div>
+                    </div>
+                </div>
+            </div>    
+        </footer>
+
+        <script src="http://code.jquery.com/jquery-2.0.3.min.js"></script>
+        <script src="semantic/dist/semantic.min.js"></script> 
+        <script src="javascript/menu.js"></script>
+        <script src="javascript/home.js"></script>
+    
+    </body>
+</html>
