@@ -1,6 +1,6 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
-Version 1.0.20 released 12/02/2016
+Version 1.0.21 released 12/02/2016
 - Added billing page (part of checkout process)
 - Added Shipping Method section (part of Shipping in checkout process)
 - Implemented database that work with save later in shopping cart
