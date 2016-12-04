@@ -29,14 +29,14 @@
           <div class="description">Choose your shipping options</div>
         </div>
       </div>
-      <div class="active step">
+      <div class="disabled step">
         <i class="payment icon"></i>
         <div class="content">
           <div class="title">Billing</div>
           <div class="description">Enter billing information</div>
         </div>
       </div>
-      <div class="disabled step">
+      <div class="active step">
         <i class="info icon"></i>
         <div class="content">
           <div class="title">Confirm Order</div>
@@ -47,75 +47,110 @@
     <div class="ui attached segment">
 
             <div class="ui segment container">
-        <h2 class="ui header" align="center">Confirm Billing</h2>
+        <h2 class="ui header" align="center">Order Details Confirmation</h2>
         <div class="ui grid">
             <div class="ten wide column">
+                  <div class="ten wide column">
                 <div class="ui segment">
 
                     <form class="ui form">
-                          <h3 class="ui dividing header" align="center">Payment Details</h3>
-
+                          <h3 class="ui dividing header" align="center">Shipping Information</h3>
                           <div class="field">
-                            <label>Card Type</label>
-                            <div class="ui selection dropdown">
-                              <input name="card[type]" type="hidden">
-                              <div class="default text">Type</div>
-                              <i class="dropdown icon"></i>
-                              <div class="menu">
-                                <div class="item" data-value="visa">
-                                  <i class="visa icon"></i>
-                                  Visa
-                                </div>
-                                <div class="item" data-value="amex">
-                                  <i class="amex icon"></i>
-                                  American Express
-                                </div>
-                                <div class="item" data-value="discover">
-                                  <i class="discover icon"></i>
-                                  Discover
-                                </div>
+                            <label>Name</label>
+                            <div class="two fields">
+                              <div class="field">
+
+                              </div>
+                              <div class="field">
+                                
                               </div>
                             </div>
                           </div>
-                          <div class="fields">
-                            <div class="seven wide field">
-                              <label>Card Number</label>
-                              <input name="card[number]" maxlength="16" placeholder="Card #" type="text">
-                            </div>
-                            <div class="three wide field">
-                              <label>CVC</label>
-                              <input name="card[cvc]" maxlength="3" placeholder="CVC" type="text">
-                            </div>
-                            <div class="six wide field">
-                              <label>Expiration</label>
-                              <div class="two fields">
-                                <div class="field">
-                                  <select class="ui fluid search dropdown" name="card[expire-month]">
-                                    <option value="">Month</option>
-                                    <option value="1">January</option>
-                                    <option value="2">February</option>
-                                    <option value="3">March</option>
-                                    <option value="4">April</option>
-                                    <option value="5">May</option>
-                                    <option value="6">June</option>
-                                    <option value="7">July</option>
-                                    <option value="8">August</option>
-                                    <option value="9">September</option>
-                                    <option value="10">October</option>
-                                    <option value="11">November</option>
-                                    <option value="12">December</option>
-                                  </select>
-                                </div>
-                                <div class="field">
-                                  <input name="card[expire-year]" maxlength="4" placeholder="Year" type="text">
-                                </div>
+                          <div class="field">
+                            <label>Billing Address</label>
+                            <div class="one field">
+                              <div class="field">
+                                
                               </div>
                             </div>
-                          </div>                         
+                          </div>
+                          <div class="two fields">
+                            <div class="field">
+                                 <label>State</label>
+                             
+                                </div>
 
-                    </form>
+                                <div class="field">
+                                    <label>Zip/Postal Code</label>
+                                    
+                                </div>
 
+                            <div class="field">
+                                <label>Phone</label>
+                            <div class="one field">
+                              <div class="field">
+                                
+                              </div>
+                            </div>
+                            </div>
+
+                        </div>
+
+                    </form>               
                 </div>
+
+
+                <div class="ui segment">
+
+                            <form class="ui form">
+                                  <h3 class="ui dividing header" align="center">Shipping Method</h3>
+
+                                  <div class="ui form">
+        
+                                      <div class="grouped fields">
+                                        <label for="shippingMethod">Select a shipping method. Please allow for 1-2 days for processing, pending product availability
+                                        and verification. 
+                                        </label>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" checked="" tabindex="0" class="hidden" type="radio">
+                                            <label>Free Shipping (5-9 business days) $0.00</label>
+                                          </div>
+                                        </div>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" tabindex="0" class="hidden" type="radio">
+                                            <label>Standard Shipping (3 business days) $6.99</label>
+                                          </div>
+                                        </div>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" tabindex="0" class="hidden" type="radio">
+                                            <label>Express shipping (2 business days) $8.99</label>
+                                          </div>
+                                        </div>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" tabindex="0" class="hidden" type="radio">
+                                            <label>Next day Delivery $19.99</label>
+                                          </div>
+                                        </div>
+                                        <div class="field">
+                                          <div class="ui radio checkbox">
+                                            <input name="shippingMethod" tabindex="0" class="hidden" type="radio">
+                                            <label>Saturday Delivery $29.99</label>
+                                          </div>
+                                        </div>
+
+                                      </div>
+
+                                  </div>
+                                </form>
+                        </div>
+
+
+            </div>
+
             </div>
 
             <div class="six wide column">     
@@ -151,14 +186,13 @@
 
 
                                       <div class="three wide column">
-                                            <a href="orderConfirm.html" class="ui fluid labeled icon button" id="continueButton"> 
-                                                <h3>Continue </h3>
-                                            </a>      
+                                             <div class="ui fluid labeled icon button" id="submitOrderButton" tabindex="0"> <h3>Submit Order </h3></div>     
                                      </div>
 
                           </form>
                     
                     </div>
+
                 </div>
 
                     </div>
