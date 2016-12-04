@@ -150,47 +150,9 @@
 
                     </form>               
                 </div>
-            </div>
-
-            <div class="six wide column">     
-                    <div class="ui segment">
-                         <form class="ui form">
-                              <h3 class="ui dividing header" align="center">Order Summary</h3>
-                                    <div class="field">
-
-                                    </div>
-                                    <div class="ui segment check-out-form">
-                                        <div class="field">
-                                            <h4 class="ui header subtotal">Subtotal(
-                                                <span id="subtotal-items" data-bind="text: cartItemNumber">0</span> item<span data-bind="visible: cartItemNumber() > 1">s</span>):
-                                                <span id="subtotal-price" class="price" data-bind="text: computeTotal"></span>
-                                            </h4>
-                                        </div>
-                                    </div>
-                                    <div class="ui segment check-out-form">
-                                        <div class="field">
-                                            <h4 class="ui header">Tax:</h4>
-                                        </div>
-                                    </div>
-                                    <div class="ui segment check-out-form">
-                                        <div class="field">
-                                            <h4 class="ui header">Shipping:</h4>
-                                        </div>
-                                    </div>
-                                    <div class="ui segment check-out-form">
-                                        <div class="field">
-                                            <h4 class="ui header">Total:</h4>
-                                        </div>
-                                    </div>
-
-                          </form>
-                    
-                    </div>
-                </div>
 
 
-                    <div class="ten wide column">
-                        <div class="ui segment">
+                <div class="ui segment">
 
                             <form class="ui form">
                                   <h3 class="ui dividing header" align="center">Shipping Method</h3>
@@ -237,20 +199,55 @@
                                   </div>
                                 </form>
                         </div>
-                    </div>
 
 
-        </div>
+            </div>
+
+
+            <div class="six wide column">     
+                    <div class="ui segment">
+                         <form class="ui form">
+                              <h3 class="ui dividing header" align="center">Order Summary</h3>
+                                    <div class="field">
+
+                                    </div>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header subtotal">Subtotal (
+                                                <span id="subtotal-items" data-bind="text: cartItemNumber">0</span> item<span data-bind="visible: cartItemNumber() > 1">s</span>) :
+                                                <span id="subtotal-price" class="price" data-bind="text: computeTotal"></span>
+                                            </h4>
+                                        </div>
+                                    </div>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header">Tax:</h4>
+                                        </div>
+                                    </div>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header">Shipping:</h4>
+                                        </div>
+                                    </div>
+                                    <div class="ui segment check-out-form">
+                                        <div class="field">
+                                            <h4 class="ui header">Total:</h4>
+                                        </div>
+                                    </div>
 
                                     <div class="three wide column">
                                              <a href="billing.html" class="ui fluid labeled icon button" id="continueButton">Continue</a>     
-                                        </div>
+                                    </div>
 
+                          </form>
+                    
+                    </div>
+                </div>
+             
+           </div>
 
-
-      </div>
+       </div>
     </div>    
-
 
             </div>
         </div>
