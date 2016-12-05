@@ -3,6 +3,7 @@
 Version 1.0.22 released 12/04/2016
 - Implemented Order Confirmation page (part of checkout process)
 - Integrated reCAPTCHA with API key in login page 
+- Styling for MyAccount page and links wish lists to Saved for later list
 
 Version 1.0.21 released 12/02/2016
 - Added billing page (part of checkout process)
