@@ -15,15 +15,16 @@
         $result = mysqli_query($connect, $sql);
 
         $num_row = mysqli_num_rows($result);
+        
+        $returnResult = array('find' => false, 'quantity' => 0);
 
         //item exit in user cart
         if($num_row > 0) {
-            return true;
-        } 
-        //not found
-        else {
-            return false;
+            $data = mysqli_fetch_array($result);
+            $returnResult = array('find' => true, 'quantity' => $data['quantity']);
         }
+
+        return $returnResult;
     }
 
     //get the items list from user
@@ -310,10 +311,12 @@
 
                     $resultSuccess = false;
 
+                    $checkResult = check($userId, $item['itemId']);
+
                     //check if user already have item
-                    if(check($userId, $item['itemId'])) {
+                    if($checkResult['find']) {
                         //edit exiting item quantity
-                        $resultSuccess = update($userId, $item['itemId'], $item['quantity']);
+                        $resultSuccess = update($userId, $item['itemId'], ($item['quantity'] + $checkResult['quantity']));
                     } 
 
                     //user doesn't have item in cart

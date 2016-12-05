@@ -1,4 +1,48 @@
 var main = function () {
+
+    var vm = {
+        searchItems: ko.observableArray(),
+        //detele later after items have review obj
+        review: ko.observable('0'),
+        linkQuery: function(itemId) {
+            var link = 'product?id=' + itemId;
+            return link;
+        }, 
+        addToCartButton: function(item, event) {
+            console.log(this);
+            //get quantity element to extract quantity value
+            var quantityElement = $(event.target).prev(),
+                quantity = $(quantityElement).find('.text').text();
+
+            //get userId from cookie and itemId from item
+            var userId = $.cookie('userId'),
+                itemId = item.itemId;
+
+            var items = [];
+            //push item array
+            items.push({itemId: itemId, quantity: quantity});
+
+            //send request to add item to shopping cart
+            $.ajax({
+                url:'./php/shoppingcart.php',
+                method:'POST',
+                data:{userId: userId, method: 'insert', items: items},
+                dataType: 'json',
+                cache: false,
+                success:function(data) {
+                    if(data) {
+                        //display the item had add to cart
+                        console.log(data);
+                    }
+                    else {
+                        console.log('cannot load data');
+                    }
+                }
+            });
+        }
+    };
+
+    ko.applyBindings(vm);
 	
 	//read GET URL variables and return them as json object
 	var getUrlQuery = function () {
@@ -88,22 +132,24 @@ var main = function () {
 
     var loadSearchData = function() {
         var searchInput = urlQuery.search;
-        console.log(searchInput);
-        console.log("start getting data");
+        
         $.get({
             url: './php/search.php',
             data: {search: searchInput},
             success: function(data) {
-                if(data) {
+                if(data) {                    
                 	//display number for result get from searching
                 	$('#result-number').html(data.search_number);
                 	console.log(data.search_number);
                 	console.log("data: " + data);
 
                     //display items
-                    displayProduct(data.items);
+                    //displayProduct(data.items);
 
-                    console.log(data);
+                    //display items
+                    vm.searchItems(data.items);
+                    console.log(vm.searchItems());
+                    vm.review('0');
                 }
                 else {
                     console.log('cannot load data');
