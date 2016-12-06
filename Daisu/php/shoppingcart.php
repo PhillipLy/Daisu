@@ -212,6 +212,7 @@
         $userId = mysqli_real_escape_string($connect, $_POST["userId"]);
         $method = mysqli_real_escape_string($connect, $_POST["method"]);
         $items = $_POST["items"];
+        
         //check switch method to use
         switch ($method) {
             case 'get':

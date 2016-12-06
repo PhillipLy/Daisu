@@ -14,33 +14,78 @@ var main = function() {
             console.log(this);
             //get quantity element to extract quantity value
             var quantityElement = $(event.target).prev(),
-                quantity = $(quantityElement).find('.text').text();
+                quantity = parseInt($(quantityElement).find('.text').text());
 
             //get userId from cookie and itemId from item
             var userId = $.cookie('userId'),
                 itemId = item.itemId;
 
-            var items = [];
-            //push item array
-            items.push({itemId: itemId, quantity: quantity});
+            var item = {itemId: itemId, quantity: quantity};
 
-            //send request to add item to shopping cart
-            $.ajax({
-                url:'./php/shoppingcart.php',
-                method:'POST',
-                data:{userId: userId, method: 'insert', items: items},
-                dataType: 'json',
-                cache: false,
-                success:function(data) {
-                    if(data) {
-                        //display the item had add to cart
-                        console.log(data);
+            //user logged in
+            if(userId) {               
+
+                //send request to add item to shopping cart
+                $.ajax({
+                    url:'./php/shoppingcart.php',
+                    method:'POST',
+                    data:{userId: userId, method: 'insert', items: [item]},
+                    dataType: 'json',
+                    cache: false,
+                    success:function(data) {
+                        if(data) {
+                            //display the item had add to cart
+                            console.log(data);
+                        }
+                        else {
+                            console.log('cannot load data');
+                        }
                     }
-                    else {
-                        console.log('cannot load data');
+                });
+            }
+
+            // guest user
+            else {
+                //guest cookie already exit
+                if($.cookie('guest')) {
+                    var guestAccount = JSON.parse($.cookie('guest'));
+                    var matchItem = false;
+
+                    console.log(guestAccount);
+                    
+                    //update total items
+                    guestAccount.cartItemCount += item.quantity;
+
+                    //check if item already exit
+                    $.each(guestAccount.items, function(index, element) {
+                        //find matching item
+                        if(element.itemId === item.itemId) {
+                            matchItem = true;
+                            guestAccount.items[index].quantity += item.quantity;
+
+                            //break out of each loop
+                            return false;
+                        }
+                    });
+
+                    //don't find item already exit is list
+                    if (matchItem === false) {
+                        guestAccount.items.push(item);
                     }
+
+                    //update cookie for guest account
+                    $.cookie('guest', JSON.stringify(guestAccount), {expires: 7, path: '/'});
+                    
+                } else {
+                    var data = {
+                        cartItemCount: item.quantity,
+                        items: [item]
+                    }
+
+                    //create new cookie for guest account
+                    $.cookie('guest', JSON.stringify(data), {expires: 7, path: '/'});
                 }
-            });
+            }
         }
     };
 

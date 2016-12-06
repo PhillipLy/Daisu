@@ -52,7 +52,15 @@ var main = function() {
                             });
 
                             //go back to home page
-                            window.location.href="index.html";
+                            var preUrl = document.referrer;
+                            preUrl = preUrl.slice(preUrl.lastIndexOf('/') + 1);
+                            if(preUrl.indexOf('signup') >= 0 || preUrl.indexOf('login') >= 0) {
+                                //go to home page
+                                window.location.href="index.html";
+                            } else {
+                                //go to previous page
+                                window.location.href=preUrl;
+                            }
                         });
                     }
                     else {
