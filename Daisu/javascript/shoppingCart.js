@@ -6,29 +6,59 @@ var main = function() {
     //load user item and save later items
     var loadCartData = function() {
 
-        //user ajax to send POST request
-        $.ajax({
-            url:'./php/shoppingCart.php',
-            method:'POST',
-            data:{userId: userId, method: 'get', items: ''},
-            dataType: 'json',
-            cache: false,
-            success:function(data) {
-                if(data) {                        
-                    //display items
-                    vm.cartItems(data.items);
-                    console.log(data);
+        //check if user already logged in
+        if($.cookie('userId')) {
+            console.log('user login');
+            //user ajax to send POST request
+            $.ajax({
+                url:'./php/shoppingCart.php',
+                method:'POST',
+                data:{userId: userId, method: 'get', items: ''},
+                dataType: 'json',
+                cache: false,
+                success:function(data) {
+                    if(data) {                        
+                        //display items
+                        vm.cartItems(data.items);
+                        console.log(data);
 
-                    vm.saveItemNumber(data.numberOfSaveItems);
-                    vm.saveItems(data.saveItems);
+                        vm.saveItemNumber(data.numberOfSaveItems);
+                        vm.saveItems(data.saveItems);
 
-                    cartItemFunctions();
+                        enableFuntions();
+                    }
+                    else {
+                        console.log('cannot load data');
+                    }
                 }
-                else {
-                    console.log('cannot load data');
+            });
+        } 
+        //user not login and use guest account
+        else {
+            var guestAccount = JSON.parse($.cookie('guest'));
+            console.log(guestAccount);
+
+            $.ajax({
+                url:'./php/shoppingCart.php',
+                method:'POST',
+                data:{userId: '', method: 'getItemById', items: guestAccount.items},
+                dataType: 'json',
+                cache: false,
+                success:function(data) {
+                    if(data) {                        
+                        //display items
+                        vm.cartItems(data.items);
+                        
+                        enableFuntions();
+                    }
+                    else {
+                        console.log('cannot load data');
+                    }
                 }
-            }
-        });
+            });
+        }
+
+        
     };
 
     //load cart items after get in shopping cart page
@@ -61,11 +91,13 @@ var main = function() {
         });
     };
 
-    var cartItemFunctions = function() {
+    //enable all functions in shopping cart
+    var enableFuntions = function() {
         //dropdown for quantity
         $('.ui.dropdown').dropdown();
     };
 
+    //Knockout js view model
     var vm = {
         cartItems: ko.observableArray(),
         saveItems: ko.observableArray([]),

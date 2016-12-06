@@ -27,6 +27,58 @@
         return $returnResult;
     }
 
+    function getItemById($items) {
+        global $connect;
+
+        $itemArray = [];
+        $itemQuantity = [];
+
+        for ($i = 0; $i< count($items); $i++) {
+            array_push($itemArray, $items[$i]['itemId']);
+            array_push($itemQuantity, $items[$i]['quantity']);
+        }
+
+        $itemIds = implode(",", $itemArray);
+
+        $sql = "SELECT * FROM `item` WHERE `itemid` IN (" . $itemIds . ")";
+
+        $result = mysqli_query($connect, $sql);
+
+        $num_row = mysqli_num_rows($result);
+
+        $shoppingCartItems = array(
+                            'numberOfItems' => $num_row, 
+                            'items' => '');
+
+        $items = [];
+
+        if($num_row > 0) {
+            $index = 0;
+            //loop for each item in user cart 
+            while($data = mysqli_fetch_array($result)) {
+
+                $arr = array( 'itemId' => $data["itemid"],
+                            'title' => $data["productname"],
+                            'brand' => $data["brand"],
+                            'price' => $data["price"],
+                            'color' => $data["color"],
+                            'url' => $data["picturelink"],
+                            'quantity' => $itemQuantity[$index]);
+                $arr = array_map('utf8_encode', $arr);
+
+                array_push($items, $arr);
+
+                $index++;
+            }
+        }
+
+        //add items to cart items
+        $shoppingCartItems['items'] = $items;
+
+        //return search result
+        echo json_encode($shoppingCartItems);
+    }
+
     //get the items list from user
     function get($userId) {
         global $connect;
@@ -215,6 +267,11 @@
         
         //check switch method to use
         switch ($method) {
+            case 'getItemById':              
+
+                getItemById($items);
+                break;
+
             case 'get':
                 //get user shopping cart list
                 get($userId);
