@@ -31,13 +31,13 @@
                                 Camping
                             </a>
                             <div class="content">
-                                <a href="thumbnail#/camping/tents" class="item">Tents</a>
-                                <a href="thumbnail#/camping/sleeping-bags" class="item">Sleeping Bags</a>
-                                <a href="thumbnail#/camping/hammocks" class="item">Hammocks</a>
-                                <a href="thumbnail#/camping/pads" class="item">Pads</a>
-                                <a href="thumbnail#/camping/cook-wares" class="item">Cook Wares</a>
-                                <a href="thumbnail#/camping/stoves" class="item">Stoves</a>
-                                <a href="thumbnail#/camping/coolers" class="item">Coolers</a>
+                                <a href="thumbnail#/camping/tents" class="item" data-tab="camping/tents">Tents</a>
+                                <a href="thumbnail#/camping/sleeping-bags" class="item" data-tab="camping/sleeping-bags">Sleeping Bags</a>
+                                <a href="thumbnail#/camping/hammocks" class="item" data-tab="camping/hammocks">Hammocks</a>
+                                <a href="thumbnail#/camping/pads" class="item" data-tab="camping/pads">Pads</a>
+                                <a href="thumbnail#/camping/cook-wares" class="item" data-tab="camping/cook-wares">Cook Wares</a>
+                                <a href="thumbnail#/camping/stoves" class="item" data-tab="camping/stoves">Stoves</a>
+                                <a href="thumbnail#/camping/coolers" class="item" data-tab="camping/coolers">Coolers</a>
                             </div>
                         </div>
                         <div class="item accessories">
@@ -47,13 +47,13 @@
                             </a>
                             <div class="content">
                                 <div class="grouped fields">
-                                    <a href="thumbnail#/accessories/binoculars" class="item">Binoculars</a>
-                                    <a href="thumbnail#/accessories/compasses" class="item">Compasses</a>
-                                    <a href="thumbnail#/accessories/solar-and-portable-power" class="item">Solar and Portable Power</a>
-                                    <a href="thumbnail#/accessories/GPS" class="item">GPS</a>
-                                    <a href="thumbnail#/accessories/gear-storage-and-maintenance" class="item">Gear Storage & Maintenance</a>
-                                    <a href="thumbnail#/accessories/lightings" class="item">Lightings</a>
-                                    <a href="thumbnail#/accessories/trekking-poles" class="item">Trekking Poles</a>
+                                    <a href="thumbnail#/accessories/binoculars" class="item" data-tab="accessories/binoculars">Binoculars</a>
+                                    <a href="thumbnail#/accessories/compasses" class="item" data-tab="accessories/compasses">Compasses</a>
+                                    <a href="thumbnail#/accessories/solar-and-portable-power" class="item" data-tab="accessories/solar-and-portable-power">Solar and Portable Power</a>
+                                    <a href="thumbnail#/accessories/GPS" class="item" data-tab="accessories/GPS">GPS</a>
+                                    <a href="thumbnail#/accessories/gear-storage-and-maintenance" class="item" data-tab="accessories/gear-storage-and-maintenance">Gear Storage & Maintenance</a>
+                                    <a href="thumbnail#/accessories/lightings" class="item" data-tab="accessories/lightings">Lightings</a>
+                                    <a href="thumbnail#/accessories/trekking-poles" class="item" data-tab="accessories/trekking-poles">Trekking Poles</a>
                                 </div>
                             </div>
                         </div>
@@ -63,9 +63,9 @@
                                 Health & Safety
                             </a>
                             <div class="content">
-                                <a href="thumbnail#/health-and-safety/first-aid" class="item">Frist Aid</a>
-                                <a href="thumbnail#/health-and-safety/emergency-and-survival" class="item">Emergency & Survival</a>
-                                <a href="thumbnail#/health-and-safety/sun-and-bug-protections" class="item">Sun & Bug Protections</a>
+                                <a href="thumbnail#/health-and-safety/first-aid" class="item" data-tab="health-and-safety/first-aid">First Aid</a>
+                                <a href="thumbnail#/health-and-safety/emergency-and-survival" class="item" data-tab="health-and-safety/emergency-and-survival">Emergency & Survival</a>
+                                <a href="thumbnail#/health-and-safety/sun-and-bug-protections" class="item" data-tab="health-and-safety/sun-and-bug-protections">Sun & Bug Protections</a>
                             </div>
                         </div>
                         <div class="item men">
@@ -74,10 +74,10 @@
                                 Men
                             </a>
                             <div class="content">
-                                <a href="thumbnail#/men/footwear" class="item">Footwear</a>
-                                <a href="thumbnail#/men/jackets" class="item">Jackets</a>
-                                <a href="thumbnail#/men/tops" class="item">Tops</a>
-                                <a href="thumbnail#/men/bottoms" class="item">Bottoms</a>
+                                <a href="thumbnail#/men/footwear" class="item" data-tab="men/footwear">Footwear</a>
+                                <a href="thumbnail#/men/jackets" class="item" data-tab="men/jackets">Jackets</a>
+                                <a href="thumbnail#/men/tops" class="item" data-tab="men/tops">Tops</a>
+                                <a href="thumbnail#/men/bottoms" class="item" data-tab="men/bottoms">Bottoms</a>
                             </div>
                         </div>
                         <div class="item women">
@@ -86,16 +86,23 @@
                                 Women
                             </a>
                             <div class="content">
-                                <a href="thumbnail#/women/footwear" class="item">Footwear</a>
-                                <a href="thumbnail#/women/jackets" class="item">Jackets</a>
-                                <a href="thumbnail#/women/tops" class="item">Tops</a>
-                                <a href="thumbnail#/women/bottoms" class="item">Bottoms</a>
+                                <a href="thumbnail#/women/footwear" class="item" data-tab="women/footwear">Footwear</a>
+                                <a href="thumbnail#/women/jackets" class="item" data-tab="women/jackets">Jackets</a>
+                                <a href="thumbnail#/women/tops" class="item" data-tab="women/tops">Tops</a>
+                                <a href="thumbnail#/women/bottoms" class="item" data-tab="women/bottoms">Bottoms</a>
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="thirteen wide stretched column" >
-                    <div class="ui segment" data-bind="template: { name: 'items-list'}" > </div>
+                    <div class="ui segment">
+                        <div data-bind="visible: searchSegment">
+                            <h1 class="ui header">Search Result</h1>
+                            <p>There are <span data-bind="text: searchResultNumber"></span> products that match your search for '<span data-bind="text: searchInput"></span>'.</p>
+                            <div class="ui divider"></div>
+                        </div>
+                        <div data-bind="template: { name: 'items-list'}" > </div>
+                    </div>
                 </div>
             </div>
         </div>

@@ -4,6 +4,10 @@ var main = function () {
     //functions for menu after load
     // to prevent asynchronous
     var activeMenuFunctions = function() {
+        $('a.item').on('click', function() {
+            location.reload();
+        });
+
         //enable user-menu dropdown
         $('.ui.pointing.dropdown').dropdown({
             on: 'hover',
@@ -24,7 +28,11 @@ var main = function () {
         //prevent form to reload page
         $('#search-form').submit(function(e) {
             e.preventDefault();
+            var path = window.location.pathname;
+            path = path.slice(path.lastIndexOf('/')+1);
+
             var searchInput = $('#search-input').val();
+            //console.log(window);
             if(searchInput === '') {
                 console.log('no input');
             } else {
@@ -32,7 +40,12 @@ var main = function () {
                 var query = searchInput.split(' ').join('+');
 
                 //go to search page with url query
-                window.location = 'search?search=' + query;
+                window.location = 'thumbnail#/search=' + query;                
+
+                //reload page if location at thumbnail
+                if(path === 'thumbnail') {
+                    window.location.reload();
+                }
             }
         });
 
@@ -112,7 +125,7 @@ var main = function () {
             });
             
         }
-    });    
+    });
 };
 
 $(document).ready(main);
