@@ -131,43 +131,33 @@ var main = function() {
         };
     }
 
-    //send thumbnail request
-    var thumbnailRequest = function() {
-        var category = urlQuery.data;
-        $.get({
-            url: './php/thumbnail.php',
-            data: {category: category},
-            success: function(data) {
-                if(data) {
-                    
-                    //display items
-                    vm.items(data);
-                    vm.review('0');
-
-                    //enable function after load products
-                    enableFunctions();
-                }
-                else {
-                    console.log('cannot load data');
-                }
-            },
-            dataType: 'json'
-        });
-    }
-
-    //send search request
-    var searchRequest = function() {
-        var searchInput = urlQuery.data.search;
+    var requestServerData = function() {
+        var data, 
+            url,
+            method = urlQuery.method;
         
+        if(method === 'search') {
+            url = './php/search.php';
+            data = {search: urlQuery.data.search};
+        } else {
+            url = './php/thumbnail.php';
+            data = {category: urlQuery.data};
+        }
+
+        console.log(data);
+
         $.get({
-            url: './php/search.php',
-            data: {search: searchInput},
+            url: url,
+            data: data,
             success: function(data) {
                 if(data) {
 
-                    //display number for result get from searching
-                    vm.searchResultNumber(data.search_number);
-
+                    //check if method is search
+                    if (method === 'search') {
+                        //display number for result get from searching
+                        vm.searchResultNumber(data.search_number);
+                    }
+                    
                     //display items
                     vm.items(data.items);
                     vm.review('0');
@@ -181,22 +171,10 @@ var main = function() {
             },
             dataType: 'json'
         });
-    }
-    
-    //send request to product.php for items
-    var loadProductData = function() {
-        if(urlQuery.method === 'thumbnail') {
-            //all thumbnail request
-            thumbnailRequest();
-        } else {
-            console.log('call search');
-            //all thumbnail request
-            searchRequest();
-        }        
     };
 
-    //display the first load
-    loadProductData();    
+    //call search request to server for items
+    requestServerData();
 
     //active accordion
     $('.accordion.menu').accordion();

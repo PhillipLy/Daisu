@@ -15,7 +15,7 @@
 
         $num_row = mysqli_num_rows($result);
         
-        $item = [];
+        $items = [];
 
         if($num_row > 0) {
             while($data = mysqli_fetch_array($result)) {
@@ -25,9 +25,12 @@
                             'price' => $data["price"], 
                             'color' => $data["color"], 
                             'url' => $data["picturelink"]);                
-               array_push($item, $arr);
+               array_push($items, $arr);
             }            
         }
-        echo json_encode($item, true);
+
+        $returnResult = array('items' => $items);
+        
+        echo json_encode($returnResult, true);
     }
 ?>
