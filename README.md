@@ -1,5 +1,11 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.23 released 12/06/2016
+- Display items in shopping cart for guest account
+- Created guest account in cookie to add items
+- Added order completed page (part of checkout process) 
+- Combined search page into single thumbnail page 
+
 Version 1.0.22 released 12/04/2016
 - Implemented Order Confirmation page (part of checkout process)
 - Integrated reCAPTCHA with API key in login page 
