@@ -8,7 +8,6 @@ var main = function() {
 
         //check if user already logged in
         if($.cookie('userId')) {
-            console.log('user login');
             //user ajax to send POST request
             $.ajax({
                 url:'./php/shoppingCart.php',
@@ -20,7 +19,6 @@ var main = function() {
                     if(data) {                        
                         //display items
                         vm.cartItems(data.items);
-                        console.log(data);
 
                         vm.saveItemNumber(data.numberOfSaveItems);
                         vm.saveItems(data.saveItems);
@@ -35,30 +33,32 @@ var main = function() {
         } 
         //user not login and use guest account
         else {
-            var guestAccount = JSON.parse($.cookie('guest'));
-            console.log(guestAccount);
+            if($.cookie('guest')) {
+                var guestItems = JSON.parse($.cookie('guest'));
 
-            $.ajax({
-                url:'./php/shoppingCart.php',
-                method:'POST',
-                data:{userId: '', method: 'getItemById', items: guestAccount.items},
-                dataType: 'json',
-                cache: false,
-                success:function(data) {
-                    if(data) {                        
-                        //display items
-                        vm.cartItems(data.items);
-                        
-                        enableFuntions();
+                $.ajax({
+                    url:'./php/shoppingCart.php',
+                    method:'POST',
+                    data:{userId: '', method: 'getItemById', items: guestItems},
+                    dataType: 'json',
+                    cache: false,
+                    success:function(data) {
+                        if(data) {
+                            //display items
+                            vm.cartItems(data.items);
+
+                            enableFuntions();
+                        }
+                        else {
+                            console.log('cannot load data');
+                        }
+                    },
+                    error: function() {
+                        vm.cartItems([]);
                     }
-                    else {
-                        console.log('cannot load data');
-                    }
-                }
-            });
+                });
+            } 
         }
-
-        
     };
 
     //load cart items after get in shopping cart page
@@ -81,12 +81,28 @@ var main = function() {
             cache: false,
             success:function(data) {
                 if(data) {
-                    console.log(data);
                     loadCartData();
                 }
                 else {
                     console.log('cannot load data');
                 }
+            }
+        });
+    };
+
+    var guestChangeQty = function(targetItem, value) {
+        var guestItems = JSON.parse($.cookie('guest'));
+
+        //find index of itemId in guest cookie
+        $.map(guestItems, function(obj, index) {
+            if(obj.itemId === targetItem.itemId) {
+                guestItems[index].quantity = value;
+
+                //update cookie for guest account
+                $.cookie('guest', JSON.stringify(guestItems), {expires: 7, path: '/'});
+
+                loadCartData();
+                return;
             }
         });
     };
@@ -99,6 +115,7 @@ var main = function() {
 
     //Knockout js view model
     var vm = {
+        userLogin: ko.observable(false),
         cartItems: ko.observableArray(),
         saveItems: ko.observableArray([]),
         ItemQty: ko.observable(10),
@@ -106,10 +123,30 @@ var main = function() {
         cartItemNumber: ko.observable(0),
         saveItemNumber: ko.observable(0),
         deleteCartItem: function() {
-            var data = {itemId: this['itemId'], quantity: '', method: 'delete'};
+            var targetItem = this;
+
+            if(vm.userLogin()) {
+                var data = {itemId: targetItem['itemId'], quantity: '', method: 'delete'};
             
-            // send request to delete the item
-            shoppingCartRequest(data);
+                // send request to delete the item
+                shoppingCartRequest(data);
+            } else {
+                if($.cookie('guest')) {
+                    var guestItems = JSON.parse($.cookie('guest'));
+
+                    //find index of itemId in guest cookie
+                    $.each(guestItems, function(index, obj) {
+                        if(obj.itemId === targetItem.itemId) {
+                            guestItems.splice(index, 1);
+
+                            //update guest cart items                
+                            $.cookie('guest', JSON.stringify(guestItems), {expires: 7, path: '/'});
+                            loadCartData();
+                            return false;
+                        }
+                    });
+                }                
+            }            
         },
         saveForLater: function() {
             var data = {itemId: this['itemId'], quantity: '', method: 'saveForLater'};
@@ -134,10 +171,16 @@ var main = function() {
 
              $('.ui.dropdown').dropdown({
                 onChange: function(value, text, $selectedItem) {
-                    var data = {itemId: targetItem['itemId'], quantity: text, method: 'update'};
-                    
-                    //send request to change selected item quantity
-                    shoppingCartRequest(data);
+                    //check if user logged in
+                    if($.cookie('userId')) {
+                        var data = {itemId: targetItem['itemId'], quantity: text, method: 'update'};
+                        
+                        //send request to change selected item quantity
+                        shoppingCartRequest(data);
+                    } 
+                    else {
+                        guestChangeQty(targetItem, value);
+                    }
                 }
             });            
         },
@@ -167,6 +210,12 @@ var main = function() {
             return link;
         }
     };
+
+    if($.cookie('userId')) {
+        vm.userLogin(true);
+    } else {
+        vm.userLogin(false);
+    }
 
     ko.applyBindings(vm);
 };

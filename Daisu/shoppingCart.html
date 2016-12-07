@@ -37,7 +37,7 @@
                                                 <a href="#" class="header" data-bind="text: item.title, attr: {'href': $parent.linkQuery(item.itemId)}"></a>
                                             </h3>
                                             <button class="ui inverted red button" data-bind="click: $parent.deleteCartItem">Delete</button>
-                                            <button class="ui inverted blue button" data-bind="click: $parent.saveForLater">Save for later</button>
+                                            <button class="ui inverted blue button" data-bind="visible: $root.userLogin, click: $parent.saveForLater">Save for later</button>
                                         </div>
                                         <div class="three wide column">
                                             <h3 class="price">
@@ -60,29 +60,31 @@
                         </div>
                     </div>
 
-                    <h2 class="ui header">
-                        Saved for later (<span data-bind="text: saveItemNumber">0</span> item<span data-bind="visible: saveItemNumber() > 1">s</span>)
-                    </h2>
-                    <div class="ui segment" id="savedLaterList">
-                        <h3 class="ui header" data-bind="visible: saveItemNumber() <= 0">No items saved for later.</h3>
-                        <div class="ui divided items" data-bind="foreach: {data: saveItems, as: 'item'}">
-                            <div class="item">
-                                <a class="ui small image" data-bind="attr: {'href': $parent.linkQuery(item.itemId)}">
-                                    <img src="http://semantic-ui.com/images/wireframe/image.png" data-bind="attr: {src: item.url}">
-                                </a>
-                                <div class="content">
-                                    <div class="ui grid">
-                                        <div class="thirteen wide column">
-                                            <h3 class="header">
-                                                <a href="#" class="header" data-bind="text: item.title, attr: {'href': $parent.linkQuery(item.itemId)}"></a>
-                                            </h3>
-                                            <button class="ui inverted red button" data-bind="click: $parent.deleteSaveLater">Delete</button>
-                                            <button class="ui inverted blue button" data-bind="click: $parent.moveToCart">Move to Cart</button>
-                                        </div>
-                                        <div class="three wide column">
-                                            <h3 class="price">
-                                                $<span data-bind="text: $data.price">$0</span>
-                                            </h3>
+                    <div data-bind="visible: userLogin">
+                        <h2 class="ui header">
+                            Saved for later (<span data-bind="text: saveItemNumber">0</span> item<span data-bind="visible: saveItemNumber() > 1">s</span>)
+                        </h2>
+                        <div class="ui segment" id="savedLaterList">
+                            <h3 class="ui header" data-bind="visible: saveItemNumber() <= 0">No items saved for later.</h3>
+                            <div class="ui divided items" data-bind="foreach: {data: saveItems, as: 'item'}">
+                                <div class="item">
+                                    <a class="ui small image" data-bind="attr: {'href': $parent.linkQuery(item.itemId)}">
+                                        <img src="http://semantic-ui.com/images/wireframe/image.png" data-bind="attr: {src: item.url}">
+                                    </a>
+                                    <div class="content">
+                                        <div class="ui grid">
+                                            <div class="thirteen wide column">
+                                                <h3 class="header">
+                                                    <a href="#" class="header" data-bind="text: item.title, attr: {'href': $parent.linkQuery(item.itemId)}"></a>
+                                                </h3>
+                                                <button class="ui inverted red button" data-bind="click: $parent.deleteSaveLater">Delete</button>
+                                                <button class="ui inverted blue button" data-bind="click: $parent.moveToCart">Move to Cart</button>
+                                            </div>
+                                            <div class="three wide column">
+                                                <h3 class="price">
+                                                    $<span data-bind="text: $data.price">$0</span>
+                                                </h3>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>

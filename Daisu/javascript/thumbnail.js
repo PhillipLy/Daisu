@@ -48,20 +48,20 @@ var main = function() {
             else {
                 //guest cookie already exit
                 if($.cookie('guest')) {
-                    var guestAccount = JSON.parse($.cookie('guest'));
+                    var guestItems = JSON.parse($.cookie('guest'));
+                    var cartCount = parseInt($.cookie('cartCount'));
                     var matchItem = false;
-
-                    console.log(guestAccount);
                     
                     //update total items
-                    guestAccount.cartItemCount += item.quantity;
+                    cartCount += item.quantity;
+                    $.cookie('cartCount', cartCount, {expires: 7, path: '/'});
 
                     //check if item already exit
-                    $.each(guestAccount.items, function(index, element) {
+                    $.each(guestItems, function(index, element) {
                         //find matching item
                         if(element.itemId === item.itemId) {
                             matchItem = true;
-                            guestAccount.items[index].quantity += item.quantity;
+                            guestItems[index].quantity += item.quantity;
 
                             //break out of each loop
                             return false;
@@ -70,20 +70,18 @@ var main = function() {
 
                     //don't find item already exit is list
                     if (matchItem === false) {
-                        guestAccount.items.push(item);
+                        guestItems.push(item);
                     }
 
                     //update cookie for guest account
-                    $.cookie('guest', JSON.stringify(guestAccount), {expires: 7, path: '/'});
-                    
+                    $.cookie('guest', JSON.stringify(guestItems), {expires: 7, path: '/'});
+                    console.log(guestItems);
                 } else {
-                    var data = {
-                        cartItemCount: item.quantity,
-                        items: [item]
-                    }
+                    var data = [item];
 
                     //create new cookie for guest account
                     $.cookie('guest', JSON.stringify(data), {expires: 7, path: '/'});
+                    $.cookie('cartCount', item.quantity, {expires: 7, path: '/'});
                 }
             }
         }
