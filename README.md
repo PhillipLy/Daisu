@@ -5,6 +5,8 @@ Version 1.0.24 released 12/7/2016
 - Guest shopping cart can detele item
 - Guest shopping cart auto update when logged in
 - Added links to relevant products on recommended gears page 
+- Added page for various trails and link from to trails from menu bar 
+- Added links to recommended gears in informational pages in homepage
 
 Version 1.0.23 released 12/06/2016
 - Display items in shopping cart for guest account
