@@ -7,7 +7,7 @@ var main = function() {
     var loadCartData = function() {
 
         //check if user already logged in
-        if($.cookie('userId')) {
+        if(userId) {
             //user ajax to send POST request
             $.ajax({
                 url:'./php/shoppingCart.php',
@@ -33,8 +33,8 @@ var main = function() {
         } 
         //user not login and use guest account
         else {
-            if($.cookie('guest')) {
-                var guestItems = JSON.parse($.cookie('guest'));
+            if($.cookie('guestItems')) {
+                var guestItems = JSON.parse($.cookie('guestItems'));
 
                 $.ajax({
                     url:'./php/shoppingCart.php',
@@ -91,7 +91,7 @@ var main = function() {
     };
 
     var guestChangeQty = function(targetItem, value) {
-        var guestItems = JSON.parse($.cookie('guest'));
+        var guestItems = JSON.parse($.cookie('guestItems'));
 
         //find index of itemId in guest cookie
         $.map(guestItems, function(obj, index) {
@@ -99,7 +99,7 @@ var main = function() {
                 guestItems[index].quantity = value;
 
                 //update cookie for guest account
-                $.cookie('guest', JSON.stringify(guestItems), {expires: 7, path: '/'});
+                $.cookie('guestItems', JSON.stringify(guestItems), {expires: 7, path: '/'});
 
                 loadCartData();
                 return;
@@ -111,6 +111,15 @@ var main = function() {
     var enableFuntions = function() {
         //dropdown for quantity
         $('.ui.dropdown').dropdown();
+
+        //checkout button clicked
+        $('#checkOutButton').on('click', function() {
+            if(userId) {
+                window.location.href="address.html";
+            } else {
+                window.location.href="login.html";
+            }
+        });
     };
 
     //Knockout js view model
@@ -131,8 +140,8 @@ var main = function() {
                 // send request to delete the item
                 shoppingCartRequest(data);
             } else {
-                if($.cookie('guest')) {
-                    var guestItems = JSON.parse($.cookie('guest'));
+                if($.cookie('guestItems')) {
+                    var guestItems = JSON.parse($.cookie('guestItems'));
 
                     //find index of itemId in guest cookie
                     $.each(guestItems, function(index, obj) {
@@ -140,7 +149,7 @@ var main = function() {
                             guestItems.splice(index, 1);
 
                             //update guest cart items                
-                            $.cookie('guest', JSON.stringify(guestItems), {expires: 7, path: '/'});
+                            $.cookie('guestItems', JSON.stringify(guestItems), {expires: 7, path: '/'});
                             loadCartData();
                             return false;
                         }
@@ -172,7 +181,7 @@ var main = function() {
              $('.ui.dropdown').dropdown({
                 onChange: function(value, text, $selectedItem) {
                     //check if user logged in
-                    if($.cookie('userId')) {
+                    if(userId) {
                         var data = {itemId: targetItem['itemId'], quantity: text, method: 'update'};
                         
                         //send request to change selected item quantity
@@ -211,7 +220,7 @@ var main = function() {
         }
     };
 
-    if($.cookie('userId')) {
+    if(userId) {
         vm.userLogin(true);
     } else {
         vm.userLogin(false);

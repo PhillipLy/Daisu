@@ -94,7 +94,7 @@
                     
                 </div>
                 <div class="four wide column">
-                    <div class="ui sticky">
+                    <div class="ui sticky" data-bind="visible: cartItemNumber() > 0">
                         <div class="ui segment check-out-form">
                             <h3 class="ui header subtotal-title">
                                 Cart Summary
@@ -105,11 +105,9 @@
                                 item<span data-bind="visible: cartItemNumber() > 1">s</span>):
                                 <span id="subtotal-price" class="price" data-bind="text: computeTotal"></span>
                             </h3>
-                            <a href="address.html" class="ui fluid button">Proceed to Checkout</a>
+                            <a class="ui fluid button" id="checkOutButton">Proceed to Checkout</a>
                         </div>
                     </div>
-                    
-                    
                 </div>
             </div>
         </div>

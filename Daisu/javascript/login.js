@@ -1,5 +1,41 @@
 var main = function() {
     'use strict';
+
+    var insertGuestCartItems = function(data) {
+        var userId = $.cookie('userId');
+
+        //send request to add item to shopping cart
+        $.ajax({
+            url:'./php/shoppingcart.php',
+            method:'POST',
+            data:{userId: userId, method: 'insert', items: data},
+            dataType: 'json',
+            cache: false,
+            success:function(data) {
+                if(data) {
+                    //display the item had add to cart
+                    console.log(data);
+                }
+                else {
+                    console.log('cannot load data');
+                }
+            }
+        });
+    };
+
+    var locationAfterLog = function() {
+        //go back to home page
+        var preUrl = document.referrer;
+        preUrl = preUrl.slice(preUrl.lastIndexOf('/') + 1);
+
+        if(preUrl.indexOf('signup') >= 0 || preUrl.indexOf('login') >= 0) {
+            //go to home page
+            window.location.href="index.html";
+        } else {
+            //go to previous page
+            window.location.href=preUrl;
+        }
+    };
     
     //login error validation
     $('#login-form').form({
@@ -42,26 +78,28 @@ var main = function() {
                     if(data.username !== '') {
                         console.log("got data from server");
                         
-                        //load jquery cookie before check login
-                        $.getScript("javascript/jquery.cookie.js", function(){
-
-                            //set cookie for each json data respond
-                            $.each(data, function(key, value) {
-                                //set cookie for each key and value retreive from server
-                                $.cookie(key, value, {expires: 7, path: '/'});
-                            });
-
-                            //go back to home page
-                            var preUrl = document.referrer;
-                            preUrl = preUrl.slice(preUrl.lastIndexOf('/') + 1);
-                            if(preUrl.indexOf('signup') >= 0 || preUrl.indexOf('login') >= 0) {
-                                //go to home page
-                                window.location.href="index.html";
-                            } else {
-                                //go to previous page
-                                window.location.href=preUrl;
-                            }
+                        //set cookie for each json data respond
+                        $.each(data, function(key, value) {
+                            //set cookie for each key and value retreive from server
+                            $.cookie(key, value, {expires: 7, path: '/'});
                         });
+
+                        $.when().then(function() {
+                            var guestItems = $.cookie('guestItems');
+                            if(guestItems && guestItems !== '[]') {
+                                var items = JSON.parse($.cookie('guestItems'));                                
+                                
+                                insertGuestCartItems(items);
+
+                                //remove guestItems
+                                $.removeCookie('guestItems', { path: '/' });
+                            }
+                        }).done(function() {
+                            locationAfterLog();
+                            console.log('done');                            
+                        });
+
+                        
                     }
                     else {
                         $('.ui.form').toggleClass("success error");
@@ -88,4 +126,9 @@ var main = function() {
     });
 
 };
-$(document).ready(main);
+$(document).ready(function() {
+    //load jquery cookie before check login
+    $.getScript("javascript/jquery.cookie.js", function(){
+        main();
+    });
+});

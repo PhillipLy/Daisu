@@ -47,8 +47,8 @@ var main = function() {
             // guest user
             else {
                 //guest cookie already exit
-                if($.cookie('guest')) {
-                    var guestItems = JSON.parse($.cookie('guest'));
+                if($.cookie('guestItems')) {
+                    var guestItems = JSON.parse($.cookie('guestItems'));
                     var cartCount = parseInt($.cookie('cartCount'));
                     var matchItem = false;
                     
@@ -74,13 +74,13 @@ var main = function() {
                     }
 
                     //update cookie for guest account
-                    $.cookie('guest', JSON.stringify(guestItems), {expires: 7, path: '/'});
+                    $.cookie('guestItems', JSON.stringify(guestItems), {expires: 7, path: '/'});
                     console.log(guestItems);
                 } else {
                     var data = [item];
 
                     //create new cookie for guest account
-                    $.cookie('guest', JSON.stringify(data), {expires: 7, path: '/'});
+                    $.cookie('guestItems', JSON.stringify(data), {expires: 7, path: '/'});
                     $.cookie('cartCount', item.quantity, {expires: 7, path: '/'});
                 }
             }
