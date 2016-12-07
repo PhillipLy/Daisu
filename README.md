@@ -1,5 +1,11 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.24 released 12/7/2016
+- Refactored the checkout page and add checkout JS 
+- Guest shopping cart can detele item
+- Guest shopping cart auto update when logged in
+- Added links to relevant products on recommended gears page 
+
 Version 1.0.23 released 12/06/2016
 - Display items in shopping cart for guest account
 - Created guest account in cookie to add items
