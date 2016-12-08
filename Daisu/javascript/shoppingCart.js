@@ -115,7 +115,7 @@ var main = function() {
         //checkout button clicked
         $('#checkOutButton').on('click', function() {
             if(userId) {
-                window.location.href="address.html";
+                window.location.href="checkOut.html";
             } else {
                 window.location.href="login.html";
             }
