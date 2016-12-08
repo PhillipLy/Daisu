@@ -62,8 +62,12 @@ body {
     min-height: 67%;
 }
 
-.column img {
+.three.column.doubling .column .ui.large.image, .ui.dimmer img {
     height: 100%;
+}
+
+.column img {
+    height: 100% !important;
     width: 100%;
 }
 .doubling.stackable.grid.container {
@@ -343,9 +347,6 @@ body {font-family: Verdana,sans-serif;}
   transition: background-color 0.6s ease;
 }
 
-.active {
-  background-color: #717171;
-}
 
 /* Fading animation */
 .fade {
@@ -369,4 +370,3 @@ body {font-family: Verdana,sans-serif;}
 @media only screen and (max-width: 300px) {
   .text {font-size: 11px}
 }
-
