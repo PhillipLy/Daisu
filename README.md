@@ -1,5 +1,10 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
+Version 1.0.25 released 12/08/2016
+- Checkout front-end is working 
+- Added dimmer when hover image in home page
+- Added automatic slideshow on homepage
+
 Version 1.0.24 released 12/7/2016
 - Refactored the checkout page and add checkout JS 
 - Guest shopping cart can detele item
