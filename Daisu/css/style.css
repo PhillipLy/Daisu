@@ -276,7 +276,7 @@ i.cart.icon {
 
 .thirteen.column .segment .ui.divided.items .item .image img {
     width: auto;
-    height: 150px;
+    height: 150px !important;
     margin: 0 auto;
 }
 
@@ -296,7 +296,7 @@ i.cart.icon {
 }
 
 #cart-segment .item img {
-    height: 124px;
+    height: 124px !important;
     width: auto;
     margin: 0 auto;
 }
@@ -309,11 +309,6 @@ i.cart.icon {
 .three.column .segment .quantity-container {
     margin: 0.5em 1em 0;
 }
-
-
-
-
-
 
 * {box-sizing:border-box}
 body {font-family: Verdana,sans-serif;}

@@ -24,8 +24,6 @@ var main = function() {
         cardMonth: ko.observable(''),
         cardYear: ko.observable(''),
         paymentMethod: ko.pureComputed(function() {
-            console.log('compute CardType: ', vm.cardType());
-            console.log('Cardnumber', vm.cardNumber());
             return vm.cardType() + ' ending in: ' + vm.cardNumber().slice(-4);
         }),
         cardExpireDate: ko.pureComputed(function() {
@@ -71,14 +69,10 @@ var main = function() {
 
     ko.applyBindings(vm);
 
-    console.log(vm.cardNumber().slice(-4));
-
-
     //enable all functions in shopping cart
     var enableFuntions = function() {
         $('.ui.steps').find('.step').on('click', function() {
             var tab = $(this).data('tab');
-            console.log(tab);
             
             if(tab === 'confirmOrder') {
                 $('#continueButton').html('Place Your Order');
@@ -103,22 +97,56 @@ var main = function() {
 
     $('#continueButton').on('click', function() {
         var tab = vm.orderTab();
-        console.log('tab: ', tab);
         if(tab === 'shippingAddress') {
             $('#addressForm').form('validate form');
         } else if (tab === 'paymentMethod'){
             $('#paymentForm').form('validate form');
         } else {
-            window.location.href="orderCompleted.html";
+            var price = parseFloat(vm.subTotal()) + parseFloat(vm.taxTotal()) + parseFloat(vm.shippingPrice());
+            price = price.toFixed(2);
+
+            var data = {
+                userId: $.cookie('userId'),
+                firstName: vm.firstName(),
+                lastName: vm.lastName(),
+                address: vm.address(),
+                city: vm.city(),
+                zipCode: vm.zipCode(),
+                state: vm.state(),
+                phone: vm.phone(),
+                shippingMethod: vm.shippingMethod(),
+                cardType: vm.cardType(),
+                cardNumber: vm.cardNumber(),
+                CVC: vm.cardCVC(),
+                cardMonth: vm.cardMonth(),
+                cardYear: vm.cardYear(),
+                price: price
+            }
+
+            //user ajax to send POST request
+            $.ajax({
+                url:'./php/transaction.php',
+                method:'POST',
+                data: data,
+                dataType: 'json',
+                cache: false,
+                success:function(data) {
+                    if(data) {
+                        console.log(data);
+                        window.location.href="orderCompleted.html";
+                    }
+                    else {
+                        console.log('cannot load data');
+                    }
+                }
+            });
+
+            
         }
         
     });
 
-    $('.three.step .step.button').tab({
-        onLoad: function() {
-            console.log('change tab');
-        }
-    });
+    $('.three.step .step.button').tab();
 
     $('.ui.selection.dropdown').dropdown();
 
@@ -194,7 +222,6 @@ var main = function() {
             vm.shippingMethod(shippingType.slice(0,shippingType.indexOf('$')-1));
 
             vm.state($(this).form('get value', 'state'));
-            console.log(vm.state());
 
             vm.orderTab('paymentMethod');
 
@@ -299,7 +326,7 @@ var main = function() {
                     //display items
                     vm.cartItems(data.items);
                     var checkbox = $('.ui.radio.checkbox.checked input').data('value');
-                    console.log(checkbox);
+
                     vm.shippingPrice(parseFloat(checkbox).toFixed(2));
 
                     enableFuntions();

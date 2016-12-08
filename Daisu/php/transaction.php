@@ -1,136 +1,116 @@
 <?php
-	session_start();
 
-    $loggedIn = false;
+	 //datavase connection
+   $connect = mysqli_connect("localhost", "root", "", "daisu_db")
+    or die ("Could not connect to server ... \n" . mysqli_error());
 
-    //check if user loged in
-    if(isset($_SESSION["username"])) {
-        $loggedIn = True;
+
+    //move items from shopping cart to transactionhas
+    function purchaseItems($userId, $datetimecreate) {
+        global $connect;
+
+        $sql = "INSERT INTO `transactionhas` (transactionid, datetimecreate, userid, itemid, quantity)
+                SELECT  null, '" . $datetimecreate . "', userid3, itemid3, quantity
+                FROM `shoppingcart` 
+                WHERE userid3 = '" . $userId . "'";
+
+        $insertResult = mysqli_query($connect, $sql);
+
+        $result = false;
+
+        if(mysqli_affected_rows($connect) > 0) {
+            $result = true;
+        }
+
+        return $result;
     }
 
-    if($loggedIn) {
-        $username = $_SESSION["username"];
-        
-        //datavase connection
-        $connect = mysqli_connect("localhost", "root", "", "daisu_db");
-        
-        //--------------------------------------------------------------------
-        //****GET USER ID FROM DATABASE USING USERNAME****
-        //--------------------------------------------------------------------
-        
-        $sqlone = "SELECT * FROM `user` WHERE username = '" . $username . "'";
-        
-        $resultone = mysqli_query($connect, $sqlone);
+    //clear the shopping cart of all items for a user
+    function clearCart($userId) {
+        global $connect;
 
-        $num_row_one = mysqli_num_rows($resultone);
+        $sql = "DELETE FROM `shoppingcart` 
+                WHERE userid3 = '" . $userId . "'";
 
-        if($num_row_one > 0) {
-            $data = mysqli_fetch_array($resultone);
-            $userid = $data["userid"];
-        }
-        else { 
-            echo "Error: User not found.";
-        }
-        
-        //--------------------------------------------------------------------
-        //****VERIFY ITEMS EXIST IN SHOPPING CART****
-        //--------------------------------------------------------------------
-        
-        $sqltwo = "SELECT * FROM `shoppingcart` WHERE userid3 = '" . $userid . "'";
-        
-        $resulttwo = mysqli_query($connect, $sqltwo);
+        //execute sql query
+        mysqli_query($connect, $sql);
 
-        $num_row_two = mysqli_num_rows($resulttwo);
-        
-        if($num_row_two > 0)
-        {
-        
-          //--------------------------------------------------------------------
-          //IF ITEMS EXIST IN THE SHOPPING CART, CREATE A TRANSACTION
-          //--------------------------------------------------------------------
-        
-          //check if we have the necessary data
-          if(isset($_POST["shippingtype"]) && isset($_POST["quantity"]) && isset($_POST["streetaddress"]) && isset($_POST["city"]) 
-          && isset($_POST["state"]) && isset($_POST["zipcode"]) && isset($_POST["cardholdername"]) && isset($_POST["cardtype"]) 
-          && isset($_POST["cardnumber"]) && isset($_POST["cardexpiration"])) 
-          {
-               $shippingtype = mysqli_real_escape_string($connect, $_POST["shippingtype"]);
-               $quantity = mysqli_real_escape_string($connect, $_POST["quantity"]);
-               $streetaddress = mysqli_real_escape_string($connect, $_POST["streetaddress"]);
-               $city = mysqli_real_escape_string($connect, $_POST["city"]);
-               $state = mysqli_real_escape_string($connect, $_POST["state"]);
-               $zipcode = mysqli_real_escape_string($connect, $_POST["zipcode"]);
-               $cardholdername = mysqli_real_escape_string($connect, $_POST["cardholdername"]);
-               $cardtype = mysqli_real_escape_string($connect, $_POST["cardtype"]);
-               $cardnumber = mysqli_real_escape_string($connect, $_POST["cardnumber"]);
-               $cardexpiration = mysqli_real_escape_string($connect, $_POST["cardexpiration"]);
-        
-               //get timestamp for database entry
-               $time = time();
-        
-               //database query request
-               $sqlthree = "INSERT INTO `transactionhistory` (`datetime`, `shippingtype`, `streetaddress`, `city`, `state`, `zipcode`,
-               `cardholdername`, `cardtype`, `cardnumber`, `cardexpiration`, `userid1`) VALUES ( 
-                         '" . $time . "',
-                         '" . $shippingtype . "',
-                         '" . $streetaddress . "', 
-                         '" . $city . "', 
-                         '" . $state . "',
-                         '" . $zipcode . "', 
-                         '" . $cardholdername . "', 
-                         '" . $cardtype . "', 
-                         '" . $cardnumber . "',
-                         '" . $cardexpiration . "',
-                         '" . $userid . "')";
-                         
-               if(!mysqli_query($connect, $sqlthree)) 
-               {
-                  echo "Error: creating transaction.";
-               }
-          }
-  
-          //-------------------------------------------------------------------
-          //****ADD ITEMS INTO ITEM TRANSACTION RECORD AND DELETE FROM CART****
-          //-------------------------------------------------------------------
-   
-          while($data = mysqli_fetch_array($resulttwo))
-          {
-            $itemid = $data["itemid3"];
-            $quantity = $data["quantity"];
-            
-            //insert item into item transaction table
-            $sqlfour = "INSERT INTO `transactionhas` (`userid2`, `itemid3`, `quantity`) VALUES ( 
-                    '" . $userid . "',
-                    '" . $itemid . "',
-                    '" . $quantity . "')";
-                    
-            if(!mysqli_query($connect, $sqlfour)) 
-            {
-              echo "Error: processing items in transaction.";
-            }
-            
-            //delete item from shopping cart table
-            $sqlfive = "DELETE FROM `shoppingcart` WHERE userid3 = '" . $userid . "' AND itemid3 = '" . $itemid . "'";
-            
-            if(!mysqli_query($connect, $sqlfive)) 
-            {
-              echo "Error: deleteing items in shopping cart.";
-            }  
-          }
-               
+        $result = false;
+
+        if(mysqli_affected_rows($connect) > 0) {
+            $result = true;
         }
-        else //check this
-        {
-            echo "Error: No items in shopping cart.";
-        }
+
+        return $result;
     }
-    else 
-    {
-        echo '<a href="signup.html" class="item signin">
-                <div class="ui primary button">Sign Up</div>
-            </a>
-            <a href="login.html" class="item signin">
-                <div class="ui button">Login</div>
-            </a>';
+
+    //make a transaction record
+    function makeTransaction($userId, $firstName, $lastName, $address, $state, $city, $zipCode, $phone, 
+        $shippingMethod, $cardType, $cardNumber, $CVC, $cardMonth, $cardYear, $price) {
+        global $connect;
+
+        $timestamp = date('Y-m-d G:i:s');
+
+        $sql = "INSERT INTO `transactionhistory`(datetimecreate, userid, firstName, lastName, address, state, city, zipCode, phone, shippingMethod, cardType, cardNumber, CVC, cardMonth, cardYear, price)  
+                VALUES ('" . $timestamp . "', '" . $userId . "', '" . $firstName . "', '" . $lastName . "', '" . $address . "', '" . $state . "', '" . $city . "', '" . $zipCode . "', '" . $phone .
+                "', '" . $shippingMethod . "', '" . $cardType . "', '" . $cardNumber . "', '" . $CVC . "', '" . $cardMonth . "', '" . $cardYear . "', '" . $price ."')";
+
+        //execute sql query
+        mysqli_query($connect, $sql);
+
+        $result = array('result' => false,
+                        'timestamp' => $timestamp);
+
+        if(mysqli_affected_rows($connect) > 0) {
+            $result['result'] = true;
+        }
+    
+        return $result;
+    }
+
+    if(isset($_POST["userId"]) && isset($_POST["firstName"]) && isset($_POST["lastName"]) && isset($_POST["address"]) && isset($_POST["state"])
+        && isset($_POST["city"]) && isset($_POST["zipCode"]) && isset($_POST["phone"]) && isset($_POST["shippingMethod"]) && isset($_POST["cardType"]) && isset($_POST["cardNumber"]) 
+        && isset($_POST["CVC"]) && isset($_POST["cardMonth"]) && isset($_POST["cardYear"]) && isset($_POST["price"])) {
+
+        $userId = mysqli_real_escape_string($connect, $_POST["userId"]);
+        $firstName = mysqli_real_escape_string($connect, $_POST["firstName"]);
+        $lastName = mysqli_real_escape_string($connect, $_POST["lastName"]);
+        $address = mysqli_real_escape_string($connect, $_POST["address"]);
+        $state = mysqli_real_escape_string($connect, $_POST["state"]);
+        $city = mysqli_real_escape_string($connect, $_POST["city"]);
+        $zipCode = mysqli_real_escape_string($connect, $_POST["zipCode"]);
+        $phone = mysqli_real_escape_string($connect, $_POST["phone"]);
+        $shippingMethod = mysqli_real_escape_string($connect, $_POST["shippingMethod"]);
+        $cardType = mysqli_real_escape_string($connect, $_POST["cardType"]);
+        $cardNumber = mysqli_real_escape_string($connect, $_POST["cardNumber"]);
+        $CVC = mysqli_real_escape_string($connect, $_POST["CVC"]);
+        $cardMonth = mysqli_real_escape_string($connect, $_POST["cardMonth"]);
+        $cardYear = mysqli_real_escape_string($connect, $_POST["cardYear"]);
+        $price = mysqli_real_escape_string($connect, $_POST["price"]);
+
+        $resultone = makeTransaction($userId, $firstName, $lastName, $address, $state, $city, $zipCode, $phone, 
+                        $shippingMethod, $cardType, $cardNumber, $CVC, $cardMonth, $cardYear, $price);
+
+        $result = array('transaction' => 'fail', 'transactionItems' => 'fail', 'removeCart' => 'fail');
+
+        if($resultone['result']) {
+            $result['transaction'] = 'success';
+        } 
+
+        $resulttwo = purchaseItems($userId, $resultone['timestamp']);
+
+        if($resulttwo) {
+            $result['transactionItems'] = 'success';
+        }
+
+        $resultthree = clearCart($userId); 
+        
+        if($resultthree) {
+            $result['removeCart'] = 'success';
+        }  
+        
+        //send back list of insert or update items
+        echo json_encode($result);
+        
     }
 ?>
