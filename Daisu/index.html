@@ -20,13 +20,39 @@
 
         <!-- Page Contents-->
         <div class="pusher dimmed">
-            <div class="ui inverted vertical masthead center aligned segment">
-                <img src="image/DAISU_ICON.png" alt="">
-                <div class="ui text container">
-                    <h1 class="ui inverted header">Welcome friends!</h1>
-                    <h2>We sell all kind of hiking gears and tools!</h2>
-                </div>    
+            <div class="ui inverted vertical center aligned segment">
+                
+                <h1>Welcome!</h1>
+
+                <div class="slideshow-container">
+
+                <div class="mySlides fade">
+                  <div class="numbertext">1 / 3</div>
+                  <img src="image/california.jpg" style="width:100%">
+                  <div class="text">Good luck on finals!</div>
+                </div>
+
+                <div class="mySlides fade">
+                  <div class="numbertext">2 / 3</div>
+                  <img src="image/virginia.jpg" style="width:100%">
+                  <div class="text">Happy holidays!</div>
+                </div>
+
+                </div>
+                <br>
+
+                <div style="text-align:center">
+                  <span class="dot"></span> 
+                  <span class="dot"></span> 
+                </div>
+
+
             </div>
+
+
+
+
+
 
             <div class="ui text container" align="center">
                 <h2> Click on a picture below to learn interesting information! </h2>
@@ -110,6 +136,28 @@
         <script src="semantic/dist/semantic.min.js"></script> 
         <script src="javascript/menu.js"></script>
         <script src="javascript/home.js"></script>
+
+        <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            var dots = document.getElementsByClassName("dot");
+            for (i = 0; i < slides.length; i++) {
+               slides[i].style.display = "none";  
+            }
+            slideIndex++;
+            if (slideIndex> slides.length) {slideIndex = 1}    
+            for (i = 0; i < dots.length; i++) {
+                dots[i].className = dots[i].className.replace(" active", "");
+            }
+            slides[slideIndex-1].style.display = "block";  
+            dots[slideIndex-1].className += " active";
+            setTimeout(showSlides, 3000); // Change image every 2 seconds
+        }
+        </script>
     
     </body>
 </html>
