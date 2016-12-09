@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 08, 2016 at 10:01 PM
+-- Generation Time: Dec 09, 2016 at 12:19 AM
 -- Server version: 5.7.14
 -- PHP Version: 5.6.25
 
@@ -159,13 +159,6 @@ CREATE TABLE `saveforlater` (
   `itemid` int(10) UNSIGNED NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `saveforlater`
---
-
-INSERT INTO `saveforlater` (`userid`, `itemid`) VALUES
-(2, 8);
-
 -- --------------------------------------------------------
 
 --
@@ -177,13 +170,6 @@ CREATE TABLE `shoppingcart` (
   `itemid3` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `shoppingcart`
---
-
-INSERT INTO `shoppingcart` (`userid3`, `itemid3`, `quantity`) VALUES
-(1, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -198,15 +184,6 @@ CREATE TABLE `transactionhas` (
   `itemid` int(10) UNSIGNED NOT NULL,
   `quantity` int(10) NOT NULL DEFAULT '1'
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `transactionhas`
---
-
-INSERT INTO `transactionhas` (`transactionid`, `datetimecreate`, `userid`, `itemid`, `quantity`) VALUES
-(1, '2016-12-09 05:59:22', 2, 1, 1),
-(2, '2016-12-09 05:59:22', 2, 2, 1),
-(3, '2016-12-09 05:59:22', 2, 3, 1);
 
 -- --------------------------------------------------------
 
@@ -233,13 +210,6 @@ CREATE TABLE `transactionhistory` (
   `price` decimal(10,2) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `transactionhistory`
---
-
-INSERT INTO `transactionhistory` (`datetimecreate`, `userid`, `firstName`, `lastName`, `address`, `state`, `city`, `zipCode`, `phone`, `shippingMethod`, `cardType`, `cardNumber`, `CVC`, `cardMonth`, `cardYear`, `price`) VALUES
-('2016-12-09 05:59:22', 2, 'test', 'testing', '12345 street ave.', 'CA', 'city name', '12345', '1234567890', 'Standard Shipping (3 business days)', 'MasterCard', '1234567890123456', '123', '06', '2019', '1451.98');
-
 -- --------------------------------------------------------
 
 --
@@ -249,20 +219,12 @@ INSERT INTO `transactionhistory` (`datetimecreate`, `userid`, `firstName`, `last
 CREATE TABLE `user` (
   `userid` int(10) UNSIGNED NOT NULL,
   `username` varchar(20) NOT NULL,
-  `password` varchar(25) NOT NULL,
+  `password` varchar(100) NOT NULL,
   `email` varchar(40) NOT NULL,
   `firstName` varchar(15) NOT NULL,
   `middleName` varchar(15) DEFAULT NULL,
   `lastName` varchar(15) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `user`
---
-
-INSERT INTO `user` (`userid`, `username`, `password`, `email`, `firstName`, `middleName`, `lastName`) VALUES
-(1, 'asangar', 'password', 'asangar94@gmail.com', 'Arun', '', 'Sangar'),
-(2, 'admin', '123456', 'admin@g.c', 's', '', 's');
 
 --
 -- Indexes for dumped tables
@@ -336,12 +298,12 @@ ALTER TABLE `item`
 -- AUTO_INCREMENT for table `transactionhas`
 --
 ALTER TABLE `transactionhas`
-  MODIFY `transactionid` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+  MODIFY `transactionid` int(11) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `userid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `userid` int(10) UNSIGNED NOT NULL AUTO_INCREMENT;
 --
 -- Constraints for dumped tables
 --

@@ -10,17 +10,31 @@
         $email = mysqli_real_escape_string($connect, $_POST["email"]);
         $password = mysqli_real_escape_string($connect, $_POST["password"]);
 
-        //database query request
-        $sql = "INSERT INTO `user` (`userID`, `firstName`, `middleName`, `lastName`, `username`, `email`, `password`) VALUES (NULL,
-                    '" . $firstName . "',
-                    '" . $middleName . "',
-                    '" . $lastName . "', 
-                    '" . $username . "', 
-                    '" . $email . "', 
-                    '" . $password . "')";
-                    
-        if(mysqli_query($connect, $sql)) {
-            echo "Your account have successfully created";
+        $sqlCheckUsername = $sql = "SELECT * FROM user WHERE username = '" . $username . "'";
+
+        $result = mysqli_query($connect, $sql);
+
+        $num_row = mysqli_num_rows($result);
+
+        if($num_row === 0) {
+            $encrypted_pass = password_hash($password, PASSWORD_DEFAULT);
+
+            //database query request
+            $sql = "INSERT INTO `user` (`userID`, `firstName`, `middleName`, `lastName`, `username`, `email`, `password`) VALUES (NULL,
+                        '" . $firstName . "',
+                        '" . $middleName . "',
+                        '" . $lastName . "', 
+                        '" . $username . "', 
+                        '" . $email . "', 
+                        '" . $encrypted_pass . "')";
+                        
+            if(mysqli_query($connect, $sql)) {
+                echo "success";
+            } else {
+                echo "can't insert account";
+            }
+        } else {
+            echo "failure";
         }
     }
 ?>

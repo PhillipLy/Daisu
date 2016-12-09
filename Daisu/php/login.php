@@ -11,10 +11,10 @@
 
         //$password = password_hash(mysqli_real_escape_string($connect, $_POST["password"]),PASSWORD_DEFAULT);
 
-        $password = mysqli_real_escape_string($connect, $_POST["password"]);
+        $password = $_POST["password"];
 
         //database query request
-        $sql = "SELECT * FROM user WHERE username = '" . $username . "' AND password = '" . $password . "'";
+        $sql = "SELECT * FROM user WHERE username = '" . $username . "'";
        
         $result = mysqli_query($connect, $sql);
 
@@ -24,22 +24,32 @@
 
         if($num_row > 0) {
             $data = mysqli_fetch_array($result);
-            $user['username'] = $data["username"];
-            $user['userId'] = $data["userid"];
 
-            //--------------------------------------------------
-            // retreive the number of item in user shopping cart
-            //--------------------------------------------------
+            $hash_pwd = $data['password'];
+            $hash = password_verify($password, $hash_pwd);
 
-            $sqlCount = "SELECT COUNT(itemid3) AS count FROM shoppingcart WHERE userid3 = '" . $data["userid"] . "'";
-           
-            $resultCount = mysqli_query($connect, $sqlCount);
+            //check password is correct
+            if($hash == 0) {
+                // echo "Your password is incorrect!<br>";
 
-            $count_num_row = mysqli_num_rows($resultCount);
+            } else {
+                $user['username'] = $data["username"];
+                $user['userId'] = $data["userid"];
 
-            if($count_num_row > 0) {
-                $data = mysqli_fetch_array($resultCount);
-                $user['cartCount'] = $data['count'];
+                //--------------------------------------------------
+                // retreive the number of item in user shopping cart
+                //--------------------------------------------------
+
+                $sqlCount = "SELECT COUNT(itemid3) AS count FROM shoppingcart WHERE userid3 = '" . $data["userid"] . "'";
+               
+                $resultCount = mysqli_query($connect, $sqlCount);
+
+                $count_num_row = mysqli_num_rows($resultCount);
+
+                if($count_num_row > 0) {
+                    $data = mysqli_fetch_array($resultCount);
+                    $user['cartCount'] = $data['count'];
+                }
             }
         }
 

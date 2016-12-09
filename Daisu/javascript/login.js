@@ -98,8 +98,6 @@ var main = function() {
                             locationAfterLog();
                             console.log('done');                            
                         });
-
-                        
                     }
                     else {
                         $('.ui.form').toggleClass("success error");
