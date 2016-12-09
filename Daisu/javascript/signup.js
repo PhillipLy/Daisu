@@ -97,11 +97,51 @@ var main = function() {
                 cache: false,
                 success:function(data) {
                     if(data) {
-                        $('.ui.success.message').slideDown(400);
-                        $('.ui.success.message').delay(2000).fadeOut();
-                        setTimeout(function () {
-                            window.location.href="login.html";
-                        }, 2000);
+                        if (data === 'failure') {
+                            $('.ui.negative.message').slideDown(400);
+                            $('.ui.negative.message').delay(2000).fadeOut();
+                        } else if (data === 'success') {
+                            $('.ui.success.message').slideDown(400);
+                            $('.ui.success.message').delay(4000).fadeOut();
+                        
+                            setTimeout(function () {
+                                $.ajax({
+                                    url:'./php/login.php',
+                                    method:'POST',
+                                    data:{username:username, password:password},
+                                    cache: false,
+                                    dataType: 'json',
+                                    success:function(data) {
+                                        if(data.username !== '') {
+                                            
+                                            //set cookie for each json data respond
+                                            $.each(data, function(key, value) {
+                                                //set cookie for each key and value retreive from server
+                                                $.cookie(key, value, {expires: 7, path: '/'});
+                                            });
+
+                                            $.when().then(function() {
+                                                var guestItems = $.cookie('guestItems');
+                                                if(guestItems && guestItems !== '[]') {
+                                                    var items = JSON.parse($.cookie('guestItems'));                                
+                                                    
+                                                    insertGuestCartItems(items);
+
+                                                    //remove guestItems
+                                                    $.removeCookie('guestItems', { path: '/' });
+                                                }
+                                            }).done(function() {
+                                                window.location.href="index.html";
+                                                console.log('done');                            
+                                            });
+                                        }
+                                    }
+                                });
+                            }, 2000);                        
+                        } else {
+                            console.log('cannot create new account');
+                        }
+                        
                     } 
                     else {
                         $('.ui.form').toggleClass("success error");
@@ -123,4 +163,9 @@ var main = function() {
 
 
 };
-$(document).ready(main);
+$(document).ready(function() {
+    //load jquery cookie before check login
+    $.getScript("javascript/jquery.cookie.js", function(){
+        main();
+    });
+});
