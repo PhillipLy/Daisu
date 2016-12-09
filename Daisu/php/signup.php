@@ -36,7 +36,5 @@
         } else {
             echo "failure";
         }
-
-        
     }
 ?>
