@@ -1,9 +1,10 @@
 # Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
 
 Version 1.0.25 released 12/08/2016
-- Created will login automatic and check if username has taking, and password has encrypted
-- Transaction working on back-end
-- Checkout front-end is working 
+- Created Account will login automatic and check if username existed
+- Apply incryption to created password
+- Transaction is working on back-end
+- Checkout on front-end is working 
 - Added dimmer when hover image in home page
 - Added automatic slideshow on homepage
 
