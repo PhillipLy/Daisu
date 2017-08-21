@@ -1,4 +1,12 @@
-# Daisu-CPSC-362-Software-Engineering-Project by: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel
+# Daisu: CPSC 362 Software Engineering Capstone Project 
+
+This is a dynamic e-commerce website called Daisu that sells hiking gears/tools. Significant 
+features include search functionalities, a back-end database to store crucial information for 
+transactions, a shopping cart system, and more. 
+
+**Team: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel**
+
+**Changelog:**
 
 Version 1.0.25 released 12/08/2016
 - Created account will login automatically and check if username already exist
