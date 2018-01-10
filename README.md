@@ -6,6 +6,8 @@ transactions, a shopping cart system, and more.
 
 **Team: Phillip Ly, Tony Dao, Abraham Ludlam, Arun Sangar, Tevisophea Heng, Josh Marvel**
 
+**Link to Report: https://goo.gl/6mSR4t**
+
 **Changelog:**
 
 Version 1.0.25 released 12/08/2016
